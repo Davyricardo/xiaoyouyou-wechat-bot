@@ -1,0 +1,10 @@
+[Unit]
+Description=小鱿鱿微信版本守卫（域名拦截兜底 + 客户端指纹校验）
+After=docker.service
+Wants=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/xiaoyouyou/wechat-guard.sh
+# 141MB 的二进制算哈希约 1-3 秒，给足余量
+TimeoutStartSec=120

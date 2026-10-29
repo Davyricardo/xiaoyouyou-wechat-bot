@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),{spawn}=require('child_process');
+fs.mkdirSync('cache',{recursive:true});const dir=fs.mkdtempSync(path.join(__dirname,'cache/manifest-concurrency-'));
+function run(prefix){return new Promise((resolve,reject)=>{const child=spawn(process.execPath,['test-assets-child.js',prefix],{cwd:__dirname,env:{...process.env,XYY_HOME:dir},stdio:'inherit'});child.on('exit',code=>code===0?resolve():reject(Error('child failed')));child.on('error',reject);});}
+(async()=>{await Promise.all([run('one'),run('two')]);const manifest=JSON.parse(fs.readFileSync(path.join(dir,'assets/manifest.json')));assert.equal(Object.keys(manifest.entries).length,40);for(let i=0;i<20;i++)for(const key of ['one','two'])assert.ok(manifest.entries['weapons:'+key+'-'+i]);console.log('两进程并发下载 40 个素材，索引无丢失。');})().catch(e=>{console.error(e);process.exitCode=1;});

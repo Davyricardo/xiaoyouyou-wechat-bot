@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小鱿鱿 · 控制台</title>
+<style>
+:root{
+  --bg:#0e1013; --panel:#181c23; --panel-2:#212733; --line:#323a48;
+  --text:#e6e8ee; --muted:#8b93a3; --accent:#5eead4; --accent-2:#38bdf8;
+  --danger:#f87171; --ok:#4ade80; --warn:#fbbf24;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;display:flex;min-height:100vh}
+a{color:var(--accent-2);text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;border-radius:8px;padding:8px 14px;background:var(--panel-2);color:var(--text);transition:.15s}
+button:hover{background:#252a34}
+button.primary{background:var(--accent);color:#06231f;font-weight:600}
+button.primary:hover{filter:brightness(1.08)}
+button.danger{background:transparent;color:var(--danger);border:1px solid #3a2529}
+button.danger:hover{background:#2a1a1d}
+button:disabled{opacity:.45;cursor:not-allowed}
+input,textarea,select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px;color:var(--text);font:inherit;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--accent-2)}
+textarea{resize:vertical;font-family:var(--mono);font-size:13px;line-height:1.7}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.02em}
+.field{margin-bottom:16px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row>*{flex:1;min-width:180px}
+
+/* 侧栏 */
+aside{width:200px;flex:0 0 200px;background:var(--panel);border-right:1px solid var(--line);padding:20px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:9px;padding:0 8px 18px;font-weight:600;letter-spacing:.01em}
+.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;color:var(--muted);padding:10px 12px;border-radius:8px;font-size:13.5px}
+nav button:hover{background:var(--panel-2);color:var(--text)}
+nav button.active{background:#232a36;color:var(--text);font-weight:500}
+nav button.active .ico{color:var(--accent)}
+nav .ico{width:16px;text-align:center;opacity:.9}
+.side-foot{margin-top:auto;padding:12px 10px 0;font-size:11px;color:#77808f;line-height:1.75;border-top:1px solid var(--line)}
+
+/* 主区 */
+main{flex:1;padding:28px 32px 60px;max-width:1080px}
+h1{font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 1px 0 rgba(255,255,255,.02) inset}
+.card h2{font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card h2 .tag{font:11px var(--mono);color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:2px 7px;font-weight:400}
+.grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.grid2{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+.stat{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:15px 17px}
+.stat .k{font-size:11px;color:#a2abbd;letter-spacing:.05em;text-transform:uppercase}
+.stat .v{font-size:18px;margin-top:4px;font-family:var(--mono)}
+.stat .v.ok{color:var(--ok)} .stat .v.bad{color:var(--danger)} .stat .v.warn{color:var(--warn)}
+
+/* 群列表 */
+.chat{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:9px;border:1px solid transparent;cursor:pointer}
+.chat:hover{background:var(--panel-2)}
+.chat.sel{background:rgba(94,234,212,.07);border-color:rgba(94,234,212,.35)}
+.chat .name{font-weight:500}
+.chat .meta{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat .badge{font:10.5px var(--mono);padding:2px 6px;border-radius:4px;background:var(--bg);border:1px solid var(--line);color:var(--muted);flex:0 0 auto}
+.chat .badge.g{color:var(--accent);border-color:rgba(94,234,212,.3)}
+.chat .grow{flex:1;min-width:0}
+
+/* 消息 */
+.msg{padding:8px 0;border-bottom:1px dashed #232833;font-size:13px}
+.msg:last-child{border:0}
+.msg .who{font:11.5px var(--mono);color:var(--muted);margin-right:8px}
+.msg.self .who{color:var(--accent)}
+.msg.mention .txt{color:var(--accent-2)}
+.msg .txt{word-break:break-word}
+
+.toast{position:fixed;bottom:24px;right:24px;background:var(--panel-2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:11px 16px;font-size:13px;box-shadow:0 12px 32px rgba(0,0,0,.5);opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;max-width:360px}
+.toast.show{opacity:1;transform:none}
+.toast.err{border-left-color:var(--danger)}
+.hint{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.7}
+.empty{color:var(--muted);text-align:center;padding:34px 20px;font-size:13px}
+.empty::before{content:'◦';display:block;font-size:26px;opacity:.35;margin-bottom:8px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button{font-size:12.5px;padding:6px 12px}
+.tabs button.on{background:var(--accent);color:#06231f;font-weight:600}
+code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+@media (max-width:760px){
+  body{flex-direction:column}
+  aside{width:100%;flex:none;height:auto;position:static;flex-direction:row;overflow-x:auto;padding:12px}
+  .brand{padding:0 10px 0 4px} .side-foot{display:none}
+  nav{display:flex;gap:4px} nav button{white-space:nowrap;padding:8px 10px}
+  main{padding:20px 16px 60px}
+}
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="brand"><span class="dot"></span>小鱿鱿</div>
+  <nav id="nav">
+    <button data-tab="overview" class="active"><span class="ico">◉</span>概览</button>
+    <button data-tab="chats"><span class="ico">☰</span>群聊</button>
+    <button data-tab="persona"><span class="ico">✎</span>人设</button>
+    <button data-tab="chat"><span class="ico">◍</span>聊天</button>
+    <button data-tab="memory"><span class="ico">◈</span>记忆</button>
+    <button data-tab="commands"><span class="ico">⌘</span>指令</button>
+  </nav>
+  <div class="side-foot">
+    小鱿鱿 WebUI<br>配置改动需重启桥接生效<br>人设热加载
+  </div>
+</aside>
+
+<main>
+  <!-- 概览 -->
+  <section id="tab-overview">
+    <h1>概览</h1>
+    <p class="sub">运行状态、授权群与模型设置一览</p>
+    <div class="grid2" id="stats"></div>
+    <div class="card" style="margin-top:16px">
+      <h2>最近事件 <span class="tag">recovery-events</span></h2>
+      <div id="events" class="empty">加载中…</div>
+    </div>
+  </section>
+
+  <!-- 群聊 -->
+  <section id="tab-chats" hidden>
+    <h1>群聊</h1>
+    <p class="sub">读取容器里的会话列表，选中一个群设为授权群（机器人只在这个群工作）</p>
+    <div class="card">
+      <h2>会话列表 <span class="tag" id="chatCount"></span></h2>
+      <div id="chatList" class="empty">加载中…</div>
+      <p class="hint">点击某个群 → 右侧/下方显示最近消息 → 点「设为授权群」写入 bot-config.json，重启桥接生效。</p>
+    </div>
+    <div class="card" id="msgCard" hidden>
+      <h2>最近消息 <span class="tag" id="msgTitle"></span></h2>
+      <div id="msgList"></div>
+    </div>
+  </section>
+
+  <!-- 人设 -->
+  <section id="tab-persona" hidden>
+    <h1>人设</h1>
+    <p class="sub">写入 private/persona.md，保存后下一条消息立即生效（按 mtime 热加载）</p>
+    <div class="card">
+      <div class="field">
+        <label>人设内容</label>
+        <textarea id="personaText" rows="18" placeholder="例如：
+你是一只住在群里的鱿鱼，说话简短、有点毒舌但不刻薄。
+遇到技术问题会认真回答，遇到闲聊会接梗。
+
+群友：今天打工好累
+小鱿鱿：那就别打了，来我这儿摸鱼"></textarea>
+      </div>
+      <div class="row">
+        <div><button class="primary" id="savePersona">保存人设</button></div>
+        <div><button id="reloadPersona">重新载入</button></div>
+      </div>
+      <p class="hint">
+        「群友：」「小鱿鱿：」开头的成对行会被当作示范对话（few-shot），其余文字是人设描述。<br>
+        硬规则（不 @、不发链接、限长、安全话题）写在代码里，人设文件覆盖不掉。
+      </p>
+    </div>
+  </section>
+
+  <!-- 聊天 -->
+  <section id="tab-chat" hidden>
+    <h1>聊天</h1>
+    <p class="sub">自动回复与聊天风格；写入 private/wechat.env，重启桥接生效</p>
+    <div class="card">
+      <h2>开关与模式</h2>
+      <div class="row">
+        <div class="field">
+          <label>自动聊天模式</label>
+          <select id="llmMode">
+            <option value="off">关闭（只响应指令）</option>
+            <option value="all">全群（@ 和闲聊都回）</option>
+            <option value="admin">仅管理员</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>记忆</label>
+          <select id="llmMemory">
+            <option value="1">开启</option>
+            <option value="0">关闭</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>主动插话</label>
+          <select id="llmChime">
+            <option value="0">关闭</option>
+            <option value="1">开启</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>网关地址（OpenAI 兼容）</label>
+          <input id="llmUrl" placeholder="http://127.0.0.1:3430/v1/chat/completions">
+        </div>
+        <div class="field">
+          <label>模型</label>
+          <input id="llmModel" placeholder="workbuddy/deepseek-v4.1-flash">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>网关密钥（留空=不修改）</label>
+          <input id="llmKey" type="password" placeholder="已设置则显示为 ●●●●，留空保持原值">
+        </div>
+        <div class="field">
+          <label>允许闲聊的用户（逗号分隔，空=所有人）</label>
+          <input id="llmUsers" placeholder="wxid_xxx,wxid_yyy">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>单条最大字数</label>
+          <input id="llmMaxChars" type="number" placeholder="300">
+        </div>
+        <div class="field">
+          <label>每天最多插话次数</label>
+          <input id="llmChimeDaily" type="number" placeholder="12">
+        </div>
+      </div>
+      <button class="primary" id="saveLlm">保存设置</button>
+      <p class="hint">模型名要和你网关里配置的一致。国内模型（DeepSeek / 通义 / Kimi / GLM）通过 magpie 之类的聚合网关接入最省事。</p>
+    </div>
+  </section>
+
+  <!-- 记忆 -->
+  <section id="tab-memory" hidden>
+    <h1>记忆</h1>
+    <p class="sub">llm-memory.js 按用户保存的对话记忆</p>
+    <div class="card">
+      <h2>群记忆 <span class="tag" id="memDir"></span></h2>
+      <div id="memGroup" class="empty">加载中…</div>
+    </div>
+    <div class="card">
+      <h2>用户记忆 <span class="tag" id="memCount"></span></h2>
+      <div id="memUsers" class="empty">加载中…</div>
+    </div>
+  </section>
+
+  <!-- 指令 -->
+  <section id="tab-commands" hidden>
+    <h1>指令</h1>
+    <p class="sub">群友在授权群里 @ 机器人时可用</p>
+    <div class="card">
+      <h2>内置指令</h2>
+      <div id="cmdList"></div>
+      <p class="hint">指令走精确匹配白名单：先剥掉 <code>@昵称</code>，取第一段作为命令名；带参数的指令把整段传下去。要加新指令，改 <code>src/xiaoyouyou-v3.3.js</code> 的 <code>ALLOWED</code> 与 <code>respond()</code>。</p>
+    </div>
+    <div class="card">
+      <h2>@ 规则</h2>
+      <p class="hint">
+        只处理<strong>真实 @</strong>（微信 @ 实体，<code>isMentioned === true</code>）。手打或粘贴的「@小鱿鱿 地图」不带实体字段，会被当作普通聊天跳过——让群友从成员列表点选机器人。
+      </p>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+let TOKEN = localStorage.getItem('xyy_webui_token') || '';
+let currentChat = null;
+
+function toast(msg, isErr) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isErr ? ' err' : '');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => { t.className = 'toast'; }, 2600);
+}
+
+async function api(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (TOKEN) headers['X-WebUI-Token'] = TOKEN;
+  const r = await fetch(path, { ...opts, headers });
+  if (r.status === 401) {
+    const t = prompt('需要 WEBUI_TOKEN');
+    if (t) { TOKEN = t; localStorage.setItem('xyy_webui_token', t); return api(path, opts); }
+    throw new Error('未授权');
+  }
+  return r.json();
+}
+
+// ---------- 导航 ----------
+document.querySelectorAll('#nav button').forEach((b) => {
+  b.onclick = () => {
+    document.querySelectorAll('#nav button').forEach((x) => x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('main section').forEach((s) => { s.hidden = true; });
+    $('#tab-' + b.dataset.tab).hidden = false;
+    if (b.dataset.tab === 'chats') loadChats();
+    if (b.dataset.tab === 'memory') loadMemory();
+    if (b.dataset.tab === 'overview') loadStatus();
+  };
+});
+
+// ---------- 概览 ----------
+async function loadStatus() {
+  try {
+    const d = await api('/api/status');
+    const c = d.container || {}, b = d.bridge || {}, l = d.llm || {};
+    const box = $('#stats');
+    box.innerHTML = '';
+    const add = (k, v, cls) => {
+      const s = el('div', 'stat');
+      s.appendChild(el('div', 'k', k));
+      const vv = el('div', 'v' + (cls ? ' ' + cls : ''), v);
+      s.appendChild(vv); box.appendChild(s);
+    };
+    const lastMin = d.lastActivity ? Math.max(0, Math.round((Date.now() - new Date(d.lastActivity)) / 60000)) : null;
+    const liveTxt = !c.ok ? '不可达'
+      : (lastMin == null ? '运行中'
+        : (lastMin < 60 ? `运行中 · ${lastMin} 分钟前有消息`
+          : `运行中 · 最近活动 ${Math.round(lastMin / 60)} 小时前`));
+    add('微信容器', liveTxt, !c.ok ? 'bad' : (lastMin != null && lastMin > 120 ? 'warn' : 'ok'));
+    add('授权群', b.chatName || '未设置', b.chatName ? '' : 'warn');
+    add('机器人昵称', b.botNick || '—');
+    add('自动聊天', l.mode === 'off' ? '关闭' : (l.mode === 'all' ? '全群' : '仅管理员'), l.mode === 'off' ? '' : 'ok');
+    add('模型', (l.model || '—').split('/').pop());
+    add('人设', (d.personaBytes || 0) + ' 字节', d.personaBytes ? '' : 'warn');
+    loadEvents();
+  } catch (e) { toast(e.message, true); }
+}
+
+async function loadEvents() {
+  try {
+    const d = await api('/api/events');
+    const box = $('#events');
+    if (!d.events || !d.events.length) { box.className = 'empty'; box.textContent = '暂无事件'; return; }
+    box.className = '';
+    box.innerHTML = '';
+    d.events.slice().reverse().forEach((ev) => {
+      const row = el('div', 'msg');
+      row.appendChild(el('span', 'who', (ev.at || ev.ts || '').toString().slice(11, 19)));
+      row.appendChild(el('span', 'txt', `${ev.result || ev.type || 'event'} ${ev.detail || ''} ${ev.reason ? '(' + ev.reason + ')' : ''}`.trim()));
+      box.appendChild(row);
+    });
+  } catch (e) { }
+}
+
+// ---------- 群聊 ----------
+async function loadChats() {
+  const box = $('#chatList');
+  box.className = 'empty'; box.textContent = '加载中…';
+  try {
+    const d = await api('/api/chats');
+    if (!d.ok) { box.textContent = '读取失败：' + d.error; return; }
+    box.className = ''; box.innerHTML = '';
+    $('#chatCount').textContent = d.chats.length + ' 个会话';
+    if (!d.chats.length) { box.className = 'empty'; box.textContent = '容器里没有会话'; return; }
+    d.chats.forEach((c) => {
+      const row = el('div', 'chat' + (c.selected ? ' sel' : ''));
+      row.appendChild(el('span', 'badge' + (c.isGroup ? ' g' : ''), c.isGroup ? '群' : '私'));
+      const g = el('div', 'grow');
+      g.appendChild(el('div', 'name', c.name || c.id));
+      g.appendChild(el('div', 'meta', (c.lastSender ? c.lastSender + '：' : '') + (c.lastMessage || '').slice(0, 60)));
+      row.appendChild(g);
+      if (c.selected) row.appendChild(el('span', 'badge g', '授权中'));
+      row.onclick = () => selectChat(c);
+      box.appendChild(row);
+    });
+  } catch (e) { box.textContent = e.message; }
+}
+
+async function selectChat(c) {
+  currentChat = c;
+  document.querySelectorAll('.chat').forEach((x) => x.classList.remove('sel'));
+  $('#msgCard').hidden = false;
+  $('#msgTitle').textContent = c.name;
+  const box = $('#msgList');
+  box.innerHTML = '<div class="empty">加载中…</div>';
+  try {
+    const d = await api(`/api/messages?chatId=${encodeURIComponent(c.id)}&limit=30`);
+    box.innerHTML = '';
+    if (!d.ok) { box.innerHTML = '<div class="empty">读取失败：' + d.error + '</div>'; }
+    else if (!d.messages.length) box.innerHTML = '<div class="empty">没有消息</div>';
+    else d.messages.forEach((m) => {
+      const row = el('div', 'msg' + (m.self ? ' self' : '') + (m.mentioned ? ' mention' : ''));
+      row.appendChild(el('span', 'who', (m.self ? '机器人' : m.from || '?') + ' ' + String(m.at || '').slice(11, 16)));
+      row.appendChild(el('span', 'txt', m.text || '[非文本]'));
+      box.appendChild(row);
+    });
+    // 设为授权群按钮
+    const btn = el('button', 'primary', '设为授权群');
+    btn.style.marginTop = '16px';
+    btn.onclick = () => setAuthorized(c);
+    box.appendChild(btn);
+  } catch (e) { box.innerHTML = '<div class="empty">' + e.message + '</div>'; }
+}
+
+async function setAuthorized(c) {
+  if (!c.isGroup) { toast('只能选群聊，不能选私聊', true); return; }
+  if (!confirm(`把「${c.name}」设为授权群？\n机器人之后只在这个群工作。`)) return;
+  const d = await api('/api/config', { method: 'PUT', body: JSON.stringify({ chatId: c.id, chatName: c.name }) });
+  if (d.ok) { toast('已设为授权群，重启桥接后生效'); loadChats(); }
+  else toast(d.error, true);
+}
+
+// ---------- 人设 ----------
+async function loadPersona() {
+  const d = await api('/api/persona');
+  $('#personaText').value = d.persona || '';
+}
+$('#reloadPersona').onclick = loadPersona;
+$('#savePersona').onclick = async () => {
+  const d = await api('/api/persona', { method: 'PUT', body: JSON.stringify({ persona: $('#personaText').value }) });
+  if (d.ok) toast(`已保存 ${d.bytes} 字节，下一条消息生效`); else toast(d.error, true);
+};
+
+// ---------- 聊天设置 ----------
+async function loadLlm() {
+  const d = await api('/api/llm');
+  if (!d.ok) return toast(d.error, true);
+  const l = d.llm;
+  $('#llmMode').value = l.mode || 'off';
+  $('#llmMemory').value = l.memory === '0' ? '0' : '1';
+  $('#llmChime').value = l.chime === '1' ? '1' : '0';
+  $('#llmUrl').value = l.url || '';
+  $('#llmModel').value = l.model || '';
+  $('#llmUsers').value = l.users || '';
+  $('#llmMaxChars').value = l.maxChars || '';
+  $('#llmChimeDaily').value = l.chimeDaily || '';
+  $('#llmKey').value = '';
+  $('#llmKey').placeholder = l.keySet ? '已设置（留空不修改）' : '未设置';
+}
+$('#saveLlm').onclick = async () => {
+  const payload = {
+    mode: $('#llmMode').value,
+    memory: $('#llmMemory').value,
+    chime: $('#llmChime').value,
+    url: $('#llmUrl').value.trim(),
+    model: $('#llmModel').value.trim(),
+    users: $('#llmUsers').value.trim(),
+    maxChars: $('#llmMaxChars').value.trim(),
+    chimeDaily: $('#llmChimeDaily').value.trim(),
+    key: $('#llmKey').value.trim(),
+  };
+  const d = await api('/api/llm', { method: 'PUT', body: JSON.stringify(payload) });
+  if (d.ok) toast('已保存，重启桥接后生效'); else toast(d.error, true);
+};
+
+// ---------- 记忆 ----------
+async function loadMemory() {
+  const d = await api('/api/memory');
+  if (!d.ok) return toast(d.error, true);
+  $('#memDir').textContent = d.dir;
+  const g = $('#memGroup');
+  if (!d.group) { g.className = 'empty'; g.textContent = '暂无群记忆'; }
+  else {
+    g.className = '';
+    g.innerHTML = '<pre style="white-space:pre-wrap;font:12px var(--mono);color:var(--muted)">' +
+      JSON.stringify(d.group, null, 2).slice(0, 2000) + '</pre>';
+  }
+  const box = $('#memUsers');
+  $('#memCount').textContent = d.users.length + ' 个用户';
+  if (!d.users.length) { box.className = 'empty'; box.textContent = '暂无用户记忆'; return; }
+  box.className = ''; box.innerHTML = '';
+  d.users.forEach((u) => {
+    const row = el('div', 'chat');
+    const g2 = el('div', 'grow');
+    g2.appendChild(el('div', 'name', u.name));
+    g2.appendChild(el('div', 'meta', `${u.messages} 条 · ${u.updatedAt || '—'}`));
+    row.appendChild(g2);
+    const del = el('button', 'danger', '清除');
+    del.onclick = async (e) => {
+      e.stopPropagation();
+      if (!confirm(`清除 ${u.name} 的记忆？`)) return;
+      const r = await api('/api/memory?file=' + encodeURIComponent(u.file), { method: 'DELETE' });
+      if (r.ok) { toast('已清除'); loadMemory(); } else toast(r.error, true);
+    };
+    row.appendChild(del);
+    box.appendChild(row);
+  });
+}
+
+// ---------- 指令表 ----------
+const COMMANDS = [
+  ['帮助', '列出所有可用指令'],
+  ['地图 / 赛程', '当前与下一场对战场地、规则'],
+  ['打工 / 鲑鱼跑', '打工排班表（含头目与武器）'],
+  ['随机武器', '随机抽一把武器并出卡图'],
+  ['配装 <武器名>', '拉取该武器热门配装并出六卡图'],
+  ['祭典', '当前祭典信息与海报'],
+];
+(function renderCommands() {
+  const box = $('#cmdList');
+  COMMANDS.forEach(([cmd, desc]) => {
+    const row = el('div', 'msg');
+    row.appendChild(el('span', 'who', cmd));
+    row.appendChild(el('span', 'txt', desc));
+    box.appendChild(row);
+  });
+})();
+
+// ---------- 启动 ----------
+loadStatus();
+loadPersona();
+loadLlm();
+</script>
+</body>
+</html>

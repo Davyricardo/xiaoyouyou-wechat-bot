@@ -1,0 +1,23 @@
+{
+  "name": "xiaoyouyou-wechat-bot",
+  "version": "3.3.0",
+  "private": true,
+  "description": "微信群聊机器人：@ 触发、人设设定、自动聊天、卡片渲染与保活",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node bridge-v3.3.js",
+    "test": "node --test test-recovery-core.js test-bot-config.js test-bridge-cursor.js test-data-cache.js test-v3.3.js test-transport.js test-festival-cache.js test-net-readonly.js test-health-monitor.js test-assets.js",
+    "test:integration": "node --test --test-concurrency=1 test-send.js test-notification-media.js test-recovery-bridge.js test-wx-fast.js test-recovery-worker.js test-recovery-flow.js"
+  },
+  "dependencies": {
+    "@yuanchuan40/wechat": "0.12.0-mentions.6",
+    "sharp": "^0.35.5"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Davyricardo/xiaoyouyou-wechat-bot.git"
+  }
+}

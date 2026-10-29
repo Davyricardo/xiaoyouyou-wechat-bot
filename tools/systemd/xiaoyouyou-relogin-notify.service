@@ -1,0 +1,11 @@
+[Unit]
+Description=小鱿鱿自动恢复结果通知（香橙派）
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/home/user
+ExecStart=/usr/bin/python3 /home/user/projects/xyy-review/tools/auto-relogin-notify.py
+# ssh 8s + 两通道 x 两次 x 12s + 余量
+TimeoutStartSec=180

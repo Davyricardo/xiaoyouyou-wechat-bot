@@ -1,0 +1,11 @@
+[Unit]
+Description=定期检查小鱿鱿自动恢复结果并通知
+
+[Timer]
+OnBootSec=6min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

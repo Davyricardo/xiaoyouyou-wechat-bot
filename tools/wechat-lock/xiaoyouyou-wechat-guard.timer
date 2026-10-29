@@ -1,0 +1,11 @@
+[Unit]
+Description=每 10 分钟校验一次微信客户端版本，并补回更新域名拦截
+
+[Timer]
+OnBootSec=90
+OnUnitActiveSec=10min
+AccuracySec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

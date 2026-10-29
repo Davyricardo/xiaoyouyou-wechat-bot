@@ -1,0 +1,19 @@
+[Unit]
+Description=小鱿鱿掉线自动登录（阿里云）
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=HOME=/opt/xiaoyouyou/private
+Environment=XYY_HOME=/opt/xiaoyouyou
+# 关键：令牌从文件读，不给 wx-client 走 `docker inspect` 的机会。
+# 线上出现过 spawnSync docker ETIMEDOUT —— docker CLI 卡住 → 拿不到令牌 →
+# wx auth login 根本没执行 → 连判两次「自动登录未确认成功」→ 十几条假 needs_scan。
+# 文件不存在时不报错（前面的 -），回落到代码里的读文件逻辑。
+EnvironmentFile=-/opt/xiaoyouyou/private/wechat.env
+ExecStart=/usr/bin/node /opt/xiaoyouyou/auto-relogin.js
+# 主动回收：docker restart（≤180s）+ 等状态稳定（≤40s）+ 两次登录（≤300s）
+# + 重启桥接与复检（≤90s）。原来 420s 不够，遇到最坏路径会被 systemd 掐断，
+# 留下一个「跑到一半」的恢复流程（gate 还会停在 blocked）。
+TimeoutStartSec=600
