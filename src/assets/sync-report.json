@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-24T08:39:08.147Z",
+  "ordinaryWeapons": 174,
+  "maps": 25,
+  "salmonStages": 14,
+  "normalSalmonStages": 7,
+  "modes": 5,
+  "expected": 236,
+  "success": 236,
+  "failed": [],
+  "bytes": 30561252,
+  "chineseCoverage": "174/174"
+}

@@ -1,0 +1,872 @@
+{
+ "rapid_elite": {
+  "range": 19.2,
+  "cls": "Blaster",
+  "family": "Blaster_LightLong"
+ },
+ "rapid_elite_deco": {
+  "range": 19.2,
+  "cls": "Blaster",
+  "family": "Blaster_LightLong"
+ },
+ "rapid_elite_wntr": {
+  "range": 19.2,
+  "cls": "Blaster",
+  "family": "Blaster_LightLong"
+ },
+ "clashblaster": {
+  "range": 11.0,
+  "cls": "Blaster",
+  "family": "Blaster_LightShort"
+ },
+ "clashblaster_neo": {
+  "range": 11.0,
+  "cls": "Blaster",
+  "family": "Blaster_LightShort"
+ },
+ "rapid": {
+  "range": 16.7,
+  "cls": "Blaster",
+  "family": "Blaster_Light"
+ },
+ "rapid_deco": {
+  "range": 16.7,
+  "cls": "Blaster",
+  "family": "Blaster_Light"
+ },
+ "longblaster": {
+  "range": 17.0,
+  "cls": "Blaster",
+  "family": "Blaster_Long"
+ },
+ "longblaster_custom": {
+  "range": 17.0,
+  "cls": "Blaster",
+  "family": "Blaster_Long"
+ },
+ "hotblaster": {
+  "range": 13.3,
+  "cls": "Blaster",
+  "family": "Blaster_Middle"
+ },
+ "hotblaster_custom": {
+  "range": 13.3,
+  "cls": "Blaster",
+  "family": "Blaster_Middle"
+ },
+ "hotblaster_en": {
+  "range": 13.3,
+  "cls": "Blaster",
+  "family": "Blaster_Middle"
+ },
+ "sblast92": {
+  "range": 16.5,
+  "cls": "Blaster",
+  "family": "Blaster_Precision"
+ },
+ "sblast91": {
+  "range": 16.5,
+  "cls": "Blaster",
+  "family": "Blaster_Precision"
+ },
+ "nova": {
+  "range": 11.2,
+  "cls": "Blaster",
+  "family": "Blaster_Short"
+ },
+ "nova_neo": {
+  "range": 11.2,
+  "cls": "Blaster",
+  "family": "Blaster_Short"
+ },
+ "order_blaster_replica": {
+  "range": 11.2,
+  "cls": "Blaster",
+  "family": "Blaster_Short_O"
+ },
+ "fincent": {
+  "range": 13.1,
+  "cls": "Brush",
+  "family": "Brush_Heavy"
+ },
+ "fincent_hue": {
+  "range": 13.1,
+  "cls": "Brush",
+  "family": "Brush_Heavy"
+ },
+ "fincent_brnz": {
+  "range": 13.1,
+  "cls": "Brush",
+  "family": "Brush_Heavy"
+ },
+ "pablo": {
+  "range": 7.0,
+  "cls": "Brush",
+  "family": "Brush_Mini"
+ },
+ "pablo_hue": {
+  "range": 7.0,
+  "cls": "Brush",
+  "family": "Brush_Mini"
+ },
+ "hokusai": {
+  "range": 10.5,
+  "cls": "Brush",
+  "family": "Brush_Normal"
+ },
+ "hokusai_hue": {
+  "range": 10.5,
+  "cls": "Brush",
+  "family": "Brush_Normal"
+ },
+ "hokusai_sui": {
+  "range": 10.5,
+  "cls": "Brush",
+  "family": "Brush_Normal"
+ },
+ "order_brush_replica": {
+  "range": 10.5,
+  "cls": "Brush",
+  "family": "Brush_Normal_O"
+ },
+ "soytuber": {
+  "range": 21.0,
+  "cls": "Charger",
+  "family": "Charger_Keeper"
+ },
+ "soytuber_custom": {
+  "range": 21.0,
+  "cls": "Charger",
+  "family": "Charger_Keeper"
+ },
+ "bamboo14mk1": {
+  "range": 21.0,
+  "cls": "Charger",
+  "family": "Charger_Light"
+ },
+ "bamboo14mk2": {
+  "range": 21.0,
+  "cls": "Charger",
+  "family": "Charger_Light"
+ },
+ "liter4k_scope": {
+  "range": 33.0,
+  "cls": "Charger",
+  "family": "Charger_LongScope"
+ },
+ "liter4k_scope_custom": {
+  "range": 33.0,
+  "cls": "Charger",
+  "family": "Charger_LongScope"
+ },
+ "liter4k": {
+  "range": 31.0,
+  "cls": "Charger",
+  "family": "Charger_Long"
+ },
+ "liter4k_custom": {
+  "range": 31.0,
+  "cls": "Charger",
+  "family": "Charger_Long"
+ },
+ "splatscope": {
+  "range": 26.5,
+  "cls": "Charger",
+  "family": "Charger_NormalScope"
+ },
+ "splatscope_collabo": {
+  "range": 26.5,
+  "cls": "Charger",
+  "family": "Charger_NormalScope"
+ },
+ "splatscope_frst": {
+  "range": 26.5,
+  "cls": "Charger",
+  "family": "Charger_NormalScope"
+ },
+ "splatcharger": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Normal"
+ },
+ "splatcharger_collabo": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Normal"
+ },
+ "splatcharger_frst": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Normal"
+ },
+ "order_charger_replica": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Normal_O"
+ },
+ "rpen_5h": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Pencil"
+ },
+ "rpen_5b": {
+  "range": 26.0,
+  "cls": "Charger",
+  "family": "Charger_Pencil"
+ },
+ "squiclean_a": {
+  "range": 18.5,
+  "cls": "Charger",
+  "family": "Charger_Quick"
+ },
+ "squiclean_b": {
+  "range": 18.5,
+  "cls": "Charger",
+  "family": "Charger_Quick"
+ },
+ "dualsweeper": {
+  "range": 17.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Dual"
+ },
+ "dualsweeper_custom": {
+  "range": 17.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Dual"
+ },
+ "dualsweeper_tei": {
+  "range": 17.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Dual"
+ },
+ "kelvin525": {
+  "range": 16.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Gallon"
+ },
+ "kelvin525_deco": {
+  "range": 16.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Gallon"
+ },
+ "gaen_ff": {
+  "range": 19.1,
+  "cls": "Maneuver",
+  "family": "Maneuver_Long"
+ },
+ "gaen_ff_custom": {
+  "range": 19.1,
+  "cls": "Maneuver",
+  "family": "Maneuver_Long"
+ },
+ "maneuver": {
+  "range": 12.5,
+  "cls": "Maneuver",
+  "family": "Maneuver_Normal"
+ },
+ "maneuver_collabo": {
+  "range": 12.5,
+  "cls": "Maneuver",
+  "family": "Maneuver_Normal"
+ },
+ "maneuver_you": {
+  "range": 12.5,
+  "cls": "Maneuver",
+  "family": "Maneuver_Normal"
+ },
+ "order_maneuver_replica": {
+  "range": 12.5,
+  "cls": "Maneuver",
+  "family": "Maneuver_Normal_O"
+ },
+ "sputtery": {
+  "range": 9.8,
+  "cls": "Maneuver",
+  "family": "Maneuver_Short"
+ },
+ "sputtery_hue": {
+  "range": 9.8,
+  "cls": "Maneuver",
+  "family": "Maneuver_Short"
+ },
+ "sputtery_owl": {
+  "range": 9.8,
+  "cls": "Maneuver",
+  "family": "Maneuver_Short"
+ },
+ "quadhopper_black": {
+  "range": 14.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Stepper"
+ },
+ "quadhopper_white": {
+  "range": 14.0,
+  "cls": "Maneuver",
+  "family": "Maneuver_Stepper"
+ },
+ "carbon": {
+  "range": 9.5,
+  "cls": "Roller",
+  "family": "Roller_Compact"
+ },
+ "carbon_deco": {
+  "range": 9.5,
+  "cls": "Roller",
+  "family": "Roller_Compact"
+ },
+ "carbon_angl": {
+  "range": 9.5,
+  "cls": "Roller",
+  "family": "Roller_Compact"
+ },
+ "dynamo": {
+  "range": 18.5,
+  "cls": "Roller",
+  "family": "Roller_Heavy"
+ },
+ "dynamo_tesla": {
+  "range": 18.5,
+  "cls": "Roller",
+  "family": "Roller_Heavy"
+ },
+ "dynamo_mei": {
+  "range": 18.5,
+  "cls": "Roller",
+  "family": "Roller_Heavy"
+ },
+ "variableroller": {
+  "range": 14.0,
+  "cls": "Roller",
+  "family": "Roller_Hunter"
+ },
+ "variableroller_foil": {
+  "range": 14.0,
+  "cls": "Roller",
+  "family": "Roller_Hunter"
+ },
+ "splatroller": {
+  "range": 11.8,
+  "cls": "Roller",
+  "family": "Roller_Normal"
+ },
+ "splatroller_collabo": {
+  "range": 11.8,
+  "cls": "Roller",
+  "family": "Roller_Normal"
+ },
+ "order_roller_replica": {
+  "range": 11.8,
+  "cls": "Roller",
+  "family": "Roller_Normal_O"
+ },
+ "wideroller": {
+  "range": 12.5,
+  "cls": "Roller",
+  "family": "Roller_Wide"
+ },
+ "wideroller_collabo": {
+  "range": 12.5,
+  "cls": "Roller",
+  "family": "Roller_Wide"
+ },
+ "wideroller_waku": {
+  "range": 12.5,
+  "cls": "Roller",
+  "family": "Roller_Wide"
+ },
+ "dentalwiper_mint": {
+  "range": 15.0,
+  "cls": "Saber",
+  "family": "Saber_Heavy"
+ },
+ "dentalwiper_sumi": {
+  "range": 15.0,
+  "cls": "Saber",
+  "family": "Saber_Heavy"
+ },
+ "drivewiper": {
+  "range": 13.0,
+  "cls": "Saber",
+  "family": "Saber_Lite"
+ },
+ "drivewiper_deco": {
+  "range": 13.0,
+  "cls": "Saber",
+  "family": "Saber_Lite"
+ },
+ "drivewiper_rust": {
+  "range": 13.0,
+  "cls": "Saber",
+  "family": "Saber_Lite"
+ },
+ "jimuwiper": {
+  "range": 16.5,
+  "cls": "Saber",
+  "family": "Saber_Normal"
+ },
+ "jimuwiper_hue": {
+  "range": 16.5,
+  "cls": "Saber",
+  "family": "Saber_Normal"
+ },
+ "jimuwiper_fuu": {
+  "range": 16.5,
+  "cls": "Saber",
+  "family": "Saber_Normal"
+ },
+ "order_wiper_replica": {
+  "range": 16.5,
+  "cls": "Saber",
+  "family": "Saber_Normal_O"
+ },
+ "spygadget": {
+  "range": 11.8,
+  "cls": "Shelter",
+  "family": "Shelter_Compact"
+ },
+ "spygadget_sorella": {
+  "range": 11.8,
+  "cls": "Shelter",
+  "family": "Shelter_Compact"
+ },
+ "spygadget_ryo": {
+  "range": 11.8,
+  "cls": "Shelter",
+  "family": "Shelter_Compact"
+ },
+ "brella24mk1": {
+  "range": 14.5,
+  "cls": "Shelter",
+  "family": "Shelter_Focus"
+ },
+ "brella24mk2": {
+  "range": 14.5,
+  "cls": "Shelter",
+  "family": "Shelter_Focus"
+ },
+ "parashelter": {
+  "range": 12.5,
+  "cls": "Shelter",
+  "family": "Shelter_Normal"
+ },
+ "parashelter_sorella": {
+  "range": 12.5,
+  "cls": "Shelter",
+  "family": "Shelter_Normal"
+ },
+ "order_shelter_replica": {
+  "range": 12.5,
+  "cls": "Shelter",
+  "family": "Shelter_Normal_O"
+ },
+ "campingshelter": {
+  "range": 15.0,
+  "cls": "Shelter",
+  "family": "Shelter_Wide"
+ },
+ "campingshelter_sorella": {
+  "range": 15.0,
+  "cls": "Shelter",
+  "family": "Shelter_Wide"
+ },
+ "campingshelter_crem": {
+  "range": 15.0,
+  "cls": "Shelter",
+  "family": "Shelter_Wide"
+ },
+ "promodeler_mg": {
+  "range": 11.3,
+  "cls": "Shooter",
+  "family": "Shooter_Blaze"
+ },
+ "promodeler_rg": {
+  "range": 11.3,
+  "cls": "Shooter",
+  "family": "Shooter_Blaze"
+ },
+ "promodeler_sai": {
+  "range": 11.3,
+  "cls": "Shooter",
+  "family": "Shooter_Blaze"
+ },
+ "prime": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_Expert"
+ },
+ "prime_collabo": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_Expert"
+ },
+ "prime_frzn": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_Expert"
+ },
+ "wakaba": {
+  "range": 11.3,
+  "cls": "Shooter",
+  "family": "Shooter_First"
+ },
+ "momiji": {
+  "range": 11.3,
+  "cls": "Shooter",
+  "family": "Shooter_First"
+ },
+ "bottlegeyser": {
+  "range": 20.0,
+  "cls": "Shooter",
+  "family": "Shooter_Flash"
+ },
+ "bottlegeyser_foil": {
+  "range": 20.0,
+  "cls": "Shooter",
+  "family": "Shooter_Flash"
+ },
+ "52gal": {
+  "range": 13.3,
+  "cls": "Shooter",
+  "family": "Shooter_Gravity"
+ },
+ "52gal_deco": {
+  "range": 13.3,
+  "cls": "Shooter",
+  "family": "Shooter_Gravity"
+ },
+ "96gal": {
+  "range": 18.0,
+  "cls": "Shooter",
+  "family": "Shooter_Heavy"
+ },
+ "96gal_deco": {
+  "range": 18.0,
+  "cls": "Shooter",
+  "family": "Shooter_Heavy"
+ },
+ "96gal_sou": {
+  "range": 18.0,
+  "cls": "Shooter",
+  "family": "Shooter_Heavy"
+ },
+ "jetsweeper": {
+  "range": 22.5,
+  "cls": "Shooter",
+  "family": "Shooter_Long"
+ },
+ "jetsweeper_custom": {
+  "range": 22.5,
+  "cls": "Shooter",
+  "family": "Shooter_Long"
+ },
+ "jetsweeper_cobr": {
+  "range": 22.5,
+  "cls": "Shooter",
+  "family": "Shooter_Long"
+ },
+ "sshooter": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal"
+ },
+ "sshooter_collabo": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal"
+ },
+ "sshooter_kou": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal"
+ },
+ "heroshooter_replica": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal_H"
+ },
+ "order_shooter_replica": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal_O"
+ },
+ "octoshooter_replica": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal_Oct"
+ },
+ "petshooter_replica": {
+  "range": 12.9,
+  "cls": "Shooter",
+  "family": "Shooter_Normal_S"
+ },
+ "sharp": {
+  "range": 12.1,
+  "cls": "Shooter",
+  "family": "Shooter_Precision"
+ },
+ "sharp_neo": {
+  "range": 12.1,
+  "cls": "Shooter",
+  "family": "Shooter_Precision"
+ },
+ "sharp_geck": {
+  "range": 12.1,
+  "cls": "Shooter",
+  "family": "Shooter_Precision"
+ },
+ "spaceshooter": {
+  "range": 16.0,
+  "cls": "Shooter",
+  "family": "Shooter_QuickLong"
+ },
+ "spaceshooter_collabo": {
+  "range": 16.0,
+  "cls": "Shooter",
+  "family": "Shooter_QuickLong"
+ },
+ "nzap85": {
+  "range": 12.5,
+  "cls": "Shooter",
+  "family": "Shooter_QuickMiddle"
+ },
+ "nzap89": {
+  "range": 12.5,
+  "cls": "Shooter",
+  "family": "Shooter_QuickMiddle"
+ },
+ "bold": {
+  "range": 8.2,
+  "cls": "Shooter",
+  "family": "Shooter_Short"
+ },
+ "bold_neo": {
+  "range": 8.2,
+  "cls": "Shooter",
+  "family": "Shooter_Short"
+ },
+ "h3reelgun": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_TripleMiddle"
+ },
+ "h3reelgun_d": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_TripleMiddle"
+ },
+ "h3reelgun_snak": {
+  "range": 17.0,
+  "cls": "Shooter",
+  "family": "Shooter_TripleMiddle"
+ },
+ "l3reelgun": {
+  "range": 13.9,
+  "cls": "Shooter",
+  "family": "Shooter_TripleQuick"
+ },
+ "l3reelgun_d": {
+  "range": 13.9,
+  "cls": "Shooter",
+  "family": "Shooter_TripleQuick"
+ },
+ "l3reelgun_haku": {
+  "range": 13.9,
+  "cls": "Shooter",
+  "family": "Shooter_TripleQuick"
+ },
+ "furo": {
+  "range": 15.0,
+  "cls": "Slosher",
+  "family": "Slosher_Bathtub"
+ },
+ "furo_deco": {
+  "range": 15.0,
+  "cls": "Slosher",
+  "family": "Slosher_Bathtub"
+ },
+ "hissen": {
+  "range": 11.0,
+  "cls": "Slosher",
+  "family": "Slosher_Diffusion"
+ },
+ "hissen_hue": {
+  "range": 11.0,
+  "cls": "Slosher",
+  "family": "Slosher_Diffusion"
+ },
+ "hissen_ash": {
+  "range": 11.0,
+  "cls": "Slosher",
+  "family": "Slosher_Diffusion"
+ },
+ "moprin": {
+  "range": 15.5,
+  "cls": "Slosher",
+  "family": "Slosher_Double"
+ },
+ "moprin_d": {
+  "range": 15.5,
+  "cls": "Slosher",
+  "family": "Slosher_Double"
+ },
+ "moprin_kaku": {
+  "range": 15.5,
+  "cls": "Slosher",
+  "family": "Slosher_Double"
+ },
+ "screwslosher": {
+  "range": 14.7,
+  "cls": "Slosher",
+  "family": "Slosher_Launcher"
+ },
+ "screwslosher_neo": {
+  "range": 14.7,
+  "cls": "Slosher",
+  "family": "Slosher_Launcher"
+ },
+ "bucketslosher": {
+  "range": 14.5,
+  "cls": "Slosher",
+  "family": "Slosher_Strong"
+ },
+ "bucketslosher_deco": {
+  "range": 14.5,
+  "cls": "Slosher",
+  "family": "Slosher_Strong"
+ },
+ "order_slosher_replica": {
+  "range": 14.5,
+  "cls": "Slosher",
+  "family": "Slosher_Strong_O"
+ },
+ "explosher": {
+  "range": 20.7,
+  "cls": "Slosher",
+  "family": "Slosher_Washtub"
+ },
+ "explosher_custom": {
+  "range": 20.7,
+  "cls": "Slosher",
+  "family": "Slosher_Washtub"
+ },
+ "kugelschreiber": {
+  "range": 24.5,
+  "cls": "Spinner",
+  "family": "Spinner_Downpour"
+ },
+ "kugelschreiber_hue": {
+  "range": 24.5,
+  "cls": "Spinner",
+  "family": "Spinner_Downpour"
+ },
+ "examiner": {
+  "range": 17.0,
+  "cls": "Spinner",
+  "family": "Spinner_HyperShort"
+ },
+ "examiner_hue": {
+  "range": 17.0,
+  "cls": "Spinner",
+  "family": "Spinner_HyperShort"
+ },
+ "hydra": {
+  "range": 24.5,
+  "cls": "Spinner",
+  "family": "Spinner_Hyper"
+ },
+ "hydra_custom": {
+  "range": 24.5,
+  "cls": "Spinner",
+  "family": "Spinner_Hyper"
+ },
+ "hydra_atsu": {
+  "range": 24.5,
+  "cls": "Spinner",
+  "family": "Spinner_Hyper"
+ },
+ "splatspinner": {
+  "range": 15.0,
+  "cls": "Spinner",
+  "family": "Spinner_Quick"
+ },
+ "splatspinner_collabo": {
+  "range": 15.0,
+  "cls": "Spinner",
+  "family": "Spinner_Quick"
+ },
+ "splatspinner_pytn": {
+  "range": 15.0,
+  "cls": "Spinner",
+  "family": "Spinner_Quick"
+ },
+ "nautilus47": {
+  "range": 18.0,
+  "cls": "Spinner",
+  "family": "Spinner_Serein"
+ },
+ "nautilus79": {
+  "range": 18.0,
+  "cls": "Spinner",
+  "family": "Spinner_Serein"
+ },
+ "barrelspinner": {
+  "range": 21.0,
+  "cls": "Spinner",
+  "family": "Spinner_Standard"
+ },
+ "barrelspinner_deco": {
+  "range": 21.0,
+  "cls": "Spinner",
+  "family": "Spinner_Standard"
+ },
+ "order_spinner_replica": {
+  "range": 21.0,
+  "cls": "Spinner",
+  "family": "Spinner_Standard_O"
+ },
+ "furuido": {
+  "range": 23.0,
+  "cls": "Stringer",
+  "family": "Stringer_Explosion"
+ },
+ "furuido_custom": {
+  "range": 23.0,
+  "cls": "Stringer",
+  "family": "Stringer_Explosion"
+ },
+ "tristringer": {
+  "range": 25.0,
+  "cls": "Stringer",
+  "family": "Stringer_Normal"
+ },
+ "tristringer_collabo": {
+  "range": 25.0,
+  "cls": "Stringer",
+  "family": "Stringer_Normal"
+ },
+ "tristringer_tou": {
+  "range": 25.0,
+  "cls": "Stringer",
+  "family": "Stringer_Normal"
+ },
+ "order_stringer_replica": {
+  "range": 25.0,
+  "cls": "Stringer",
+  "family": "Stringer_Normal_O"
+ },
+ "lact450": {
+  "range": 15.0,
+  "cls": "Stringer",
+  "family": "Stringer_Short"
+ },
+ "lact450_deco": {
+  "range": 15.0,
+  "cls": "Stringer",
+  "family": "Stringer_Short"
+ },
+ "lact450_milk": {
+  "range": 15.0,
+  "cls": "Stringer",
+  "family": "Stringer_Short"
+ }
+}

@@ -1,0 +1,11 @@
+[Unit]
+Description=定期检查小鱿鱿掉线并自动登录
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

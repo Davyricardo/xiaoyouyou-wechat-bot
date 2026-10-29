@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "events": [
+    {
+      "id": "splatoween-2026-official",
+      "title": "如果进入幻想世界想成为哪种职业？",
+      "teams": ["魔法师", "骑士", "忍者"],
+      "startTime": "2026-10-31T00:00:00Z",
+      "endTime": "2026-11-02T00:00:00Z",
+      "region": "日本官方公告时间",
+      "sourceLabel": "任天堂官方公告（接口尚未收录）",
+      "verifiedAt": "2026-10-11T23:26:56Z",
+      "sources": [
+        "https://x.com/SplatoonJP/status/2103409202714820680",
+        "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Splatoon-3-1924751.html",
+        "https://nintendowire.com/news/2026/09/25/splatoween-returns-to-splatoon-3-this-year-with-a-classic-splatfest-theme/"
+      ],
+      "sourceAccessNote": "官网主题与海报直接核验；日方原公告访问被拒，时间通过 Nintendo Wire 嵌入原文核验。",
+      "translationSource": "splatoon3.ink/data/locale/zh-CN.json JUEA-00100（复刻主题）",
+      "note": "采用日方公告时间；欧洲网页的结束时间有差异，请以游戏内公告为准。",
+      "imageUrl": "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/splatoon3_from2025/splatoon3_gp/spatfests/2026_8/16x9_NSwitch_Splatoon3_Splatfest202609_Splatoween_UK.jpg"
+    }
+  ]
+}

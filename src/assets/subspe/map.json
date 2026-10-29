@@ -1,0 +1,698 @@
+{
+ "rapid_elite": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "rapid_elite_deco": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "rapid_elite_wntr": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "clashblaster": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "clashblaster_neo": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "rapid": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "rapid_deco": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "longblaster": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "longblaster_custom": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "hotblaster": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "hotblaster_custom": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "hotblaster_en": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "sblast92": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "sblast91": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "nova": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "nova_neo": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "order_blaster_replica": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "fincent": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "fincent_hue": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "fincent_brnz": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "pablo": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "pablo_hue": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "hokusai": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "hokusai_hue": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "hokusai_sui": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "order_brush_replica": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "soytuber": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "soytuber_custom": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "bamboo14mk1": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "bamboo14mk2": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "liter4k_scope": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "liter4k_scope_custom": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "liter4k": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "liter4k_custom": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "splatscope": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "splatscope_collabo": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "splatscope_frst": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "splatcharger": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "splatcharger_collabo": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "splatcharger_frst": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "order_charger_replica": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "rpen_5h": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "rpen_5b": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "squiclean_a": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "squiclean_b": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "dualsweeper": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "dualsweeper_custom": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "dualsweeper_tei": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "kelvin525": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "kelvin525_deco": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "gaen_ff": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "gaen_ff_custom": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "maneuver": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "maneuver_collabo": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "maneuver_you": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "order_maneuver_replica": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "sputtery": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "sputtery_hue": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "sputtery_owl": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "quadhopper_black": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "quadhopper_white": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "carbon": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "carbon_deco": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "carbon_angl": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "dynamo": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "dynamo_tesla": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "dynamo_mei": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "variableroller": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "variableroller_foil": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "splatroller": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "splatroller_collabo": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "order_roller_replica": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "wideroller": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "wideroller_collabo": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "wideroller_waku": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "dentalwiper_mint": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "dentalwiper_sumi": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "drivewiper": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "drivewiper_deco": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "drivewiper_rust": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "jimuwiper": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "jimuwiper_hue": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "jimuwiper_fuu": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "order_wiper_replica": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "spygadget": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "spygadget_sorella": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "spygadget_ryo": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "brella24mk1": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "brella24mk2": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "parashelter": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "parashelter_sorella": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "order_shelter_replica": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "campingshelter": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "campingshelter_sorella": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "campingshelter_crem": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "promodeler_mg": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "promodeler_rg": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "promodeler_sai": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "prime": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "prime_collabo": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "prime_frzn": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "wakaba": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "momiji": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "bottlegeyser": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "bottlegeyser_foil": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "52gal": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "52gal_deco": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "96gal": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "96gal_deco": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "96gal_sou": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "jetsweeper": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "jetsweeper_custom": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "jetsweeper_cobr": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "sshooter": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "sshooter_collabo": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "sshooter_kou": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "heroshooter_replica": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "order_shooter_replica": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "octoshooter_replica": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "petshooter_replica": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "sharp": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "sharp_neo": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "sharp_geck": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "spaceshooter": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "spaceshooter_collabo": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "nzap85": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "nzap89": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "bold": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "bold_neo": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "h3reelgun": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "h3reelgun_d": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "h3reelgun_snak": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "l3reelgun": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "l3reelgun_d": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "l3reelgun_haku": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "furo": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "furo_deco": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "hissen": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "hissen_hue": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "hissen_ash": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "moprin": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "moprin_d": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "moprin_kaku": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "screwslosher": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "screwslosher_neo": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "bucketslosher": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "bucketslosher_deco": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpSuperHook00.png"
+ },
+ "order_slosher_replica": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpTripleTornado00.png"
+ },
+ "explosher": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "explosher_custom": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "kugelschreiber": {
+  "sub": "Wsb_Bomb_Fizzy00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "kugelschreiber_hue": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpBlower00.png"
+ },
+ "examiner": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpEnergyStand00.png"
+ },
+ "examiner_hue": {
+  "sub": "Wsb_Bomb_Splash00.png",
+  "special": "Wsp_SpChariot00.png"
+ },
+ "hydra": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ },
+ "hydra_custom": {
+  "sub": "Wsb_Trap00.png",
+  "special": "Wsp_SpChimney00.png"
+ },
+ "hydra_atsu": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "splatspinner": {
+  "sub": "Wsb_Bomb_Quick00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "splatspinner_collabo": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpGreatBarrier00.png"
+ },
+ "splatspinner_pytn": {
+  "sub": "Wsb_Beacon00.png",
+  "special": "Wsp_SpUltraShot00.png"
+ },
+ "nautilus47": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpInkStorm00.png"
+ },
+ "nautilus79": {
+  "sub": "Wsb_Bomb_Suction00.png",
+  "special": "Wsp_SpPogo00.png"
+ },
+ "barrelspinner": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "barrelspinner_deco": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpCastle00.png"
+ },
+ "order_spinner_replica": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "furuido": {
+  "sub": "Wsb_Bomb_Robot00.png",
+  "special": "Wsp_SpUltraStamp00.png"
+ },
+ "furuido_custom": {
+  "sub": "Wsb_PointSensor00.png",
+  "special": "Wsp_SpShockSonar00.png"
+ },
+ "tristringer": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "tristringer_collabo": {
+  "sub": "Wsb_Sprinkler00.png",
+  "special": "Wsp_SpFirework00.png"
+ },
+ "tristringer_tou": {
+  "sub": "Wsb_LineMarker00.png",
+  "special": "Wsp_SpJetpack00.png"
+ },
+ "order_stringer_replica": {
+  "sub": "Wsb_PoisonMist00.png",
+  "special": "Wsp_SpMicroLaser00.png"
+ },
+ "lact450": {
+  "sub": "Wsb_Bomb_Curling00.png",
+  "special": "Wsp_SpMultiMissile00.png"
+ },
+ "lact450_deco": {
+  "sub": "Wsb_Shield00.png",
+  "special": "Wsp_SpSkewer00.png"
+ },
+ "lact450_milk": {
+  "sub": "Wsb_Bomb_Torpedo00.png",
+  "special": "Wsp_SpNiceBall00.png"
+ }
+}

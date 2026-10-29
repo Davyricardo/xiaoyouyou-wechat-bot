@@ -1,0 +1,2489 @@
+{
+  "schema": 1,
+  "entries": {
+    "weapons:rapid_deco": {
+      "id": "rapid_deco",
+      "name": "快速爆破枪 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Light_01.png",
+      "file": "assets/weapons/rapid_deco.png",
+      "sha256": "9b4c1856255202f09dca7f0e7fd4d8758e332e9288304e2d1d5b0f0d0bd1508c",
+      "bytes": 16068,
+      "updatedAt": "2026-10-14T12:21:10.536Z"
+    },
+    "weapons:longblaster": {
+      "id": "longblaster",
+      "name": "远距爆破枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Long_00.png",
+      "file": "assets/weapons/longblaster.png",
+      "sha256": "299ea811e941c59a4235cf8825cfb130755d92a3b65332b8295c80e985aec928",
+      "bytes": 13951,
+      "updatedAt": "2026-10-14T12:21:11.207Z"
+    },
+    "weapons:longblaster_custom": {
+      "id": "longblaster_custom",
+      "name": "远距爆破枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Long_01.png",
+      "file": "assets/weapons/longblaster_custom.png",
+      "sha256": "7befc00e663ff148d1247dfa142854d0aacbd279395ddf031a5ecf1693403d91",
+      "bytes": 15391,
+      "updatedAt": "2026-10-14T12:21:12.298Z"
+    },
+    "weapons:hotblaster": {
+      "id": "hotblaster",
+      "name": "火热爆破枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Middle_00.png",
+      "file": "assets/weapons/hotblaster.png",
+      "sha256": "1947bdcf43af7bfd5d8c9b3208d4e026f67740a595c037ed57ebe7e57138dcb9",
+      "bytes": 14412,
+      "updatedAt": "2026-10-14T12:21:13.011Z"
+    },
+    "weapons:hotblaster_custom": {
+      "id": "hotblaster_custom",
+      "name": "火热爆破枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Middle_01.png",
+      "file": "assets/weapons/hotblaster_custom.png",
+      "sha256": "8f710a99f02c21c4c825f2cc97c6faf72232fcc078ec5b4117f5ba5f1fb42e8d",
+      "bytes": 16021,
+      "updatedAt": "2026-10-14T12:21:14.245Z"
+    },
+    "weapons:hotblaster_en": {
+      "id": "hotblaster_en",
+      "name": "火热爆破枪 艳",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Middle_02.png",
+      "file": "assets/weapons/hotblaster_en.png",
+      "sha256": "621116b8b6f2997175741a2556a2cd6ff3e510662d988bb293ba60d2d1814233",
+      "bytes": 14696,
+      "updatedAt": "2026-10-14T12:21:14.927Z"
+    },
+    "weapons:sblast92": {
+      "id": "sblast92",
+      "name": "S-BLAST92",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Precision_00.png",
+      "file": "assets/weapons/sblast92.png",
+      "sha256": "04a3b3239db525ebc03e10b2d737ff6fcefb18ebee6e7ac0641f01cc86a41d0c",
+      "bytes": 10379,
+      "updatedAt": "2026-10-14T12:21:15.542Z"
+    },
+    "weapons:sblast91": {
+      "id": "sblast91",
+      "name": "S-BLAST91",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Precision_01.png",
+      "file": "assets/weapons/sblast91.png",
+      "sha256": "4a270358f16d7fa1bf57c9eae4a98bf728793dfa5621eed0748ff6935da6fcf6",
+      "bytes": 13113,
+      "updatedAt": "2026-10-14T12:21:16.656Z"
+    },
+    "weapons:nova": {
+      "id": "nova",
+      "name": "新星爆破枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Short_00.png",
+      "file": "assets/weapons/nova.png",
+      "sha256": "87df4a11e49bc1d5ff36c457f347ed13cedf15f73c0e247c098cf84bc667a9da",
+      "bytes": 13321,
+      "updatedAt": "2026-10-14T12:21:17.362Z"
+    },
+    "weapons:nova_neo": {
+      "id": "nova_neo",
+      "name": "新星爆破枪 新型",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Short_01.png",
+      "file": "assets/weapons/nova_neo.png",
+      "sha256": "af5b2a6800b073f49cc4d15f3309ac9110994609af3d88766db61face3f73e97",
+      "bytes": 12715,
+      "updatedAt": "2026-10-14T12:21:18.077Z"
+    },
+    "weapons:order_blaster_replica": {
+      "id": "order_blaster_replica",
+      "name": "秩序爆破枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Short_O.png",
+      "file": "assets/weapons/order_blaster_replica.png",
+      "sha256": "77c4027ecfe4dfc17e4dc823cb3883ed1d0c82b20a743a89183fb1f28ac751d4",
+      "bytes": 13525,
+      "updatedAt": "2026-10-14T12:21:19.343Z"
+    },
+    "weapons:fincent": {
+      "id": "fincent",
+      "name": "文森",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Heavy_00.png",
+      "file": "assets/weapons/fincent.png",
+      "sha256": "946def8b75a83c3c3f1b5d95b6392f9cd6d7a2ccb0d9562482fbfa9aa23c1ffd",
+      "bytes": 9124,
+      "updatedAt": "2026-10-14T12:21:20.786Z"
+    },
+    "weapons:clashblaster_neo": {
+      "id": "clashblaster_neo",
+      "name": "冲涂爆破枪 新型",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_LightShort_01.png",
+      "file": "assets/weapons/clashblaster_neo.png",
+      "sha256": "0e8fa0a343565cdb9a1dc7cd76e4c3439f87d895da6ba9085fc9128adb1e572a",
+      "bytes": 16102,
+      "updatedAt": "2026-10-14T12:21:20.958Z"
+    },
+    "weapons:fincent_brnz": {
+      "id": "fincent_brnz",
+      "name": "文森BRNZ",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Heavy_02.png",
+      "file": "assets/weapons/fincent_brnz.png",
+      "sha256": "b7e92ef0056d0bcfe3b88771ecbf442165b998a4b0013ddc8349b59fcd9e25e2",
+      "bytes": 10811,
+      "updatedAt": "2026-10-14T12:21:21.587Z"
+    },
+    "weapons:fincent_hue": {
+      "id": "fincent_hue",
+      "name": "文森·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Heavy_01.png",
+      "file": "assets/weapons/fincent_hue.png",
+      "sha256": "f7dbc14d91f4a5f578df83a99126e43d492862214822e5429975acc8596c91f4",
+      "bytes": 10325,
+      "updatedAt": "2026-10-14T12:21:21.869Z"
+    },
+    "weapons:pablo": {
+      "id": "pablo",
+      "name": "巴勃罗",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Mini_00.png",
+      "file": "assets/weapons/pablo.png",
+      "sha256": "c46fc8455384d1c05b36c1d92c2f476c9a35fe95114ea779a324aa2a897ced77",
+      "bytes": 7670,
+      "updatedAt": "2026-10-14T12:21:22.044Z"
+    },
+    "weapons:hokusai": {
+      "id": "hokusai",
+      "name": "北斋",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Normal_00.png",
+      "file": "assets/weapons/hokusai.png",
+      "sha256": "60e54ec052edb75ba3d631d8d2b7cc63305bd0de275401d15c629204e5e4f6f6",
+      "bytes": 10213,
+      "updatedAt": "2026-10-14T12:21:22.524Z"
+    },
+    "weapons:pablo_hue": {
+      "id": "pablo_hue",
+      "name": "巴勃罗·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Mini_01.png",
+      "file": "assets/weapons/pablo_hue.png",
+      "sha256": "dcab0b46d3a51debb458f6b5fdd3028fe0c9101c99c15de9636038e7ed715f24",
+      "bytes": 8915,
+      "updatedAt": "2026-10-14T12:21:22.672Z"
+    },
+    "weapons:hokusai_hue": {
+      "id": "hokusai_hue",
+      "name": "北斋·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Normal_01.png",
+      "file": "assets/weapons/hokusai_hue.png",
+      "sha256": "a0d2f7cad841a405603eeb8ba7566e6ade527da83c52cad86ddb0858ff0a004b",
+      "bytes": 11546,
+      "updatedAt": "2026-10-14T12:21:23.027Z"
+    },
+    "weapons:hokusai_sui": {
+      "id": "hokusai_sui",
+      "name": "北斋 彗",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Normal_02.png",
+      "file": "assets/weapons/hokusai_sui.png",
+      "sha256": "f139e018a5321f2fe4f34e5a2e847d275ee9a6f9932f2fd71d520f0786805015",
+      "bytes": 11050,
+      "updatedAt": "2026-10-14T12:21:24.585Z"
+    },
+    "weapons:order_brush_replica": {
+      "id": "order_brush_replica",
+      "name": "秩序排刷 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Brush_Normal_O.png",
+      "file": "assets/weapons/order_brush_replica.png",
+      "sha256": "64b915a33c97a0b6c21bd84824714a75947b456765bea723a0a66a388a6605a6",
+      "bytes": 8420,
+      "updatedAt": "2026-10-14T12:21:25.465Z"
+    },
+    "weapons:soytuber": {
+      "id": "soytuber",
+      "name": "高压油管枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Keeper_00.png",
+      "file": "assets/weapons/soytuber.png",
+      "sha256": "258b65a7b7236e3f94f3cfdf48ea4ec45666244710641aa6a9c799b347e3545e",
+      "bytes": 13507,
+      "updatedAt": "2026-10-14T12:21:25.843Z"
+    },
+    "weapons:bamboo14mk1": {
+      "id": "bamboo14mk1",
+      "name": "14式竹筒枪·甲",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Light_00.png",
+      "file": "assets/weapons/bamboo14mk1.png",
+      "sha256": "74e2825949d044b9cee5cbbd8b716bf4043650bd613d0a115d955a0b351a2014",
+      "bytes": 9370,
+      "updatedAt": "2026-10-14T12:21:26.764Z"
+    },
+    "weapons:soytuber_custom": {
+      "id": "soytuber_custom",
+      "name": "高压油管枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Keeper_01.png",
+      "file": "assets/weapons/soytuber_custom.png",
+      "sha256": "d9cfc4ce79475907e434e579a45f0cea59efad7389c3accd522091c66d9d0fca",
+      "bytes": 14742,
+      "updatedAt": "2026-10-14T12:21:27.216Z"
+    },
+    "weapons:bamboo14mk2": {
+      "id": "bamboo14mk2",
+      "name": "14式竹筒枪·乙",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Light_01.png",
+      "file": "assets/weapons/bamboo14mk2.png",
+      "sha256": "98b512f473f6d5ba81a39e01e4ea65ff9f5d611bf1205afb1471705534bedb9d",
+      "bytes": 10938,
+      "updatedAt": "2026-10-14T12:21:27.425Z"
+    },
+    "weapons:liter4k_scope_custom": {
+      "id": "liter4k_scope_custom",
+      "name": "4K准星枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_LongScope_01.png",
+      "file": "assets/weapons/liter4k_scope_custom.png",
+      "sha256": "fe277824725ba8c46ac28e22aa3af9520f7b54b7f3f2d20afb1e7d13470d5165",
+      "bytes": 9709,
+      "updatedAt": "2026-10-14T12:21:28.296Z"
+    },
+    "weapons:liter4k_scope": {
+      "id": "liter4k_scope",
+      "name": "4K准星枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_LongScope_00.png",
+      "file": "assets/weapons/liter4k_scope.png",
+      "sha256": "079f31e9538542974278a794dc8dc5048b01e0a49dd4026fdd9b4e1cb3249a47",
+      "bytes": 7778,
+      "updatedAt": "2026-10-14T12:21:29.083Z"
+    },
+    "weapons:liter4k": {
+      "id": "liter4k",
+      "name": "公升4K",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Long_00.png",
+      "file": "assets/weapons/liter4k.png",
+      "sha256": "b69fe147419d4f59fc22ed7670b75ed14042590aca051f7c681d1c35b46f872a",
+      "bytes": 6845,
+      "updatedAt": "2026-10-14T12:21:29.343Z"
+    },
+    "weapons:liter4k_custom": {
+      "id": "liter4k_custom",
+      "name": "公升4K 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Long_01.png",
+      "file": "assets/weapons/liter4k_custom.png",
+      "sha256": "05f879d485c763b3d0fd35c6739cd0de9200f58991407527e5bb1fd4aa21bb99",
+      "bytes": 8827,
+      "updatedAt": "2026-10-14T12:21:29.908Z"
+    },
+    "weapons:splatscope": {
+      "id": "splatscope",
+      "name": "斯普拉准星枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_NormalScope_00.png",
+      "file": "assets/weapons/splatscope.png",
+      "sha256": "00544ed3552e0678bc3cc9631d7d5f041a0e0b74662296785d0dfb9140989719",
+      "bytes": 6442,
+      "updatedAt": "2026-10-14T12:21:30.069Z"
+    },
+    "weapons:splatscope_collabo": {
+      "id": "splatscope_collabo",
+      "name": "斯普拉准星枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_NormalScope_01.png",
+      "file": "assets/weapons/splatscope_collabo.png",
+      "sha256": "816a4a19c079d63f6220694bc823b5344a09e6dd86f93efbaa9f03f0c807b61e",
+      "bytes": 7679,
+      "updatedAt": "2026-10-14T12:21:30.659Z"
+    },
+    "weapons:splatscope_frst": {
+      "id": "splatscope_frst",
+      "name": "斯普拉准星枪FRST",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_NormalScope_02.png",
+      "file": "assets/weapons/splatscope_frst.png",
+      "sha256": "f6338f9d5c69c3e3bb612cd41a7dbfb11d7f9c735645f97313f80386ab765b7d",
+      "bytes": 7814,
+      "updatedAt": "2026-10-14T12:21:31.221Z"
+    },
+    "weapons:splatcharger": {
+      "id": "splatcharger",
+      "name": "斯普拉蓄力狙击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Normal_00.png",
+      "file": "assets/weapons/splatcharger.png",
+      "sha256": "9861b367232f9ac12a0c37a85cee7b458d8d8344cb33b2ec2b03c9ce4850ac8e",
+      "bytes": 5608,
+      "updatedAt": "2026-10-14T12:21:31.297Z"
+    },
+    "weapons:splatcharger_frst": {
+      "id": "splatcharger_frst",
+      "name": "斯普拉蓄力狙击枪FRST",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Normal_02.png",
+      "file": "assets/weapons/splatcharger_frst.png",
+      "sha256": "22da952d967370ecc8f0d1fa56c376507979a619ed842a0b35ccfa8fd887d524",
+      "bytes": 6799,
+      "updatedAt": "2026-10-14T12:21:32.003Z"
+    },
+    "weapons:splatcharger_collabo": {
+      "id": "splatcharger_collabo",
+      "name": "斯普拉蓄力狙击枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Normal_01.png",
+      "file": "assets/weapons/splatcharger_collabo.png",
+      "sha256": "0ce523143634dbde49887b016cd7e4a4743f8dd3f557b81e809274802a39b72b",
+      "bytes": 6691,
+      "updatedAt": "2026-10-14T12:21:32.116Z"
+    },
+    "weapons:order_charger_replica": {
+      "id": "order_charger_replica",
+      "name": "秩序蓄力狙击枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Normal_O.png",
+      "file": "assets/weapons/order_charger_replica.png",
+      "sha256": "b9dd78b4ffa6ad226eb7a837bb8c2b69ad874671712015a03ca6d55ad0c35272",
+      "bytes": 5614,
+      "updatedAt": "2026-10-14T12:21:32.629Z"
+    },
+    "weapons:rpen_5h": {
+      "id": "rpen_5h",
+      "name": "R-PEN/5H",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Pencil_00.png",
+      "file": "assets/weapons/rpen_5h.png",
+      "sha256": "c4893ac23b598230e033b633e818af27b8ae8b60390a18f6f0a4427593088f4e",
+      "bytes": 5527,
+      "updatedAt": "2026-10-14T12:21:32.814Z"
+    },
+    "weapons:rpen_5b": {
+      "id": "rpen_5b",
+      "name": "R-PEN/5B",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Pencil_01.png",
+      "file": "assets/weapons/rpen_5b.png",
+      "sha256": "4f78942801d179b5abe6c15aedc130c85df5f1a12e41352c79242d451b8b6e96",
+      "bytes": 6919,
+      "updatedAt": "2026-10-14T12:21:33.255Z"
+    },
+    "weapons:squiclean_a": {
+      "id": "squiclean_a",
+      "name": "鱿快洁α",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Quick_00.png",
+      "file": "assets/weapons/squiclean_a.png",
+      "sha256": "19ec1568fd45967ce487ba21963bfdff7a8f801fdb7b516b78fe6c0d62995876",
+      "bytes": 7206,
+      "updatedAt": "2026-10-14T12:21:33.671Z"
+    },
+    "weapons:squiclean_b": {
+      "id": "squiclean_b",
+      "name": "鱿快洁β",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Charger_Quick_01.png",
+      "file": "assets/weapons/squiclean_b.png",
+      "sha256": "ffc58431861f8722215b20a8f235be30c5b95b6841833a764c2d62b46cce6d72",
+      "bytes": 8704,
+      "updatedAt": "2026-10-14T12:21:34.073Z"
+    },
+    "weapons:dualsweeper": {
+      "id": "dualsweeper",
+      "name": "双重清洁枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Dual_00.png",
+      "file": "assets/weapons/dualsweeper.png",
+      "sha256": "8c9a8a36be96af9c34140890069f31adc4b6735cec4c996371384fe55daee925",
+      "bytes": 12042,
+      "updatedAt": "2026-10-14T12:21:34.829Z"
+    },
+    "weapons:dualsweeper_custom": {
+      "id": "dualsweeper_custom",
+      "name": "双重清洁枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Dual_01.png",
+      "file": "assets/weapons/dualsweeper_custom.png",
+      "sha256": "4b5fc4e9219cdce1c4e88b97ae2086ef7b0427f5731a5ca46636247ed02747c2",
+      "bytes": 13641,
+      "updatedAt": "2026-10-14T12:21:34.995Z"
+    },
+    "weapons:kelvin525": {
+      "id": "kelvin525",
+      "name": "开尔文525",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Gallon_00.png",
+      "file": "assets/weapons/kelvin525.png",
+      "sha256": "bce38b47730aa1471f7a8a636ada63ab2ad1df2dbb333c0a2dfd604c4e179aec",
+      "bytes": 19099,
+      "updatedAt": "2026-10-14T12:21:35.912Z"
+    },
+    "weapons:dualsweeper_tei": {
+      "id": "dualsweeper_tei",
+      "name": "双重清洁枪 蹄",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Dual_02.png",
+      "file": "assets/weapons/dualsweeper_tei.png",
+      "sha256": "ba660bab2e2bc4bcb8062b2748494185020ae8c28fbf3c00a78d7305588eb3c3",
+      "bytes": 14006,
+      "updatedAt": "2026-10-14T12:21:36.096Z"
+    },
+    "weapons:gaen_ff": {
+      "id": "gaen_ff",
+      "name": "灭熄FF",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Long_00.png",
+      "file": "assets/weapons/gaen_ff.png",
+      "sha256": "405a51d4279e95180b0b54c1b751de0190f0d55b30f9eba7537db7186b95b68a",
+      "bytes": 14943,
+      "updatedAt": "2026-10-14T12:21:37.365Z"
+    },
+    "weapons:kelvin525_deco": {
+      "id": "kelvin525_deco",
+      "name": "开尔文525 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Gallon_01.png",
+      "file": "assets/weapons/kelvin525_deco.png",
+      "sha256": "3dabd17cfe43defca3fe331db6466423c38fe9941bb70650603214b71b5306b2",
+      "bytes": 20313,
+      "updatedAt": "2026-10-14T12:21:37.485Z"
+    },
+    "weapons:gaen_ff_custom": {
+      "id": "gaen_ff_custom",
+      "name": "灭熄FF 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Long_01.png",
+      "file": "assets/weapons/gaen_ff_custom.png",
+      "sha256": "660db6ddc264cb4662a0b96c8fd099ec3d046cb2f47116ec96d47274f755dda3",
+      "bytes": 16997,
+      "updatedAt": "2026-10-14T12:21:38.578Z"
+    },
+    "weapons:maneuver_collabo": {
+      "id": "maneuver_collabo",
+      "name": "斯普拉机动枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Normal_01.png",
+      "file": "assets/weapons/maneuver_collabo.png",
+      "sha256": "f222a2fb8e277fa84dd9a823c994ab94ea5cfd743b82c051f8502765ffc963e8",
+      "bytes": 14039,
+      "updatedAt": "2026-10-14T12:21:39.666Z"
+    },
+    "weapons:maneuver": {
+      "id": "maneuver",
+      "name": "斯普拉机动枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Normal_00.png",
+      "file": "assets/weapons/maneuver.png",
+      "sha256": "a7c0509e5af3edb2d17c7a6048e9d476de9778585b6f6d6466417585580154bf",
+      "bytes": 12577,
+      "updatedAt": "2026-10-14T12:21:39.894Z"
+    },
+    "weapons:maneuver_you": {
+      "id": "maneuver_you",
+      "name": "斯普拉机动枪 耀",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Normal_02.png",
+      "file": "assets/weapons/maneuver_you.png",
+      "sha256": "c664535e0d52b10158e7ff9da9fb8ef339c9471be6d3f9bdba9cdfb04bef0d36",
+      "bytes": 14613,
+      "updatedAt": "2026-10-14T12:21:40.573Z"
+    },
+    "weapons:order_maneuver_replica": {
+      "id": "order_maneuver_replica",
+      "name": "秩序机动枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Normal_O.png",
+      "file": "assets/weapons/order_maneuver_replica.png",
+      "sha256": "f1cc8c220eb0b5d507212124ebb95d9297e7bcadb12e3de6d28a9e4444e9ce57",
+      "bytes": 15074,
+      "updatedAt": "2026-10-14T12:21:41.037Z"
+    },
+    "weapons:sputtery": {
+      "id": "sputtery",
+      "name": "溅镀枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Short_00.png",
+      "file": "assets/weapons/sputtery.png",
+      "sha256": "88e10dce9998e525e19e5620e441c919e298a98c8eca5460ea0b067657dca125",
+      "bytes": 16978,
+      "updatedAt": "2026-10-14T12:21:41.637Z"
+    },
+    "weapons:sputtery_owl": {
+      "id": "sputtery_owl",
+      "name": "溅镀枪OWL",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Short_02.png",
+      "file": "assets/weapons/sputtery_owl.png",
+      "sha256": "fed04514c68c94b7257f0ade75ec4a635e259746f8a28b005fa590097e8dc20c",
+      "bytes": 20763,
+      "updatedAt": "2026-10-14T12:21:42.748Z"
+    },
+    "weapons:sputtery_hue": {
+      "id": "sputtery_hue",
+      "name": "溅镀枪·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Short_01.png",
+      "file": "assets/weapons/sputtery_hue.png",
+      "sha256": "97dad79b3936078ae2e2843dee4e2b033d67ad751603a9ef1aff320821f40615",
+      "bytes": 17233,
+      "updatedAt": "2026-10-14T12:21:43.233Z"
+    },
+    "weapons:quadhopper_black": {
+      "id": "quadhopper_black",
+      "name": "四重弹跳手枪 黑",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Stepper_00.png",
+      "file": "assets/weapons/quadhopper_black.png",
+      "sha256": "6032e0eb090031ac7d49b790d0eccea78a064fa347e820785e9a1fb3e4567b52",
+      "bytes": 18957,
+      "updatedAt": "2026-10-14T12:21:43.624Z"
+    },
+    "weapons:carbon": {
+      "id": "carbon",
+      "name": "碳纤维滚筒",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Compact_00.png",
+      "file": "assets/weapons/carbon.png",
+      "sha256": "a54921621112bb4ff7c717f9b1271e27c5be8fd16f9c58bd824957e699420c82",
+      "bytes": 12964,
+      "updatedAt": "2026-10-14T12:21:44.424Z"
+    },
+    "weapons:quadhopper_white": {
+      "id": "quadhopper_white",
+      "name": "四重弹跳手枪 白",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Maneuver_Stepper_01.png",
+      "file": "assets/weapons/quadhopper_white.png",
+      "sha256": "a662767dfb665bf47bc9f18ffd6f32644b78b71df85d9be0833bebaa141203d8",
+      "bytes": 19968,
+      "updatedAt": "2026-10-14T12:21:44.450Z"
+    },
+    "weapons:carbon_deco": {
+      "id": "carbon_deco",
+      "name": "碳纤维滚筒 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Compact_01.png",
+      "file": "assets/weapons/carbon_deco.png",
+      "sha256": "7128a40ceac7318b2663b360d777780bf8efe82507ce6f26f76e2d4267d516a8",
+      "bytes": 13752,
+      "updatedAt": "2026-10-14T12:21:45.288Z"
+    },
+    "weapons:carbon_angl": {
+      "id": "carbon_angl",
+      "name": "碳纤维滚筒ANGL",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Compact_02.png",
+      "file": "assets/weapons/carbon_angl.png",
+      "sha256": "c6be86f93ac871dbe4c4de81f6f8517d57bbba4ebe57709cc40cf7f52e298a8b",
+      "bytes": 13235,
+      "updatedAt": "2026-10-14T12:21:45.306Z"
+    },
+    "weapons:dynamo_tesla": {
+      "id": "dynamo_tesla",
+      "name": "电动马达滚筒 高磁波",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Heavy_01.png",
+      "file": "assets/weapons/dynamo_tesla.png",
+      "sha256": "3fffc2d8620a8e640f1784af764dcde1fd1bdb6da73e610aa3965265cd25839d",
+      "bytes": 14535,
+      "updatedAt": "2026-10-14T12:21:46.138Z"
+    },
+    "weapons:dynamo": {
+      "id": "dynamo",
+      "name": "电动马达滚筒",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Heavy_00.png",
+      "file": "assets/weapons/dynamo.png",
+      "sha256": "52f0cd3bf36da0e1f36265eed4c94260084cacb44405d3354ba81693a88ccf44",
+      "bytes": 13242,
+      "updatedAt": "2026-10-14T12:21:46.459Z"
+    },
+    "weapons:dynamo_mei": {
+      "id": "dynamo_mei",
+      "name": "电动马达滚筒 冥",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Heavy_02.png",
+      "file": "assets/weapons/dynamo_mei.png",
+      "sha256": "944928dbf65461213c077ee7ae24d0b2f06b233db277afda1a0aebafc30841b8",
+      "bytes": 14022,
+      "updatedAt": "2026-10-14T12:21:46.958Z"
+    },
+    "weapons:variableroller_foil": {
+      "id": "variableroller_foil",
+      "name": "可变式滚筒 金属箔",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Hunter_01.png",
+      "file": "assets/weapons/variableroller_foil.png",
+      "sha256": "aa3dcfdfd5483adb62ae5496ffe59e6bdd44fa03c3078bedd2a3ddbaeea3d39c",
+      "bytes": 11391,
+      "updatedAt": "2026-10-14T12:21:47.601Z"
+    },
+    "weapons:variableroller": {
+      "id": "variableroller",
+      "name": "可变式滚筒",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Hunter_00.png",
+      "file": "assets/weapons/variableroller.png",
+      "sha256": "7a254b00d4cc8ee15739c92ba2f1d88bd6d9737cce52060ac3b5e4bd347a2387",
+      "bytes": 10835,
+      "updatedAt": "2026-10-14T12:21:47.793Z"
+    },
+    "weapons:splatroller": {
+      "id": "splatroller",
+      "name": "斯普拉滚筒",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Normal_00.png",
+      "file": "assets/weapons/splatroller.png",
+      "sha256": "306531ea197311042240467e187237619f7e6cf80e9d5f464ddb3d94883a6d3e",
+      "bytes": 9816,
+      "updatedAt": "2026-10-14T12:21:48.420Z"
+    },
+    "weapons:order_roller_replica": {
+      "id": "order_roller_replica",
+      "name": "秩序滚筒 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Normal_O.png",
+      "file": "assets/weapons/order_roller_replica.png",
+      "sha256": "a5bf13d673efd9c97215ff61c38a6a9a9519de2ecefb6e329f18e64ce9da021c",
+      "bytes": 8893,
+      "updatedAt": "2026-10-14T12:21:49.059Z"
+    },
+    "weapons:splatroller_collabo": {
+      "id": "splatroller_collabo",
+      "name": "斯普拉滚筒 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Normal_01.png",
+      "file": "assets/weapons/splatroller_collabo.png",
+      "sha256": "49484e65ff1b5cf0a577a9af5f9caf998b3760cd15cfee3e2f8cc9db4e3c53f6",
+      "bytes": 11542,
+      "updatedAt": "2026-10-14T12:21:49.160Z"
+    },
+    "weapons:wideroller_collabo": {
+      "id": "wideroller_collabo",
+      "name": "宽滚筒 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Wide_01.png",
+      "file": "assets/weapons/wideroller_collabo.png",
+      "sha256": "d707dcb019e15dadae4eb3a1c7f9ff28ea09447b2b696d732360e68908d423d6",
+      "bytes": 11985,
+      "updatedAt": "2026-10-14T12:21:50.009Z"
+    },
+    "weapons:wideroller": {
+      "id": "wideroller",
+      "name": "宽滚筒",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Wide_00.png",
+      "file": "assets/weapons/wideroller.png",
+      "sha256": "c2933f6894f39139f419bfe6ebe07a776aeebaf9cecc5fd42f59c3d0551dfb88",
+      "bytes": 9889,
+      "updatedAt": "2026-10-14T12:21:50.335Z"
+    },
+    "weapons:wideroller_waku": {
+      "id": "wideroller_waku",
+      "name": "宽滚筒 惑",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Roller_Wide_02.png",
+      "file": "assets/weapons/wideroller_waku.png",
+      "sha256": "e4559f179330df4190ea8c72fcab49527e115e392bc9acc8de35ddbb4b7eda57",
+      "bytes": 11145,
+      "updatedAt": "2026-10-14T12:21:50.804Z"
+    },
+    "weapons:dentalwiper_mint": {
+      "id": "dentalwiper_mint",
+      "name": "巨齿刮水刀 薄荷",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Heavy_00.png",
+      "file": "assets/weapons/dentalwiper_mint.png",
+      "sha256": "f3188a9b3e8db041b6c052a1b6208623c6041bdbd7f6b363a42052322cbdb654",
+      "bytes": 13261,
+      "updatedAt": "2026-10-14T12:21:51.648Z"
+    },
+    "weapons:dentalwiper_sumi": {
+      "id": "dentalwiper_sumi",
+      "name": "巨齿刮水刀 墨黑",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Heavy_01.png",
+      "file": "assets/weapons/dentalwiper_sumi.png",
+      "sha256": "c06d1ac820f52ce81920da804cd88a72aade14d62cd511da7ec846951ae56354",
+      "bytes": 14368,
+      "updatedAt": "2026-10-14T12:21:51.846Z"
+    },
+    "weapons:drivewiper": {
+      "id": "drivewiper",
+      "name": "雨刷刮水刀",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Lite_00.png",
+      "file": "assets/weapons/drivewiper.png",
+      "sha256": "f729d2174ef8e504d12e3f90020f69abcefe14cde9817a738489d33c8e022001",
+      "bytes": 8684,
+      "updatedAt": "2026-10-14T12:21:52.855Z"
+    },
+    "weapons:drivewiper_deco": {
+      "id": "drivewiper_deco",
+      "name": "雨刷刮水刀 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Lite_01.png",
+      "file": "assets/weapons/drivewiper_deco.png",
+      "sha256": "5f06d96179416aa2a0f8cecd454e1c83014a0d0df5bc4bafe0163279ce74a1c8",
+      "bytes": 11361,
+      "updatedAt": "2026-10-14T12:21:53.281Z"
+    },
+    "weapons:drivewiper_rust": {
+      "id": "drivewiper_rust",
+      "name": "雨刷刮水刀RUST",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Lite_02.png",
+      "file": "assets/weapons/drivewiper_rust.png",
+      "sha256": "2455907e002f4c506ba43009439d02d12b50d601ddd7000729057f06f6425c2c",
+      "bytes": 11399,
+      "updatedAt": "2026-10-14T12:21:53.819Z"
+    },
+    "weapons:jimuwiper": {
+      "id": "jimuwiper",
+      "name": "工作刮水刀",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Normal_00.png",
+      "file": "assets/weapons/jimuwiper.png",
+      "sha256": "4a17443c01157940291150f92e0b3813a4be336569ddddb0806d2293f41203d2",
+      "bytes": 11254,
+      "updatedAt": "2026-10-14T12:21:54.308Z"
+    },
+    "weapons:jimuwiper_hue": {
+      "id": "jimuwiper_hue",
+      "name": "工作刮水刀·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Normal_01.png",
+      "file": "assets/weapons/jimuwiper_hue.png",
+      "sha256": "4877d53b301186481fb43a2645b4fccd07d3a6646eeaf6b7edd8285f948699ec",
+      "bytes": 12028,
+      "updatedAt": "2026-10-14T12:21:54.662Z"
+    },
+    "weapons:jimuwiper_fuu": {
+      "id": "jimuwiper_fuu",
+      "name": "工作刮水刀 封",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Normal_02.png",
+      "file": "assets/weapons/jimuwiper_fuu.png",
+      "sha256": "9c870f9538c30160d6447cdb18d1260b45276df5f7a0b9767078b2f004591d81",
+      "bytes": 12751,
+      "updatedAt": "2026-10-14T12:21:55.109Z"
+    },
+    "weapons:order_wiper_replica": {
+      "id": "order_wiper_replica",
+      "name": "秩序刮水刀 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Saber_Normal_O.png",
+      "file": "assets/weapons/order_wiper_replica.png",
+      "sha256": "2b1200b3e6ba15688c8e0087598c7383be82369693db28585be1b31a97220a43",
+      "bytes": 10778,
+      "updatedAt": "2026-10-14T12:21:55.720Z"
+    },
+    "weapons:spygadget": {
+      "id": "spygadget",
+      "name": "特工配件",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Compact_00.png",
+      "file": "assets/weapons/spygadget.png",
+      "sha256": "cbf9b152e501fd23218992661dac3bdd84172f86ddc7929ed5fd7b827923f352",
+      "bytes": 10844,
+      "updatedAt": "2026-10-14T12:21:55.786Z"
+    },
+    "weapons:spygadget_ryo": {
+      "id": "spygadget_ryo",
+      "name": "特工配件 缭",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Compact_02.png",
+      "file": "assets/weapons/spygadget_ryo.png",
+      "sha256": "8fbe084ac5465b7e33891ff9adc33beb13980a0059d1b386ad968a381301a400",
+      "bytes": 13402,
+      "updatedAt": "2026-10-14T12:21:56.592Z"
+    },
+    "weapons:spygadget_sorella": {
+      "id": "spygadget_sorella",
+      "name": "特工配件 姐妹",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Compact_01.png",
+      "file": "assets/weapons/spygadget_sorella.png",
+      "sha256": "0a2be167159e262e92981197218e98e1effe381f7537cff614a19877ab003670",
+      "bytes": 11793,
+      "updatedAt": "2026-10-14T12:21:57.071Z"
+    },
+    "weapons:brella24mk1": {
+      "id": "brella24mk1",
+      "name": "24式可替换伞·甲",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Focus_00.png",
+      "file": "assets/weapons/brella24mk1.png",
+      "sha256": "90784d62796e05d58108fa7fa94968b3bca00bb35c806931928a5c40dbec94f3",
+      "bytes": 15527,
+      "updatedAt": "2026-10-14T12:21:57.548Z"
+    },
+    "weapons:brella24mk2": {
+      "id": "brella24mk2",
+      "name": "24式可替换伞·乙",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Focus_01.png",
+      "file": "assets/weapons/brella24mk2.png",
+      "sha256": "453021f35b33d0c7df5d8322e040ccd6a3ef2854ccaac796bccea5380a29121b",
+      "bytes": 16059,
+      "updatedAt": "2026-10-14T12:21:57.932Z"
+    },
+    "weapons:parashelter": {
+      "id": "parashelter",
+      "name": "遮阳防空伞",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Normal_00.png",
+      "file": "assets/weapons/parashelter.png",
+      "sha256": "160f704ba750a3cf158bba77e54fbee4ec4308d11373d1301d05a7b3b73a2c56",
+      "bytes": 14981,
+      "updatedAt": "2026-10-14T12:21:58.375Z"
+    },
+    "weapons:parashelter_sorella": {
+      "id": "parashelter_sorella",
+      "name": "遮阳防空伞 姐妹",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Normal_01.png",
+      "file": "assets/weapons/parashelter_sorella.png",
+      "sha256": "1e0991de68d46ff63df2b7e26764c2966aca92253f64ca248663adece7177b39",
+      "bytes": 15321,
+      "updatedAt": "2026-10-14T12:21:58.765Z"
+    },
+    "weapons:order_shelter_replica": {
+      "id": "order_shelter_replica",
+      "name": "秩序防空伞 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Normal_O.png",
+      "file": "assets/weapons/order_shelter_replica.png",
+      "sha256": "9c3f8a34f516e5af1c81fd60735214df066805a673a26dc745e7de1f7fa2d7d9",
+      "bytes": 13044,
+      "updatedAt": "2026-10-14T12:21:59.116Z"
+    },
+    "weapons:campingshelter_sorella": {
+      "id": "campingshelter_sorella",
+      "name": "露营防空伞 姐妹",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Wide_01.png",
+      "file": "assets/weapons/campingshelter_sorella.png",
+      "sha256": "c85df7b988a58738ea276a41806fee6b614c21fe6edaa8233b9212e5b8d67c85",
+      "bytes": 14467,
+      "updatedAt": "2026-10-14T12:21:59.798Z"
+    },
+    "weapons:campingshelter": {
+      "id": "campingshelter",
+      "name": "露营防空伞",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Wide_00.png",
+      "file": "assets/weapons/campingshelter.png",
+      "sha256": "8f177f5f5ef9efae31f29289aa870fb85c6158ddea6a4e6f6be60b6d5c6e0823",
+      "bytes": 13775,
+      "updatedAt": "2026-10-14T12:22:00.015Z"
+    },
+    "weapons:campingshelter_crem": {
+      "id": "campingshelter_crem",
+      "name": "露营防空伞CREM",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shelter_Wide_02.png",
+      "file": "assets/weapons/campingshelter_crem.png",
+      "sha256": "d0355dd106d99e9615effbc746d1b39f0ed489c8d5f4716a1b392d324ebc64b2",
+      "bytes": 16091,
+      "updatedAt": "2026-10-14T12:22:00.701Z"
+    },
+    "weapons:promodeler_mg": {
+      "id": "promodeler_mg",
+      "name": "专业模型枪MG",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Blaze_00.png",
+      "file": "assets/weapons/promodeler_mg.png",
+      "sha256": "8414e84d19dba6154e6ee2247225e202468bf008a6f30e7a29cfcd149c068ee2",
+      "bytes": 13162,
+      "updatedAt": "2026-10-14T12:22:00.843Z"
+    },
+    "weapons:promodeler_rg": {
+      "id": "promodeler_rg",
+      "name": "专业模型枪RG",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Blaze_01.png",
+      "file": "assets/weapons/promodeler_rg.png",
+      "sha256": "3dba47cded34a9c4d5bf30d0532c4c9683d71d1bc00731224d35378f08f9725a",
+      "bytes": 14369,
+      "updatedAt": "2026-10-14T12:22:01.584Z"
+    },
+    "weapons:promodeler_sai": {
+      "id": "promodeler_sai",
+      "name": "专业模型枪 彩",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Blaze_02.png",
+      "file": "assets/weapons/promodeler_sai.png",
+      "sha256": "985520dbe750d4c09121b9eb26cc8c6d0bffe7008a5bc873963bc994157b629a",
+      "bytes": 15108,
+      "updatedAt": "2026-10-14T12:22:01.632Z"
+    },
+    "weapons:prime": {
+      "id": "prime",
+      "name": "顶尖射击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Expert_00.png",
+      "file": "assets/weapons/prime.png",
+      "sha256": "2bdf95c58232a7fdc4fbe3fdb09db8e460d167791f56242bc513018ac7665679",
+      "bytes": 10998,
+      "updatedAt": "2026-10-14T12:22:02.268Z"
+    },
+    "weapons:prime_collabo": {
+      "id": "prime_collabo",
+      "name": "顶尖射击枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Expert_01.png",
+      "file": "assets/weapons/prime_collabo.png",
+      "sha256": "4745a33239dceefa18cda25490df10295a5c24f0a0de16bec514adcf4f51cac9",
+      "bytes": 11859,
+      "updatedAt": "2026-10-14T12:22:02.292Z"
+    },
+    "weapons:prime_frzn": {
+      "id": "prime_frzn",
+      "name": "顶尖射击枪FRZN",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Expert_02.png",
+      "file": "assets/weapons/prime_frzn.png",
+      "sha256": "00d59b232eb518debe9d0e7865f6e77529f55a1e332b25d20b7eb31680015a9d",
+      "bytes": 12138,
+      "updatedAt": "2026-10-14T12:22:02.948Z"
+    },
+    "weapons:wakaba": {
+      "id": "wakaba",
+      "name": "新叶射击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_First_00.png",
+      "file": "assets/weapons/wakaba.png",
+      "sha256": "c6708ff5f90fcba024ea1f011120fc3cfe2252e2e9ecc388a7866342412ccf67",
+      "bytes": 13801,
+      "updatedAt": "2026-10-14T12:22:02.966Z"
+    },
+    "weapons:bottlegeyser": {
+      "id": "bottlegeyser",
+      "name": "开瓶喷泉枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Flash_00.png",
+      "file": "assets/weapons/bottlegeyser.png",
+      "sha256": "33440525ad8f3407cf11e590c41f9fc565d0970821d7b686cf2ab69ce5663137",
+      "bytes": 12402,
+      "updatedAt": "2026-10-14T12:22:03.629Z"
+    },
+    "weapons:momiji": {
+      "id": "momiji",
+      "name": "枫叶射击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_First_01.png",
+      "file": "assets/weapons/momiji.png",
+      "sha256": "60b71849d6db1e1bbe350ce0fc6dd71fadef01cd364e798dd8953274a6e5a705",
+      "bytes": 14964,
+      "updatedAt": "2026-10-14T12:22:03.765Z"
+    },
+    "weapons:52gal": {
+      "id": "52gal",
+      "name": ".52加仑",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Gravity_00.png",
+      "file": "assets/weapons/52gal.png",
+      "sha256": "b8133c8a27e7818d8837e5eeef617220d4777405154b920e61474ea90f51c046",
+      "bytes": 16086,
+      "updatedAt": "2026-10-14T12:22:04.733Z"
+    },
+    "weapons:bottlegeyser_foil": {
+      "id": "bottlegeyser_foil",
+      "name": "开瓶喷泉枪 金属箔",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Flash_01.png",
+      "file": "assets/weapons/bottlegeyser_foil.png",
+      "sha256": "9dfabaf292d97446a5470eb1e7828d20213acae8fe1bf9b39e5d707721c083fe",
+      "bytes": 14133,
+      "updatedAt": "2026-10-14T12:22:05.120Z"
+    },
+    "weapons:96gal": {
+      "id": "96gal",
+      "name": ".96加仑",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Heavy_00.png",
+      "file": "assets/weapons/96gal.png",
+      "sha256": "db76746cf2d6bf18807f4d8f92df3226381c4341ea1a7970ab48dc0238778769",
+      "bytes": 13650,
+      "updatedAt": "2026-10-14T12:22:05.921Z"
+    },
+    "weapons:52gal_deco": {
+      "id": "52gal_deco",
+      "name": ".52加仑 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Gravity_01.png",
+      "file": "assets/weapons/52gal_deco.png",
+      "sha256": "1fc3b87e045668bc54aaf9730e6279bb5934fffa216a98d6bad4fdcdb720f1b0",
+      "bytes": 18698,
+      "updatedAt": "2026-10-14T12:22:06.505Z"
+    },
+    "weapons:96gal_deco": {
+      "id": "96gal_deco",
+      "name": ".96加仑 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Heavy_01.png",
+      "file": "assets/weapons/96gal_deco.png",
+      "sha256": "716520edd948ce91e60aa5e9d5228b204dc26f1a456b918ec28eea86d89556b6",
+      "bytes": 15607,
+      "updatedAt": "2026-10-14T12:22:07.132Z"
+    },
+    "weapons:jetsweeper": {
+      "id": "jetsweeper",
+      "name": "喷射清洁枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Long_00.png",
+      "file": "assets/weapons/jetsweeper.png",
+      "sha256": "85692dbf6f09a05652f53f633e43829797207b0b7a6fe42294930a5a7c04f974",
+      "bytes": 8979,
+      "updatedAt": "2026-10-14T12:22:07.994Z"
+    },
+    "weapons:96gal_sou": {
+      "id": "96gal_sou",
+      "name": ".96加仑 爪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Heavy_02.png",
+      "file": "assets/weapons/96gal_sou.png",
+      "sha256": "768d7dc3cb8d3df4fc1d0f4b22bbf04e49f77f903321334ef4cdc829d8074f81",
+      "bytes": 14278,
+      "updatedAt": "2026-10-14T12:22:08.162Z"
+    },
+    "weapons:jetsweeper_custom": {
+      "id": "jetsweeper_custom",
+      "name": "喷射清洁枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Long_01.png",
+      "file": "assets/weapons/jetsweeper_custom.png",
+      "sha256": "62ae16ad75147b20bd670e7b0cf092360c7537ee11c99ba51f7c085b07a8677d",
+      "bytes": 10681,
+      "updatedAt": "2026-10-14T12:22:08.912Z"
+    },
+    "weapons:jetsweeper_cobr": {
+      "id": "jetsweeper_cobr",
+      "name": "喷射清洁枪COBR",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Long_02.png",
+      "file": "assets/weapons/jetsweeper_cobr.png",
+      "sha256": "bf15835546865ffa87a010e4798fa268458eb68228fc8d09afd00695a62244e9",
+      "bytes": 11082,
+      "updatedAt": "2026-10-14T12:22:09.185Z"
+    },
+    "weapons:sshooter_collabo": {
+      "id": "sshooter_collabo",
+      "name": "斯普拉射击枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_01.png",
+      "file": "assets/weapons/sshooter_collabo.png",
+      "sha256": "d4878dbfa9cd45d6ce2a558afcdab42b2dd26ae89c1fedefc1b34c12f3385b1f",
+      "bytes": 14855,
+      "updatedAt": "2026-10-14T12:22:10.658Z"
+    },
+    "weapons:sshooter": {
+      "id": "sshooter",
+      "name": "斯普拉射击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_00.png",
+      "file": "assets/weapons/sshooter.png",
+      "sha256": "e89d1b5786ccd86d011affa39b2f0b7d4eb56d4ea0f488ba5f3395703c947b6d",
+      "bytes": 14081,
+      "updatedAt": "2026-10-14T12:22:10.813Z"
+    },
+    "weapons:sshooter_kou": {
+      "id": "sshooter_kou",
+      "name": "斯普拉射击枪 煌",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_02.png",
+      "file": "assets/weapons/sshooter_kou.png",
+      "sha256": "20eaffe427e9044ce15a3ecfa494d7fac34b51b4d6d0902faa6dccce9d497a40",
+      "bytes": 16180,
+      "updatedAt": "2026-10-14T12:22:11.532Z"
+    },
+    "weapons:heroshooter_replica": {
+      "id": "heroshooter_replica",
+      "name": "英雄射击枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_H.png",
+      "file": "assets/weapons/heroshooter_replica.png",
+      "sha256": "62496f40e16aa9aeaac3ddc346f6ed4b397709b9d7c1e3f6a9709de668a3f6cc",
+      "bytes": 13622,
+      "updatedAt": "2026-10-14T12:22:11.835Z"
+    },
+    "weapons:order_shooter_replica": {
+      "id": "order_shooter_replica",
+      "name": "秩序射击枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_O.png",
+      "file": "assets/weapons/order_shooter_replica.png",
+      "sha256": "73b0bb37f6d28ff58eed7a5bbec9e7e5b12c4028efa795a0d6acd4035648a4b8",
+      "bytes": 13385,
+      "updatedAt": "2026-10-14T12:22:12.258Z"
+    },
+    "weapons:octoshooter_replica": {
+      "id": "octoshooter_replica",
+      "name": "章鱼射击枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_Oct.png",
+      "file": "assets/weapons/octoshooter_replica.png",
+      "sha256": "7acad0c54fac3b9ea1ece978443ca09a23acf2d34f0dceb7bb15828c7ce97299",
+      "bytes": 11489,
+      "updatedAt": "2026-10-14T12:22:12.490Z"
+    },
+    "weapons:petshooter_replica": {
+      "id": "petshooter_replica",
+      "name": "塑料瓶射击枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Normal_S.png",
+      "file": "assets/weapons/petshooter_replica.png",
+      "sha256": "e8d4c547ee58c560599cf7941a90ee757ff199fe4f1edf907e11f434e062a2dd",
+      "bytes": 18465,
+      "updatedAt": "2026-10-14T12:22:13.260Z"
+    },
+    "weapons:sharp": {
+      "id": "sharp",
+      "name": "窄域标记枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Precision_00.png",
+      "file": "assets/weapons/sharp.png",
+      "sha256": "ce7b7c946700fed5e0f5d80f3eaa2aff4ff9e3cb9ef9f701dc16996de0094d18",
+      "bytes": 12533,
+      "updatedAt": "2026-10-14T12:22:13.522Z"
+    },
+    "weapons:sharp_neo": {
+      "id": "sharp_neo",
+      "name": "窄域标记枪 新型",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Precision_01.png",
+      "file": "assets/weapons/sharp_neo.png",
+      "sha256": "5e0fe4cb3c506717244453811cb311285a81368cf82f08a1b654023f37069953",
+      "bytes": 13449,
+      "updatedAt": "2026-10-14T12:22:14.049Z"
+    },
+    "weapons:spaceshooter": {
+      "id": "spaceshooter",
+      "name": "太空射击枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_QuickLong_00.png",
+      "file": "assets/weapons/spaceshooter.png",
+      "sha256": "9bb5e2225da29c8b806cd3da5aa531b74899bd2c68b0c65d281c6402d8794ec3",
+      "bytes": 13548,
+      "updatedAt": "2026-10-14T12:22:14.909Z"
+    },
+    "weapons:spaceshooter_collabo": {
+      "id": "spaceshooter_collabo",
+      "name": "太空射击枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_QuickLong_01.png",
+      "file": "assets/weapons/spaceshooter_collabo.png",
+      "sha256": "23e6f955d16f0b696964ed7b3ff1cb164c2f2b6596f957dbb20290b7bbd51048",
+      "bytes": 15024,
+      "updatedAt": "2026-10-14T12:22:15.786Z"
+    },
+    "weapons:sharp_geck": {
+      "id": "sharp_geck",
+      "name": "窄域标记枪GECK",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Precision_02.png",
+      "file": "assets/weapons/sharp_geck.png",
+      "sha256": "5df62d5a4ecf1157ab04750f5cb1676b3b21fa9c9b0f5e570a0f390988b6feeb",
+      "bytes": 14192,
+      "updatedAt": "2026-10-14T12:22:16.279Z"
+    },
+    "weapons:nzap85": {
+      "id": "nzap85",
+      "name": "N-ZAP85",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_QuickMiddle_00.png",
+      "file": "assets/weapons/nzap85.png",
+      "sha256": "e27becb865b3b535ab4be19998b659b38330808cdd2fd6ee6e60b6e903d8fb41",
+      "bytes": 5984,
+      "updatedAt": "2026-10-14T12:22:16.389Z"
+    },
+    "weapons:bold": {
+      "id": "bold",
+      "name": "广域标记枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Short_00.png",
+      "file": "assets/weapons/bold.png",
+      "sha256": "bba51f6136e71f89510bf0f5759c1ed48a21da8d0e2225b032d4c835c6d5741e",
+      "bytes": 13944,
+      "updatedAt": "2026-10-14T12:22:17.090Z"
+    },
+    "weapons:nzap89": {
+      "id": "nzap89",
+      "name": "N-ZAP89",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_QuickMiddle_01.png",
+      "file": "assets/weapons/nzap89.png",
+      "sha256": "57abf005e986d5ad80cf0ff11253d35752f442ced330ae896ac2588617814b84",
+      "bytes": 8040,
+      "updatedAt": "2026-10-14T12:22:17.607Z"
+    },
+    "weapons:bold_neo": {
+      "id": "bold_neo",
+      "name": "广域标记枪 新型",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_Short_01.png",
+      "file": "assets/weapons/bold_neo.png",
+      "sha256": "afd826ff2fd27a612f9299d668ec99fe28b9706f618667ceeee181f522dfd0a9",
+      "bytes": 14517,
+      "updatedAt": "2026-10-14T12:22:17.714Z"
+    },
+    "weapons:h3reelgun": {
+      "id": "h3reelgun",
+      "name": "H3卷管枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleMiddle_00.png",
+      "file": "assets/weapons/h3reelgun.png",
+      "sha256": "0fef986ddc90dd9fe51bf332b0077f135018bbfcffa423368fed4d829578447d",
+      "bytes": 11888,
+      "updatedAt": "2026-10-14T12:22:18.465Z"
+    },
+    "weapons:h3reelgun_d": {
+      "id": "h3reelgun_d",
+      "name": "H3卷管枪D",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleMiddle_01.png",
+      "file": "assets/weapons/h3reelgun_d.png",
+      "sha256": "55b5e03c1211c3c4c25133fe683423acd261bb83d27ce5891b5a2848a186f064",
+      "bytes": 13915,
+      "updatedAt": "2026-10-14T12:22:18.968Z"
+    },
+    "weapons:h3reelgun_snak": {
+      "id": "h3reelgun_snak",
+      "name": "H3卷管枪SNAK",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleMiddle_02.png",
+      "file": "assets/weapons/h3reelgun_snak.png",
+      "sha256": "ae892771763b69f7a54e8b6c4d01150ef01a109bc1def525053326d9c540e332",
+      "bytes": 12672,
+      "updatedAt": "2026-10-14T12:22:19.344Z"
+    },
+    "weapons:l3reelgun": {
+      "id": "l3reelgun",
+      "name": "L3卷管枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleQuick_00.png",
+      "file": "assets/weapons/l3reelgun.png",
+      "sha256": "f0da258602f843488d90620c20837567a92a3cb1171f320bd058f169fb88b388",
+      "bytes": 13395,
+      "updatedAt": "2026-10-14T12:22:19.657Z"
+    },
+    "weapons:l3reelgun_d": {
+      "id": "l3reelgun_d",
+      "name": "L3卷管枪D",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleQuick_01.png",
+      "file": "assets/weapons/l3reelgun_d.png",
+      "sha256": "c66ed02bb10f6981fa2e485ae2a08036241bc355111d2c4dc07b9dd0e79f3025",
+      "bytes": 15458,
+      "updatedAt": "2026-10-14T12:22:20.167Z"
+    },
+    "weapons:l3reelgun_haku": {
+      "id": "l3reelgun_haku",
+      "name": "L3卷管枪 箔",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Shooter_TripleQuick_02.png",
+      "file": "assets/weapons/l3reelgun_haku.png",
+      "sha256": "15d716f7c809d53137dc4693edfc32d116a90bb80dad39abeca489e797c636b6",
+      "bytes": 14767,
+      "updatedAt": "2026-10-14T12:22:20.696Z"
+    },
+    "weapons:furo": {
+      "id": "furo",
+      "name": "满溢泡澡泼桶",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Bathtub_00.png",
+      "file": "assets/weapons/furo.png",
+      "sha256": "97fccc9267524436d20538ef8ebaa6b8ed40e963a16905ae76a7907dc277224d",
+      "bytes": 15272,
+      "updatedAt": "2026-10-14T12:22:20.837Z"
+    },
+    "weapons:furo_deco": {
+      "id": "furo_deco",
+      "name": "满溢泡澡泼桶 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Bathtub_01.png",
+      "file": "assets/weapons/furo_deco.png",
+      "sha256": "0d0d5353c1a48061a7a00b5be538df44c13576e9bc611d7343d1506281e404e9",
+      "bytes": 17336,
+      "updatedAt": "2026-10-14T12:22:21.489Z"
+    },
+    "weapons:hissen": {
+      "id": "hissen",
+      "name": "洗笔桶",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Diffusion_00.png",
+      "file": "assets/weapons/hissen.png",
+      "sha256": "f9d16307911957e8f82ecdd1f08223be93a4e3feab58020c6d9914708180a921",
+      "bytes": 15653,
+      "updatedAt": "2026-10-14T12:22:21.700Z"
+    },
+    "weapons:hissen_hue": {
+      "id": "hissen_hue",
+      "name": "洗笔桶·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Diffusion_01.png",
+      "file": "assets/weapons/hissen_hue.png",
+      "sha256": "b50fc9e74a47a2737f99e95b9f22d770ff327bec00add4bab29aa95ca1913427",
+      "bytes": 17604,
+      "updatedAt": "2026-10-14T12:22:22.401Z"
+    },
+    "weapons:hissen_ash": {
+      "id": "hissen_ash",
+      "name": "洗笔桶ASH",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Diffusion_02.png",
+      "file": "assets/weapons/hissen_ash.png",
+      "sha256": "f7d6102762bfa4d83362b9e806259519dc5d437afd4c3172229a4740decc7bb7",
+      "bytes": 18654,
+      "updatedAt": "2026-10-14T12:22:22.773Z"
+    },
+    "weapons:moprin": {
+      "id": "moprin",
+      "name": "墨瀑淋",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Double_00.png",
+      "file": "assets/weapons/moprin.png",
+      "sha256": "e4d7b539cbe3d7ce82683cc56f8081e88c7f5abc30529f8e22082e60ca324f5e",
+      "bytes": 17193,
+      "updatedAt": "2026-10-14T12:22:23.437Z"
+    },
+    "weapons:moprin_d": {
+      "id": "moprin_d",
+      "name": "墨瀑淋D",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Double_01.png",
+      "file": "assets/weapons/moprin_d.png",
+      "sha256": "c765fb7e2943e087ad790014f72eef0869d83ec123085d31c54e51fc6760f569",
+      "bytes": 20048,
+      "updatedAt": "2026-10-14T12:22:24.017Z"
+    },
+    "weapons:moprin_kaku": {
+      "id": "moprin_kaku",
+      "name": "墨瀑淋 角",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Double_02.png",
+      "file": "assets/weapons/moprin_kaku.png",
+      "sha256": "9d3d1b705889bb31a0d3647ed03408ef27b22b63b4d3b1b0ccc13f7282320ac7",
+      "bytes": 19087,
+      "updatedAt": "2026-10-14T12:22:24.533Z"
+    },
+    "weapons:screwslosher": {
+      "id": "screwslosher",
+      "name": "回旋泼桶",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Launcher_00.png",
+      "file": "assets/weapons/screwslosher.png",
+      "sha256": "ab6715e1ceea4bd72a288b891ffbece711dda9e189c82d7a79dcee01fd0b7708",
+      "bytes": 16457,
+      "updatedAt": "2026-10-14T12:22:25.040Z"
+    },
+    "weapons:screwslosher_neo": {
+      "id": "screwslosher_neo",
+      "name": "回旋泼桶 新型",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Launcher_01.png",
+      "file": "assets/weapons/screwslosher_neo.png",
+      "sha256": "6577beee62f7b39b353d74b061fb6ef7021d6c5dd62ccae74891f40a945e7c74",
+      "bytes": 16680,
+      "updatedAt": "2026-10-14T12:22:25.741Z"
+    },
+    "weapons:bucketslosher": {
+      "id": "bucketslosher",
+      "name": "飞溅泼桶",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Strong_00.png",
+      "file": "assets/weapons/bucketslosher.png",
+      "sha256": "ca8e76aabfe04ff144cfb058c3237d2065837a48255351adc1b9d7a58a96dfcd",
+      "bytes": 17219,
+      "updatedAt": "2026-10-14T12:22:25.916Z"
+    },
+    "weapons:bucketslosher_deco": {
+      "id": "bucketslosher_deco",
+      "name": "飞溅泼桶 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Strong_01.png",
+      "file": "assets/weapons/bucketslosher_deco.png",
+      "sha256": "865e16d6fc47adbb245cdbc7d18dec468c7d290501451985f4dea2ecdbac11c6",
+      "bytes": 18346,
+      "updatedAt": "2026-10-14T12:22:26.570Z"
+    },
+    "weapons:order_slosher_replica": {
+      "id": "order_slosher_replica",
+      "name": "秩序泼桶 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Strong_O.png",
+      "file": "assets/weapons/order_slosher_replica.png",
+      "sha256": "b626317c4c6cdca47a027911230607e0923ed6fa20fa5bc0a0efc0fde3abb0e4",
+      "bytes": 17304,
+      "updatedAt": "2026-10-14T12:22:27.090Z"
+    },
+    "weapons:explosher": {
+      "id": "explosher",
+      "name": "爆炸泼桶",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Washtub_00.png",
+      "file": "assets/weapons/explosher.png",
+      "sha256": "0bce30b4e250bcc2aa528d43008b1e0f97532ad542248b8b847d51981d4f2949",
+      "bytes": 20107,
+      "updatedAt": "2026-10-14T12:22:27.894Z"
+    },
+    "weapons:kugelschreiber": {
+      "id": "kugelschreiber",
+      "name": "圆珠笔",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Downpour_00.png",
+      "file": "assets/weapons/kugelschreiber.png",
+      "sha256": "da722b7c891097902e78fc56e981040da93413166f2e1306f1340383dc5c3274",
+      "bytes": 12979,
+      "updatedAt": "2026-10-14T12:22:28.604Z"
+    },
+    "weapons:explosher_custom": {
+      "id": "explosher_custom",
+      "name": "爆炸泼桶 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Slosher_Washtub_01.png",
+      "file": "assets/weapons/explosher_custom.png",
+      "sha256": "32871cf9be180b3d6b53f9c9946f40e7de578bf7932d7fae0c07a5055e62be82",
+      "bytes": 22546,
+      "updatedAt": "2026-10-14T12:22:28.807Z"
+    },
+    "weapons:kugelschreiber_hue": {
+      "id": "kugelschreiber_hue",
+      "name": "圆珠笔·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Downpour_01.png",
+      "file": "assets/weapons/kugelschreiber_hue.png",
+      "sha256": "db9492adc09778014fb24abb1bae4d799e50996482150a779bf443212413ce96",
+      "bytes": 13400,
+      "updatedAt": "2026-10-14T12:22:29.342Z"
+    },
+    "weapons:examiner": {
+      "id": "examiner",
+      "name": "审查者",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_HyperShort_00.png",
+      "file": "assets/weapons/examiner.png",
+      "sha256": "707908e87f4b8aba2c9b393700627a4dd1fbd5838c62d71d34b23c1402b641f7",
+      "bytes": 13250,
+      "updatedAt": "2026-10-14T12:22:29.816Z"
+    },
+    "weapons:examiner_hue": {
+      "id": "examiner_hue",
+      "name": "审查者·新艺术",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_HyperShort_01.png",
+      "file": "assets/weapons/examiner_hue.png",
+      "sha256": "e2a2848efccebaaa1183303678c8636c45da34a5a6f783b9ba7eebbc193f84f5",
+      "bytes": 14031,
+      "updatedAt": "2026-10-14T12:22:30.653Z"
+    },
+    "weapons:hydra": {
+      "id": "hydra",
+      "name": "消防栓旋转枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Hyper_00.png",
+      "file": "assets/weapons/hydra.png",
+      "sha256": "5e963ca13d5b5fa425c80f07a0d4c5d06544114cdb476e0ce320cbd77a2fc326",
+      "bytes": 16441,
+      "updatedAt": "2026-10-14T12:22:30.682Z"
+    },
+    "weapons:hydra_atsu": {
+      "id": "hydra_atsu",
+      "name": "消防栓旋转枪 压",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Hyper_02.png",
+      "file": "assets/weapons/hydra_atsu.png",
+      "sha256": "2bcbc666618d3aa5b35b34fe19fdca4f15b4dc1332a4a2a291788693075205b5",
+      "bytes": 16433,
+      "updatedAt": "2026-10-14T12:22:31.506Z"
+    },
+    "weapons:hydra_custom": {
+      "id": "hydra_custom",
+      "name": "消防栓旋转枪 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Hyper_01.png",
+      "file": "assets/weapons/hydra_custom.png",
+      "sha256": "a536acd5a328dfcfc1a41fc69b9f4a9e2fb993e45422edf68492332093c20eee",
+      "bytes": 17313,
+      "updatedAt": "2026-10-14T12:22:32.201Z"
+    },
+    "weapons:splatspinner": {
+      "id": "splatspinner",
+      "name": "斯普拉旋转枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Quick_00.png",
+      "file": "assets/weapons/splatspinner.png",
+      "sha256": "940778c3b3a077ea80cefafb1d0223eafcd7cd164445402da88bc58ce445279d",
+      "bytes": 13023,
+      "updatedAt": "2026-10-14T12:22:32.910Z"
+    },
+    "weapons:splatspinner_collabo": {
+      "id": "splatspinner_collabo",
+      "name": "斯普拉旋转枪 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Quick_01.png",
+      "file": "assets/weapons/splatspinner_collabo.png",
+      "sha256": "b295ad09b90c4613c06d53b0b126125f8c8caac63236b0492058944f8684a9c5",
+      "bytes": 13955,
+      "updatedAt": "2026-10-14T12:22:33.018Z"
+    },
+    "weapons:splatspinner_pytn": {
+      "id": "splatspinner_pytn",
+      "name": "斯普拉旋转枪PYTN",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Quick_02.png",
+      "file": "assets/weapons/splatspinner_pytn.png",
+      "sha256": "7b5914d61d8d796fcdf8e2149ca0431ae0be94475266e07b4347dba83e9ba1b6",
+      "bytes": 14927,
+      "updatedAt": "2026-10-14T12:22:33.715Z"
+    },
+    "weapons:nautilus47": {
+      "id": "nautilus47",
+      "name": "鹦鹉螺号47",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Serein_00.png",
+      "file": "assets/weapons/nautilus47.png",
+      "sha256": "05e293d099be5be3e43516c36b37e8a8337248b39f23e1a1215dd65e739d0669",
+      "bytes": 11906,
+      "updatedAt": "2026-10-14T12:22:33.800Z"
+    },
+    "weapons:nautilus79": {
+      "id": "nautilus79",
+      "name": "鹦鹉螺号79",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Serein_01.png",
+      "file": "assets/weapons/nautilus79.png",
+      "sha256": "aa5220f6358f1fea5aa160f0c996578c982a77bb0198c96f5eae641c8025c623",
+      "bytes": 12379,
+      "updatedAt": "2026-10-14T12:22:34.537Z"
+    },
+    "weapons:barrelspinner": {
+      "id": "barrelspinner",
+      "name": "桶装旋转枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Standard_00.png",
+      "file": "assets/weapons/barrelspinner.png",
+      "sha256": "cd1ea8faa0fad7beee96066cff70100a05e6b44b02d13b3a61f24ec08e1cb3be",
+      "bytes": 13402,
+      "updatedAt": "2026-10-14T12:22:34.668Z"
+    },
+    "weapons:barrelspinner_deco": {
+      "id": "barrelspinner_deco",
+      "name": "桶装旋转枪 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Standard_01.png",
+      "file": "assets/weapons/barrelspinner_deco.png",
+      "sha256": "56323926bc19d9527dd375efd0c7d030d7164c1f1a7b9080db7f128996f5db5e",
+      "bytes": 15391,
+      "updatedAt": "2026-10-14T12:22:35.364Z"
+    },
+    "weapons:furuido": {
+      "id": "furuido",
+      "name": "邦普V",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Explosion_00.png",
+      "file": "assets/weapons/furuido.png",
+      "sha256": "4a9cf5073f08b0f68ae2be163d4dfa309e6e7daa486d5db01a4548d20e553591",
+      "bytes": 13978,
+      "updatedAt": "2026-10-14T12:22:36.073Z"
+    },
+    "weapons:order_spinner_replica": {
+      "id": "order_spinner_replica",
+      "name": "秩序旋转枪 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Spinner_Standard_O.png",
+      "file": "assets/weapons/order_spinner_replica.png",
+      "sha256": "78cd4535c153f8e765b408f994a53dd1956d009d53976209e30873c55b491231",
+      "bytes": 12453,
+      "updatedAt": "2026-10-14T12:22:36.330Z"
+    },
+    "weapons:furuido_custom": {
+      "id": "furuido_custom",
+      "name": "邦普V 改装",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Explosion_01.png",
+      "file": "assets/weapons/furuido_custom.png",
+      "sha256": "9dc036e7975e59fddba3b7860441d2cacc00ee0b7cb1f36d06b00cd21220136c",
+      "bytes": 15420,
+      "updatedAt": "2026-10-14T12:22:37.117Z"
+    },
+    "weapons:tristringer": {
+      "id": "tristringer",
+      "name": "三发猎鱼弓",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Normal_00.png",
+      "file": "assets/weapons/tristringer.png",
+      "sha256": "4292deeb32df36397ac850388a953847a07ba2fccaca903089eaf6a6dd86d850",
+      "bytes": 11223,
+      "updatedAt": "2026-10-14T12:22:37.367Z"
+    },
+    "weapons:tristringer_collabo": {
+      "id": "tristringer_collabo",
+      "name": "三发猎鱼弓 联名",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Normal_01.png",
+      "file": "assets/weapons/tristringer_collabo.png",
+      "sha256": "5884fa0f55b894da641daeda3322e868c2245e9ea3b99815d96f63dc93693069",
+      "bytes": 12475,
+      "updatedAt": "2026-10-14T12:22:37.817Z"
+    },
+    "weapons:tristringer_tou": {
+      "id": "tristringer_tou",
+      "name": "三发猎鱼弓 灯",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Normal_02.png",
+      "file": "assets/weapons/tristringer_tou.png",
+      "sha256": "843cfca6d5add8b06d3c00c85dc8c59c2f264d752305d301f03f981aca432036",
+      "bytes": 12033,
+      "updatedAt": "2026-10-14T12:22:38.227Z"
+    },
+    "weapons:order_stringer_replica": {
+      "id": "order_stringer_replica",
+      "name": "秩序猎鱼弓 复制",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Normal_O.png",
+      "file": "assets/weapons/order_stringer_replica.png",
+      "sha256": "0c52afba2bf088fce19ed7c069601d18814a20886b2e62344fd5e01654b8e953",
+      "bytes": 9476,
+      "updatedAt": "2026-10-14T12:22:38.394Z"
+    },
+    "weapons:lact450_deco": {
+      "id": "lact450_deco",
+      "name": "LACT-450 装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Short_01.png",
+      "file": "assets/weapons/lact450_deco.png",
+      "sha256": "dcad66491082208228f8f097020ea94d5aa409d7ddf80213598b14c33e4fb7e0",
+      "bytes": 14147,
+      "updatedAt": "2026-10-14T12:22:39.032Z"
+    },
+    "weapons:lact450": {
+      "id": "lact450",
+      "name": "LACT-450",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Short_00.png",
+      "file": "assets/weapons/lact450.png",
+      "sha256": "063c9686a7532bff22306566bbfb67dbd241dd1cbcb5282343be5380e4f36bf7",
+      "bytes": 13405,
+      "updatedAt": "2026-10-14T12:22:39.481Z"
+    },
+    "weapons:lact450_milk": {
+      "id": "lact450_milk",
+      "name": "LACT-450MILK",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Stringer_Short_02.png",
+      "file": "assets/weapons/lact450_milk.png",
+      "sha256": "d04172b1f4c7601957061221dcaf81aca9ccea9778bb6740ea64e048b5261d97",
+      "bytes": 14348,
+      "updatedAt": "2026-10-14T12:22:39.714Z"
+    },
+    "maps:VnNTdGFnZS0x": {
+      "id": "VnNTdGFnZS0x",
+      "name": "温泉花大峡谷",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/35f9ca08ccc2bf759774ab2cb886567c117b9287875ca92fb590c1294ddcdc1e_0.png",
+      "file": "assets/maps/VnNTdGFnZS0x.png",
+      "sha256": "24fafed7e733b2d18d5cf1998e0ca2565e1bbf14a470fadd4dac1dae6d90844e",
+      "bytes": 819812,
+      "updatedAt": "2026-10-14T12:22:44.168Z"
+    },
+    "maps:VnNTdGFnZS0z": {
+      "id": "VnNTdGFnZS0z",
+      "name": "烟管鱼市场",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/8dc2f16d39c630bab40cead5b2485ca3559e829d0d3de0c2232c7a62fefb5fa9_0.png",
+      "file": "assets/maps/VnNTdGFnZS0z.png",
+      "sha256": "56735b04cb72af962d43e106e729a249a57f2d6115485c1210cc49e61b72049b",
+      "bytes": 929301,
+      "updatedAt": "2026-10-14T12:22:47.415Z"
+    },
+    "maps:VnNTdGFnZS0y": {
+      "id": "VnNTdGFnZS0y",
+      "name": "鳗鲶区",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/898e1ae6c737a9d44552c7c81f9b710676492681525c514eadc68a6780aa52af_0.png",
+      "file": "assets/maps/VnNTdGFnZS0y.png",
+      "sha256": "85db823189aa18189553044e56ac336332d95038132c3bf94a608c89892fd72a",
+      "bytes": 914626,
+      "updatedAt": "2026-10-14T12:22:48.337Z"
+    },
+    "maps:VnNTdGFnZS00": {
+      "id": "VnNTdGFnZS00",
+      "name": "竹蛏疏洪道",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/9b1c17b2075479d0397d2fb96efbc6fa3a28900712920e5fe1e9dfc59c6abc5c_0.png",
+      "file": "assets/maps/VnNTdGFnZS00.png",
+      "sha256": "81d894bf5b247ac5796ca578c59ee876be0cc674de4bb31f5658e985918f95dc",
+      "bytes": 793328,
+      "updatedAt": "2026-10-14T12:22:50.308Z"
+    },
+    "maps:VnNTdGFnZS01": {
+      "id": "VnNTdGFnZS01",
+      "name": "鱼露遗迹",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/f14c2a64e49d243679fc0884af91e1a07dc65600f9b90aefe92d7790dcffb191_0.png",
+      "file": "assets/maps/VnNTdGFnZS01.png",
+      "sha256": "b9d83d5eba656bf2c806c83c760e5514993ece4b9b809993d65a962408411e97",
+      "bytes": 803815,
+      "updatedAt": "2026-10-14T12:22:51.512Z"
+    },
+    "maps:VnNTdGFnZS03": {
+      "id": "VnNTdGFnZS03",
+      "name": "臭鱼干温泉",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/cd84d711b47a424334569ac20f33f8e0ab6a652dc07854dcd36508a0081e9034_0.png",
+      "file": "assets/maps/VnNTdGFnZS03.png",
+      "sha256": "ac71cb6459fdcae2e46a4900b0118b7ac5a4e7f657a29e9f0f6281815c3aea17",
+      "bytes": 819144,
+      "updatedAt": "2026-10-14T12:22:53.398Z"
+    },
+    "maps:VnNTdGFnZS02": {
+      "id": "VnNTdGFnZS02",
+      "name": "鱼肉碎金属",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/de1f212e9ff0648f36cd3b8e0917ef36b3bd51445159297dcb948f34a09f2f05_0.png",
+      "file": "assets/maps/VnNTdGFnZS02.png",
+      "sha256": "95b156c093dad1fcf9700524127b4ab4657429d097d84ffc498f810de0e48e38",
+      "bytes": 933459,
+      "updatedAt": "2026-10-14T12:22:53.806Z"
+    },
+    "maps:VnNTdGFnZS04": {
+      "id": "VnNTdGFnZS04",
+      "name": "塔拉波特购物公园",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/f70e9f5af477a39ccfab631bfb81c9e2cedb4cd0947fe260847c214a6d23695f_0.png",
+      "file": "assets/maps/VnNTdGFnZS04.png",
+      "sha256": "d3ac479e351ce69a0b67c2023cf5805092438feb17f44bcdd8b4236e30f1a08d",
+      "bytes": 881945,
+      "updatedAt": "2026-10-14T12:22:55.528Z"
+    },
+    "maps:VnNTdGFnZS05": {
+      "id": "VnNTdGFnZS05",
+      "name": "比目鱼住宅区",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/488017f3ce712fca9fb37d61fe306343054449bb2d2bb1751d95f54a98564cae_0.png",
+      "file": "assets/maps/VnNTdGFnZS05.png",
+      "sha256": "b1b275a2a55fd145f8b9e253573d41727ca227999bd96a68a3bd17b082fa9eb5",
+      "bytes": 900552,
+      "updatedAt": "2026-10-14T12:22:56.778Z"
+    },
+    "maps:VnNTdGFnZS0xMA==": {
+      "id": "VnNTdGFnZS0xMA==",
+      "name": "真鲭跨海大桥",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/1db8ab338b64b464df50e7f9e270e59423ff8caac6f09679a24f1b7acf3a82f3_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xMA__.png",
+      "sha256": "69e9232b4a267cb7e7ba15e935fbdae6a6534c2389e6f7556e8586a09c5fd8e4",
+      "bytes": 839246,
+      "updatedAt": "2026-10-14T12:22:58.535Z"
+    },
+    "maps:VnNTdGFnZS0xMQ==": {
+      "id": "VnNTdGFnZS0xMQ==",
+      "name": "金眼鲷美术馆",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/b9d8cfa186d197a27e075600a107c99d9e21646d116730f0843e0fff0aaba7dd_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xMQ__.png",
+      "sha256": "2fe58f392438a9273fcee934e7aeb856fe29690581c290333b715a893b6fa6ba",
+      "bytes": 829942,
+      "updatedAt": "2026-10-14T12:22:59.882Z"
+    },
+    "maps:VnNTdGFnZS0xMg==": {
+      "id": "VnNTdGFnZS0xMg==",
+      "name": "鬼头刀SPA度假区",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/8273118c1ffe1bf6fe031c7d8c9795dab52632c9b76e8e9f01f644ac5ae0ccc0_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xMg__.png",
+      "sha256": "46d306088495e3775d475b450c014ea8d214b9e2cc1cc66e5ea2abac960f3bfe",
+      "bytes": 955769,
+      "updatedAt": "2026-10-14T12:23:01.198Z"
+    },
+    "maps:VnNTdGFnZS0xMw==": {
+      "id": "VnNTdGFnZS0xMw==",
+      "name": "海女美术大学",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/40aba8b36a9439e2d670fde5b3478819ea8a94f9e503b9d783248a5716786f35_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xMw__.png",
+      "sha256": "bf3226f04bb43c4e55e21e3cbdf60cfea767c9385fa9049efbb1e915acba1cf4",
+      "bytes": 857668,
+      "updatedAt": "2026-10-14T12:23:02.827Z"
+    },
+    "maps:VnNTdGFnZS0xNA==": {
+      "id": "VnNTdGFnZS0xNA==",
+      "name": "鲟鱼造船厂",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/48684c69d5c5a4ffaf16b712a4895545a8d01196115d514fc878ce99863bb3e9_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xNA__.png",
+      "sha256": "e943e34a9152b810ca0f66d3822261e7a50bda8cb5022e75bf8ff650d4a1ffd4",
+      "bytes": 867176,
+      "updatedAt": "2026-10-14T12:23:03.473Z"
+    },
+    "maps:VnNTdGFnZS0xNQ==": {
+      "id": "VnNTdGFnZS0xNQ==",
+      "name": "座头购物中心",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/a8ba96c3dbd015b7bc6ea4fa067245c4e9aee62b6696cb41e02d35139dd21fe7_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xNQ__.png",
+      "sha256": "e2b05025d528e7d6a63539d856e71fc55ea8fd8d47191e54a06308c6405fffe6",
+      "bytes": 929834,
+      "updatedAt": "2026-10-14T12:23:05.525Z"
+    },
+    "maps:VnNTdGFnZS0xNg==": {
+      "id": "VnNTdGFnZS0xNg==",
+      "name": "醋饭海洋世界",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/61ea801fa4ed32360dcaf83986222ded46a72dbf56194acc6d0cf4659a92ba85_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xNg__.png",
+      "sha256": "4560c96f0bb895373944f95702cea78d13dab201db71dbbc42879e89de4bda7f",
+      "bytes": 840780,
+      "updatedAt": "2026-10-14T12:23:05.939Z"
+    },
+    "maps:VnNTdGFnZS0xNw==": {
+      "id": "VnNTdGFnZS0xNw==",
+      "name": "昆布赛道",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/7b3cf118bd9f45d141cd6db0ee75b06e697fa83945c7fe1e6f8483de6a591f5f_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xNw__.png",
+      "sha256": "4eae29ef06447988e3646004dee8561677940c14c47f48850e8a686a936e7796",
+      "bytes": 778973,
+      "updatedAt": "2026-10-14T12:23:07.375Z"
+    },
+    "maps:VnNTdGFnZS0xOA==": {
+      "id": "VnNTdGFnZS0xOA==",
+      "name": "鬼蝠鲼玛利亚号",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/0b7fd997781e03eb9d5bf1875ed070f698afc654f4fe929452c65aa26c0a35fd_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xOA__.png",
+      "sha256": "3df5c93065f44791bf1c51453e3ff58b2a181baed6a781ec07d610334040de25",
+      "bytes": 966814,
+      "updatedAt": "2026-10-14T12:23:08.692Z"
+    },
+    "maps:VnNTdGFnZS0xOQ==": {
+      "id": "VnNTdGFnZS0xOQ==",
+      "name": "高脚经济特区",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/4e0e9e2046aff1d635e23946d9f0a461486d2aab349079e551037e426ac82c7a_0.png",
+      "file": "assets/maps/VnNTdGFnZS0xOQ__.png",
+      "sha256": "2f6d8a51e833abb3ee752c49202282ba929bb2c974dd3c5d65288722eb47d00a",
+      "bytes": 906995,
+      "updatedAt": "2026-10-14T12:23:10.439Z"
+    },
+    "maps:VnNTdGFnZS0yMA==": {
+      "id": "VnNTdGFnZS0yMA==",
+      "name": "大比目鱼海运中心",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/b65a70eedf129848b9d2b492bb68712abf91a5cbda13131848947fb04c51d665_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yMA__.png",
+      "sha256": "02c72e33c40de466d9986c53ba5bc5766887c8ea07fa720e2c2a6716fc8f23dc",
+      "bytes": 768136,
+      "updatedAt": "2026-10-14T12:23:10.567Z"
+    },
+    "maps:VnNTdGFnZS0yMQ==": {
+      "id": "VnNTdGFnZS0yMQ==",
+      "name": "贝见亭",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/692365fa7e56cf19cfa403a8546e69cf60fd9ca2171bde66cdaa53dc0e736ac9_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yMQ__.png",
+      "sha256": "b3b303ca76305928c4eb379090e255ee3e3619a41ca1e3f73b64bde01129d968",
+      "bytes": 739396,
+      "updatedAt": "2026-10-14T12:23:12.391Z"
+    },
+    "maps:VnNTdGFnZS0yMg==": {
+      "id": "VnNTdGFnZS0yMg==",
+      "name": "葱鲔鱼煤矿场",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/3e468df1f38d6323cc8d9446049696d66e47831e68cd31032502349b11960500_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yMg__.png",
+      "sha256": "4745e6a6bed9a3374964d80a7e96cd34042d701bf249aa71629561ae585535f5",
+      "bytes": 776213,
+      "updatedAt": "2026-10-14T12:23:13.059Z"
+    },
+    "maps:VnNTdGFnZS0yMw==": {
+      "id": "VnNTdGFnZS0yMw==",
+      "name": "旗鱼机场",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/21ea0549b3d29de56ec20affef8866297929d0defb82a27cd199c9d8dade508c_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yMw__.png",
+      "sha256": "bf6ae64fbe4581a3b2409060d9c0ae6ea43d14968af99ed5996e42f209e71733",
+      "bytes": 821475,
+      "updatedAt": "2026-10-14T12:23:14.486Z"
+    },
+    "maps:VnNTdGFnZS0yNA==": {
+      "id": "VnNTdGFnZS0yNA==",
+      "name": "龙宫转运站",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/2ba481293efc554ac217f21b6d56dd08f9d66e72b286f20714abd5ef1520f47a_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yNA__.png",
+      "sha256": "ad6209d83896561aa0209bdcb2ebac07557d4915ccce79705f0897085357b926",
+      "bytes": 735559,
+      "updatedAt": "2026-10-14T12:23:15.030Z"
+    },
+    "maps:VnNTdGFnZS0yNg==": {
+      "id": "VnNTdGFnZS0yNg==",
+      "name": "十路通高架桥下",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/249c981fdd888e79ada712ddf899bddbead508d71043af3ff96c90a7b5959c73_0.png",
+      "file": "assets/maps/VnNTdGFnZS0yNg__.png",
+      "sha256": "4a7e0efdf24c2778c38a87631e787099ccb202592469ac60f974604f480f32d4",
+      "bytes": 781635,
+      "updatedAt": "2026-10-14T12:23:16.479Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwMA==": {
+      "id": "Q29vcFN0YWdlLTEwMA==",
+      "name": "醋饭海洋世界",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Carousel.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwMA__.png",
+      "sha256": "91d0348106aeba2722e0e07135bbc30891967b1895cfd1fbf3363e903cb9556c",
+      "bytes": 122151,
+      "updatedAt": "2026-10-14T12:23:16.793Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwNg==": {
+      "id": "Q29vcFN0YWdlLTEwNg==",
+      "name": "鳗鲶区",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_District.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwNg__.png",
+      "sha256": "ca33379bd685c44ce88a2c979465248d9542dba480cde0014fea7d6da811264d",
+      "bytes": 128678,
+      "updatedAt": "2026-10-14T12:23:19.317Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwNA==": {
+      "id": "Q29vcFN0YWdlLTEwNA==",
+      "name": "鱼露遗迹",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Factory.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwNA__.png",
+      "sha256": "e19a82ca4e61838422e15300eb807a1709959a18ab376cce9eb7fd87b8c97ce9",
+      "bytes": 121607,
+      "updatedAt": "2026-10-14T12:23:19.383Z"
+    },
+    "salmon:Q29vcFN0YWdlLTg=": {
+      "id": "Q29vcFN0YWdlLTg=",
+      "name": "生筋子系统交流道遗址",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Cop_Shakehighway.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTg_.png",
+      "sha256": "124e12733a6ef5111877afc811366c618f76eb0c53339e2acb1c93c209fab3ac",
+      "bytes": 116331,
+      "updatedAt": "2026-10-24T08:39:04.604Z"
+    },
+    "salmon:Q29vcFN0YWdlLTQ=": {
+      "id": "Q29vcFN0YWdlLTQ=",
+      "name": "时不知鲑烟熏工房",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/630d89698e3e260ef12cb2a32e1cb2c4c83c0e58fc882762da1fa2cea19a5260_0.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTQ_.png",
+      "sha256": "0d798d4f84f51397cc9d61738efdf50c9242c5e57b565936a48d0e947d42a909",
+      "bytes": 678497,
+      "updatedAt": "2026-10-14T12:23:42.969Z"
+    },
+    "salmon-weapons:7065ab46c609e6d7": {
+      "id": "7065ab46c609e6d7",
+      "name": "灭熄FF",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/d6d8c3bce9bd3934a5900642cb6f87c7e340e39cccfde1f8f28ce17e3a1769b0_0.png",
+      "file": "assets/salmon-weapons/7065ab46c609e6d7.png",
+      "sha256": "2a4c757c078c5e0991ebd32228cb063d59a150af4f27a4ab7eb504b0e5586ccf",
+      "bytes": 80314,
+      "updatedAt": "2026-10-14T12:23:41.648Z"
+    },
+    "salmon:Q29vcFN0YWdlLTc=": {
+      "id": "Q29vcFN0YWdlLTc=",
+      "name": "麦年海洋发电所",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/f1e4df4cff1dc5e0acc66a9654fecf949224f7e4f6bd36305d4600ac3fa3db7b_0.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTc_.png",
+      "sha256": "468d37654a93adbb518cb56a03bf5c175aa2df503b0c081778d07c86f1b49e3a",
+      "bytes": 813677,
+      "updatedAt": "2026-10-14T12:23:41.815Z"
+    },
+    "salmon-weapons:914ca6f3cba7aa98": {
+      "id": "914ca6f3cba7aa98",
+      "name": "24式可替换伞·甲",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/1e62c90d72a8c11a91ca85be6fe6a3042514e1d77bd01ed65c22ef8e7256809a_0.png",
+      "file": "assets/salmon-weapons/914ca6f3cba7aa98.png",
+      "sha256": "24942b31d4ae0aa249a6af00dae083f60030aa41341a146aefb0ba4002ef32bd",
+      "bytes": 53036,
+      "updatedAt": "2026-10-14T12:23:42.744Z"
+    },
+    "salmon:Q29vcFN0YWdlLTk=": {
+      "id": "Q29vcFN0YWdlLTk=",
+      "name": "鲑鱼心脏斗技场",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/5f09625c9031652ca1edcf8028265b03ecc28475ab3d56910960a68430d7948a_0.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTk_.png",
+      "sha256": "492407c88b18b376f6094d8c07020fe1893ab855269c0db1c047661056a5ef61",
+      "bytes": 811920,
+      "updatedAt": "2026-10-14T12:23:42.937Z"
+    },
+    "salmon-weapons:05a0ddd5b919b698": {
+      "id": "05a0ddd5b919b698",
+      "name": "新星爆破枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/10d4a1584d1428cb164ddfbc5febc9b1e77fd05e2e9ed9de851838a94d202c15_0.png",
+      "file": "assets/salmon-weapons/05a0ddd5b919b698.png",
+      "sha256": "ba4610f358bd59a58eb26dd28e7c27319d7ada6fc0de7655d97de86b17a7e1e9",
+      "bytes": 13307,
+      "updatedAt": "2026-10-14T12:23:43.417Z"
+    },
+    "salmon-weapons:5c8a27c6818f20e6": {
+      "id": "5c8a27c6818f20e6",
+      "name": "14式竹筒枪·甲",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/9c71334ea792864a00531040e0d05a183512e11277fd1fa681170874ba039268_0.png",
+      "file": "assets/salmon-weapons/5c8a27c6818f20e6.png",
+      "sha256": "b109d0fd523026c797c231490e90dba06297fe87a0c469a76d1f21a9a6e2a64a",
+      "bytes": 10127,
+      "updatedAt": "2026-10-14T12:23:43.724Z"
+    },
+    "salmon-weapons:fe3b9b3b87ca491e": {
+      "id": "fe3b9b3b87ca491e",
+      "name": "飞溅泼桶",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/4a8bf6b4ad3b2942728bbd270bf64d5848b64f3c843a3b12ef83c0ebb5de1b3d_0.png",
+      "file": "assets/salmon-weapons/fe3b9b3b87ca491e.png",
+      "sha256": "45c52e7f510ad973906e327b9e322def801ea7f0553fe7beb86294671b830ae7",
+      "bytes": 24921,
+      "updatedAt": "2026-10-14T12:23:44.371Z"
+    },
+    "salmon-weapons:513c64dd6cd5e723": {
+      "id": "513c64dd6cd5e723",
+      "name": ".52加仑",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/01e8399a3c56707b6e9f7500d3d583ba1d400eec06449d8fe047cda1956a4ccc_0.png",
+      "file": "assets/salmon-weapons/513c64dd6cd5e723.png",
+      "sha256": "231aa1cb4d9b45a795a5c5f47031102e21d3be52f47abe26c97cb7c193eb3792",
+      "bytes": 60278,
+      "updatedAt": "2026-10-14T12:23:45.563Z"
+    },
+    "salmon-weapons:b04c2fbbe1c98e63": {
+      "id": "b04c2fbbe1c98e63",
+      "name": "宽滚筒",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/137559b59547c853e04c6cc8239cff648d2f6b297edb15d45504fae91dfc9765_0.png",
+      "file": "assets/salmon-weapons/b04c2fbbe1c98e63.png",
+      "sha256": "4d549d9079fd081ba7f3869a59e473a3983181ac9a8899ab0f5a01b3c2d564d5",
+      "bytes": 56920,
+      "updatedAt": "2026-10-14T12:23:46.649Z"
+    },
+    "salmon-weapons:3aac272457998973": {
+      "id": "3aac272457998973",
+      "name": "桶装旋转枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/fd06f01742a3b25ac57941150b3b81d56633831902f2da1f19a6244f2d8dd6fd_0.png",
+      "file": "assets/salmon-weapons/3aac272457998973.png",
+      "sha256": "dd9f2e866e649b860ad0c76eb84b74d02a60263e79ad5a55adf513fe101c7689",
+      "bytes": 19387,
+      "updatedAt": "2026-10-14T12:23:47.276Z"
+    },
+    "salmon:Q29vcFN0YWdlLTE=": {
+      "id": "Q29vcFN0YWdlLTE=",
+      "name": "鲑坝",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Cop_Shakeup.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTE_.png",
+      "sha256": "4cfa6fcccefd4c6d68631918fff499a9008bdafa4deee727abb73c51af4d8323",
+      "bytes": 128284,
+      "updatedAt": "2026-10-24T08:39:05.384Z"
+    },
+    "salmon-weapons:0578f3b3d9af08ed": {
+      "id": "0578f3b3d9af08ed",
+      "name": "L3卷管枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/96833fc0f74242cd2bc73b241aab8a00d499ce9f6557722ef6503e12af8979f4_0.png",
+      "file": "assets/salmon-weapons/0578f3b3d9af08ed.png",
+      "sha256": "5f4d6e13d780cc370a94f016ec18d80f879ba6d45067a70839e41ca540eb46a2",
+      "bytes": 21367,
+      "updatedAt": "2026-10-14T12:24:47.607Z"
+    },
+    "salmon-weapons:eb5098db38e209e1": {
+      "id": "eb5098db38e209e1",
+      "name": "满溢泡澡泼桶",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/0199e455872acba1ab8ef0040eca7f41afca48c1f9ad2c5d274323d6dbc49133_0.png",
+      "file": "assets/salmon-weapons/eb5098db38e209e1.png",
+      "sha256": "8f2e188111e0e7e87b2828e2ac94f78a73688cf4b751b49c782e588d4fc64ba1",
+      "bytes": 12620,
+      "updatedAt": "2026-10-14T12:24:47.879Z"
+    },
+    "salmon-weapons:183dfb6256c39892": {
+      "id": "183dfb6256c39892",
+      "name": "快速爆破枪 精英",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/954a5ea059f841fa5f1cd2596bb32f23b3d3b03fc3fa7972077bdbafe6051215_0.png",
+      "file": "assets/salmon-weapons/183dfb6256c39892.png",
+      "sha256": "41ee783875d66c7fbacb74edf1a37e56f6f836d07be92d73aa5f0ced2133a3f0",
+      "bytes": 50289,
+      "updatedAt": "2026-10-14T12:24:48.382Z"
+    },
+    "salmon-weapons:01b960996da8ed63": {
+      "id": "01b960996da8ed63",
+      "name": "随机",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/ui_img/473fffb2442075078d8bb7125744905abdeae651b6a5b7453ae295582e45f7d1_0.png",
+      "file": "assets/salmon-weapons/01b960996da8ed63.png",
+      "sha256": "d83716cf8988af7231174ef5127c1468e3297ba846373d72bb5d87a884b8a6c9",
+      "bytes": 1679,
+      "updatedAt": "2026-10-14T12:24:48.634Z"
+    },
+    "salmon-weapons:de8a2a542dbe6b99": {
+      "id": "de8a2a542dbe6b99",
+      "name": "S-BLAST92",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/3f8b7fb5cfa592fd251fe4f5707465e539ed79b8d4ae17df75198fbabec2e88f_0.png",
+      "file": "assets/salmon-weapons/de8a2a542dbe6b99.png",
+      "sha256": "d25262fd3dd86dbb3d0918eed26d9cbe73f59ad222a24e6427eb32f82dabf5c9",
+      "bytes": 43470,
+      "updatedAt": "2026-10-14T12:24:51.197Z"
+    },
+    "salmon-weapons:83c543ed4ae19005": {
+      "id": "83c543ed4ae19005",
+      "name": "斯普拉机动枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/b43978029ea582de3aca34549cafd810df20082b94104634093392e11e30d9bd_0.png",
+      "file": "assets/salmon-weapons/83c543ed4ae19005.png",
+      "sha256": "fd88824cebd31d7cccfe3ce1f083b8bb7d6e57cc5c34dc294b3f0bf6307b6d4b",
+      "bytes": 17707,
+      "updatedAt": "2026-10-14T12:24:51.644Z"
+    },
+    "salmon-weapons:ed647072fa99c73e": {
+      "id": "ed647072fa99c73e",
+      "name": "窄域标记枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/25e98eaba1e17308db191b740d9b89e6a977bfcd37c8dc1d65883731c0c72609_0.png",
+      "file": "assets/salmon-weapons/ed647072fa99c73e.png",
+      "sha256": "11469ec85314c5e5084811d5a496b9054392cc20706d95c4b3bd512e8cb9111b",
+      "bytes": 45015,
+      "updatedAt": "2026-10-14T12:24:51.936Z"
+    },
+    "salmon-weapons:17b8d348d6380ae9": {
+      "id": "17b8d348d6380ae9",
+      "name": "高压油管枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/2b349390a464710982d7e1496130898e7b5a66c301aa44fc9e19332d42e360ad_0.png",
+      "file": "assets/salmon-weapons/17b8d348d6380ae9.png",
+      "sha256": "3a625a1d28895f908ade4abd71bea91c83d9fbe3a9e091ecfcc9158f7b35071f",
+      "bytes": 17834,
+      "updatedAt": "2026-10-14T12:24:52.434Z"
+    },
+    "salmon-weapons:67b2e7ac4bf64e71": {
+      "id": "67b2e7ac4bf64e71",
+      "name": "雨刷刮水刀",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/3aa72d418643038a9e3248af734b0d6a0bf3d3bf9793d75912b1b959f93c2258_0.png",
+      "file": "assets/salmon-weapons/67b2e7ac4bf64e71.png",
+      "sha256": "4de974cff95d757a71d4da080655782a34433c2c9a4be5c9cfe962d139c680c3",
+      "bytes": 48581,
+      "updatedAt": "2026-10-14T12:24:52.998Z"
+    },
+    "salmon-weapons:b3ab498b8a8a0667": {
+      "id": "b3ab498b8a8a0667",
+      "name": "N-ZAP85",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/e6dbf73aa6ff9d1feb61fcabadb2d31e08b228a9736b4f5d8a5baeab9b493255_0.png",
+      "file": "assets/salmon-weapons/b3ab498b8a8a0667.png",
+      "sha256": "521a59db0df2269747b9f69f04cafcd2f7886edad9d4f93f10e4ebd95c49dda7",
+      "bytes": 10161,
+      "updatedAt": "2026-10-14T12:24:53.274Z"
+    },
+    "salmon-weapons:de148ea51e7c28fa": {
+      "id": "de148ea51e7c28fa",
+      "name": "新叶射击枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/8e134a80cd54f4235329493afd43ff754b367a65e460facfcca862b174754b0e_0.png",
+      "file": "assets/salmon-weapons/de148ea51e7c28fa.png",
+      "sha256": "93f2a5cfd4eade3e2406d6380f42d061e7e56d747f7f22bb0e4c7c1d03ce3698",
+      "bytes": 15762,
+      "updatedAt": "2026-10-14T12:24:53.594Z"
+    },
+    "salmon-weapons:2136716c07457658": {
+      "id": "2136716c07457658",
+      "name": "三发猎鱼弓",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/676d9f49276f171a93ac06646c0fbdfbeb8c3d0284a057aee306404a6034ffef_0.png",
+      "file": "assets/salmon-weapons/2136716c07457658.png",
+      "sha256": "89a18b1954f29443dece1c8f7c3153d8cb47978220024938face52d7e9c7b1ea",
+      "bytes": 23880,
+      "updatedAt": "2026-10-14T12:24:54.066Z"
+    },
+    "weapons:rapid_elite": {
+      "id": "rapid_elite",
+      "name": "快速爆破枪 精英",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_LightLong_00.png",
+      "file": "assets/weapons/rapid_elite.png",
+      "sha256": "b803eef6d26b792cb76794a3c80ee6c89648494d37017ce956522352a09e82e6",
+      "bytes": 12351,
+      "updatedAt": "2026-10-14T12:27:56.988Z"
+    },
+    "weapons:rapid_elite_wntr": {
+      "id": "rapid_elite_wntr",
+      "name": "快速爆破枪 精英WNTR",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_LightLong_02.png",
+      "file": "assets/weapons/rapid_elite_wntr.png",
+      "sha256": "8588750f4b8e41a7a5257cf2aea309597fa269f6180b97df242f3124b4b683d0",
+      "bytes": 14552,
+      "updatedAt": "2026-10-14T12:27:57.031Z"
+    },
+    "weapons:rapid_elite_deco": {
+      "id": "rapid_elite_deco",
+      "name": "快速爆破枪 精英装饰",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_LightLong_01.png",
+      "file": "assets/weapons/rapid_elite_deco.png",
+      "sha256": "3f99a43eaf9052e1da9b5904302dc41c5704339a1b84ef77e94370c71160011d",
+      "bytes": 13872,
+      "updatedAt": "2026-10-14T12:27:57.049Z"
+    },
+    "weapons:clashblaster": {
+      "id": "clashblaster",
+      "name": "冲涂爆破枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_LightShort_00.png",
+      "file": "assets/weapons/clashblaster.png",
+      "sha256": "b2e910b2434432ebc0253e4b04022f54f91ac6240b3a244a65e27eb8731f19be",
+      "bytes": 15445,
+      "updatedAt": "2026-10-14T12:27:57.074Z"
+    },
+    "weapons:rapid": {
+      "id": "rapid",
+      "name": "快速爆破枪",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/weapon/Wst_Blaster_Light_00.png",
+      "file": "assets/weapons/rapid.png",
+      "sha256": "7d375a91d339e711cf4fc54f7b40b0075f785a9916c08b306aff1ebcfdbddd4e",
+      "bytes": 14147,
+      "updatedAt": "2026-10-14T12:27:57.092Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwNw==": {
+      "id": "Q29vcFN0YWdlLTEwNw==",
+      "name": "蛮颓大巨蛋",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Manbou.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwNw__.png",
+      "sha256": "6a693a2398406c352d441b01c2f35e25038fad23dd5d759e646a8c7d0c723253",
+      "bytes": 131912,
+      "updatedAt": "2026-10-14T12:27:57.122Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwNQ==": {
+      "id": "Q29vcFN0YWdlLTEwNQ==",
+      "name": "塔拉波特购物公园",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Section.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwNQ__.png",
+      "sha256": "8961377a5f58ff74d4a322721a9a9923ea9fe96c9f173f78451770de9cdfe615",
+      "bytes": 135188,
+      "updatedAt": "2026-10-14T12:27:57.144Z"
+    },
+    "salmon:Q29vcFN0YWdlLTI=": {
+      "id": "Q29vcFN0YWdlLTI=",
+      "name": "新卷堡",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/3418d2d89ef84288c78915b9acb63b4ad48df7bfcb48c27d6597920787e147ec_0.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTI_.png",
+      "sha256": "ee63c0391222da9081ac43f8c7682b0c559296ec5a55b5fe8474e7576db36109",
+      "bytes": 729938,
+      "updatedAt": "2026-10-21T02:35:29.743Z"
+    },
+    "salmon:Q29vcFN0YWdlLTY=": {
+      "id": "Q29vcFN0YWdlLTY=",
+      "name": "漂浮落难船",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/stage_img/icon/high_resolution/1a29476c1ab5fdbc813e2df99cd290ce56dfe29755b97f671a7250e5f77f4961_0.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTY_.png",
+      "sha256": "0c4a8e6f9d26c78c2d909476cb8adb4edfe4fdec9aed203b5d5252d1db605721",
+      "bytes": 662277,
+      "updatedAt": "2026-10-24T08:39:05.198Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwMw==": {
+      "id": "Q29vcFN0YWdlLTEwMw==",
+      "name": "竹蛏疏洪道",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Temple.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwMw__.png",
+      "sha256": "39ffd69565a7f31f623911e62622bf110fdaabc7d69ba202e6a6c3566e072702",
+      "bytes": 112635,
+      "updatedAt": "2026-10-14T12:27:57.212Z"
+    },
+    "salmon:Q29vcFN0YWdlLTEwMg==": {
+      "id": "Q29vcFN0YWdlLTEwMg==",
+      "name": "海女美术大学",
+      "url": "https://raw.githubusercontent.com/Leanny/splat3/7280ff9cde8bb1c5dcef46c700c326471584d2e6/images/stage/Vss_Upland.png",
+      "file": "assets/salmon/Q29vcFN0YWdlLTEwMg__.png",
+      "sha256": "0ba3c215e9acee58e31d6a3ab5cfccde9e311df82f015dea3fd62c0f82e18c07",
+      "bytes": 117245,
+      "updatedAt": "2026-10-14T12:27:57.236Z"
+    },
+    "modes:AREA": {
+      "id": "AREA",
+      "name": "真格区域",
+      "url": "https://raw.githubusercontent.com/Cypas/splatoon3-schedule/main/nonebot_plugin_splatoon3_schedule/resource/ImageData/AREA.png",
+      "file": "assets/modes/AREA.png",
+      "sha256": "bcdd237a384442001c2c0dfd8f48bcaff52a927769c8a9f8c50bd1b5c1e25ceb",
+      "bytes": 2467,
+      "updatedAt": "2026-10-14T12:27:57.246Z"
+    },
+    "modes:LOFT": {
+      "id": "LOFT",
+      "name": "真格塔楼",
+      "url": "https://raw.githubusercontent.com/Cypas/splatoon3-schedule/main/nonebot_plugin_splatoon3_schedule/resource/ImageData/LOFT.png",
+      "file": "assets/modes/LOFT.png",
+      "sha256": "97ea1f665f1ffb5a3784638a7add3071cd4ce0d9b13e8989eeeb3e8cff8464df",
+      "bytes": 2192,
+      "updatedAt": "2026-10-14T12:27:57.255Z"
+    },
+    "modes:TURF_WAR": {
+      "id": "TURF_WAR",
+      "name": "占地对战",
+      "url": "https://raw.githubusercontent.com/Cypas/splatoon3-schedule/main/nonebot_plugin_splatoon3_schedule/resource/ImageData/TURF_WAR.png",
+      "file": "assets/modes/TURF_WAR.png",
+      "sha256": "84b30c92d52e6dd66242d3560f9c42a6d1a14feeac7577b3a5c8146b876437c9",
+      "bytes": 734,
+      "updatedAt": "2026-10-14T12:27:57.265Z"
+    },
+    "modes:CLAM": {
+      "id": "CLAM",
+      "name": "真格蛤蜊",
+      "url": "https://raw.githubusercontent.com/Cypas/splatoon3-schedule/main/nonebot_plugin_splatoon3_schedule/resource/ImageData/CLAM.png",
+      "file": "assets/modes/CLAM.png",
+      "sha256": "02921b32f91435bb8423804edf251cf6bc28933c3ddb2a1cefe42c2751e5c8eb",
+      "bytes": 1500,
+      "updatedAt": "2026-10-14T12:27:57.274Z"
+    },
+    "modes:GOAL": {
+      "id": "GOAL",
+      "name": "真格鱼虎对战",
+      "url": "https://raw.githubusercontent.com/Cypas/splatoon3-schedule/main/nonebot_plugin_splatoon3_schedule/resource/ImageData/GOAL.png",
+      "file": "assets/modes/GOAL.png",
+      "sha256": "9fcee191bcc5c4d0c328e175687fed289c73f0c4a8acae3e02989485ed9da812",
+      "bytes": 1807,
+      "updatedAt": "2026-10-14T12:27:57.283Z"
+    },
+    "festivals:splatoween-2026-official": {
+      "id": "splatoween-2026-official",
+      "name": "如果进入幻想世界想成为哪种职业？",
+      "url": "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/splatoon3_from2025/splatoon3_gp/spatfests/2026_8/16x9_NSwitch_Splatoon3_Splatfest202609_Splatoween_UK.jpg",
+      "file": "assets/festivals/splatoween-2026-official.png",
+      "sha256": "a488983e6d8ef7763cffaae7f83d68a38250958fe11d303f7f0949be654b3f91",
+      "bytes": 1080682,
+      "updatedAt": "2026-10-14T12:27:57.425Z"
+    },
+    "salmon-weapons:e115c15c4a20d8ba": {
+      "id": "e115c15c4a20d8ba",
+      "name": "斯普拉滚筒",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/536b28d9dd9fc6633a4bea4a141d63942a0ba3470fc504e5b0d02ee408798a87_0.png",
+      "file": "assets/salmon-weapons/e115c15c4a20d8ba.png",
+      "sha256": "fb81036eaad5b2ff6e63fa7b21add37265c058163a510d03453eae1e15db0910",
+      "bytes": 15228,
+      "updatedAt": "2026-10-21T02:35:30.393Z"
+    },
+    "salmon-weapons:c19e07d4db9a4075": {
+      "id": "c19e07d4db9a4075",
+      "name": "爆炸泼桶",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/1e32f5e1e65793585f6423e4fcae1a146a79d2a09e6e15575015af8a2032a4fe_0.png",
+      "file": "assets/salmon-weapons/c19e07d4db9a4075.png",
+      "sha256": "800f1eba231f45c9bd3a8b854dd48ee9d5c58db56d3eb9b3034c5991bf6520ed",
+      "bytes": 76635,
+      "updatedAt": "2026-10-21T02:35:30.742Z"
+    },
+    "salmon-weapons:e60629ecf35192a1": {
+      "id": "e60629ecf35192a1",
+      "name": "斯普拉射击枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/e3874d7d504acf89488ad7f68d29a348caea1a41cd43bd9a272069b0c0466570_0.png",
+      "file": "assets/salmon-weapons/e60629ecf35192a1.png",
+      "sha256": "5e12bc369feceebc280462d32806798d3b653f2a139e5a0b39feec6a583920de",
+      "bytes": 16538,
+      "updatedAt": "2026-10-21T02:35:31.013Z"
+    },
+    "salmon-weapons:885c30f6102de958": {
+      "id": "885c30f6102de958",
+      "name": ".96加仑",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/fe2b351799aa48fcb48154299ff0ccf0b0413fc291ffc49456e93db29d2f1db5_0.png",
+      "file": "assets/salmon-weapons/885c30f6102de958.png",
+      "sha256": "bd248ae1afcb2a2384c86f4f2f98e5fa3434df8071d0ac5d5264f87ec8fe9a36",
+      "bytes": 59462,
+      "updatedAt": "2026-10-21T02:35:31.302Z"
+    },
+    "salmon-weapons:3b31490a368e92e1": {
+      "id": "3b31490a368e92e1",
+      "name": "开尔文525",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/802d3d501738c620b4f709203ccad343490bd3340b2fda21eb38a362320dc6ed_0.png",
+      "file": "assets/salmon-weapons/3b31490a368e92e1.png",
+      "sha256": "f2e80f051499677191cb26e1adc02c2058d6b1ab1a784192faa992bf46754e57",
+      "bytes": 28619,
+      "updatedAt": "2026-10-24T08:39:05.701Z"
+    },
+    "salmon-weapons:830801a9f4555917": {
+      "id": "830801a9f4555917",
+      "name": "冲涂爆破枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/be8ba95bd3017a83876e7f769ee37ee459ee4b2d6eca03fceeb058c510adbb61_0.png",
+      "file": "assets/salmon-weapons/830801a9f4555917.png",
+      "sha256": "2eda84b6463eb0d8d8fb266266aebc83f0e501985e161fc12c954a25af68f102",
+      "bytes": 18241,
+      "updatedAt": "2026-10-24T08:39:06.010Z"
+    },
+    "salmon-weapons:961a7063fc94f087": {
+      "id": "961a7063fc94f087",
+      "name": "斯普拉蓄力狙击枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/3f99800b569e286305669b7ab28dc3ff0f0b1b015600569d5ac30ab8a97047a0_0.png",
+      "file": "assets/salmon-weapons/961a7063fc94f087.png",
+      "sha256": "ebf66d96d1e7307a3c588ba578ddac6dd4109fb44eb8b8b113555e9e02e8f640",
+      "bytes": 9531,
+      "updatedAt": "2026-10-24T08:39:06.299Z"
+    },
+    "salmon-weapons:85c6eda8dffc77a0": {
+      "id": "85c6eda8dffc77a0",
+      "name": "太空射击枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/8034dd1acde77c1a2df32197c12faa5ba1d65b43d008edd1b40f16fa8d106944_0.png",
+      "file": "assets/salmon-weapons/85c6eda8dffc77a0.png",
+      "sha256": "10e4a8702b08fefbcea9ac53dfb9347f214a3023bc065a302b15cb7ed67eb01d",
+      "bytes": 46520,
+      "updatedAt": "2026-10-24T08:39:06.619Z"
+    },
+    "salmon-weapons:b5b716854159da15": {
+      "id": "b5b716854159da15",
+      "name": "巨齿刮水刀 薄荷",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/7175449ebf69cd8c6125538e08682750b71f39403dc0ca336d58c64a48c4cc18_0.png",
+      "file": "assets/salmon-weapons/b5b716854159da15.png",
+      "sha256": "8cae94a713dc0a9515c7b760b958a4c6c4a4db0b3fe857ec210fd3b7732b3f4b",
+      "bytes": 80651,
+      "updatedAt": "2026-10-24T08:39:06.867Z"
+    },
+    "salmon-weapons:5567ca94a5374d21": {
+      "id": "5567ca94a5374d21",
+      "name": "广域标记枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/6e58a0747ab899badcb6f351512c6034e0a49bd6453281f32c7f550a2132fd65_0.png",
+      "file": "assets/salmon-weapons/5567ca94a5374d21.png",
+      "sha256": "dc347d2884610f52c0476a38d9144a44aadd0afe8b589ff5d50b08ebe7d24744",
+      "bytes": 47798,
+      "updatedAt": "2026-10-24T08:39:06.931Z"
+    },
+    "salmon-weapons:535d3c822bba0415": {
+      "id": "535d3c822bba0415",
+      "name": "鱿快洁α",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/0cdd6036a6677d68bf28e1014b09a6f5a043e969027e532cd008049baace6527_0.png",
+      "file": "assets/salmon-weapons/535d3c822bba0415.png",
+      "sha256": "5e223dea57de908d2f3a2fec7ef2368bfa044206f9b783ce7573c13460d5de00",
+      "bytes": 12782,
+      "updatedAt": "2026-10-24T08:39:07.229Z"
+    },
+    "salmon-weapons:3ab1a91f59f81345": {
+      "id": "3ab1a91f59f81345",
+      "name": "文森",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/c1f1f56982bd7d28714615a69da6e33c5157ec22b1c62092ec8d60a67b6b29ef_0.png",
+      "file": "assets/salmon-weapons/3ab1a91f59f81345.png",
+      "sha256": "0a24f245635d8ffffe71c84e5a707b7732d09e68b595dc4b3bbfd6feec519fda",
+      "bytes": 35377,
+      "updatedAt": "2026-10-24T08:39:07.282Z"
+    },
+    "salmon-weapons:935949ea2945806b": {
+      "id": "935949ea2945806b",
+      "name": "专业模型枪MG",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/5ec00bcf96c7a3f731d7a2e67f60f802f33d22f07177b94d5905f471b08b629f_0.png",
+      "file": "assets/salmon-weapons/935949ea2945806b.png",
+      "sha256": "b0882e6923cc3de834e61745835f70282e1b8ecc768c5939c4f110329ab73fe1",
+      "bytes": 14255,
+      "updatedAt": "2026-10-24T08:39:07.523Z"
+    },
+    "salmon-weapons:cd34251e67bd3f3e": {
+      "id": "cd34251e67bd3f3e",
+      "name": "斯普拉旋转枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/32dbc48e000d5d2015468e1dafc05e7c24581a73e54e758af0c8b9e2db3db550_0.png",
+      "file": "assets/salmon-weapons/cd34251e67bd3f3e.png",
+      "sha256": "f255bf6becdd3453c92da570d6aad008de71a64cf6c002ee7d20d3e353d2924f",
+      "bytes": 16592,
+      "updatedAt": "2026-10-24T08:39:07.599Z"
+    },
+    "salmon-weapons:dc9f150e86663adb": {
+      "id": "dc9f150e86663adb",
+      "name": "公升4K",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/ed294b2c7b3111988d577d7efddb9e5e475efc5e0932e5416efedc41fd98eb04_0.png",
+      "file": "assets/salmon-weapons/dc9f150e86663adb.png",
+      "sha256": "5d75c2e5ed1a17710d2d0f9f31e644990e699d8797ae35bff7f142a21d1731be",
+      "bytes": 13230,
+      "updatedAt": "2026-10-24T08:39:07.810Z"
+    },
+    "salmon-weapons:03146bb3dc0defd4": {
+      "id": "03146bb3dc0defd4",
+      "name": "可变式滚筒",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/8351e99589f03f49b5d681d36b083aaffd9c486a0558ab957ac44b0db0bb58bb_0.png",
+      "file": "assets/salmon-weapons/03146bb3dc0defd4.png",
+      "sha256": "f2c846f57c882b0e34ad09fbc6ed0ba264b42d9e6b2c73d2c6d1a7d359ede95f",
+      "bytes": 18776,
+      "updatedAt": "2026-10-24T08:39:07.922Z"
+    },
+    "salmon-weapons:c100f88e8b925e1c": {
+      "id": "c100f88e8b925e1c",
+      "name": "消防栓旋转枪",
+      "url": "https://assets.splatoon3.ink/splatnet/v3/weapon_illust/34fe0401b6f6a0b09839696fc820ece9570a9d56e3a746b65f0604dec91a9920_0.png",
+      "file": "assets/salmon-weapons/c100f88e8b925e1c.png",
+      "sha256": "f5899f339eaea1d29f94a09926acc5914b927c8b577adc7beae5a77f57e0755a",
+      "bytes": 23824,
+      "updatedAt": "2026-10-24T08:39:08.132Z"
+    },
+    "weapons:undefined-0": {
+      "id": "undefined-0",
+      "name": "并发校验",
+      "url": "https://example.com/0.png",
+      "file": "assets/weapons/undefined-0.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:08.884Z"
+    },
+    "weapons:undefined-1": {
+      "id": "undefined-1",
+      "name": "并发校验",
+      "url": "https://example.com/1.png",
+      "file": "assets/weapons/undefined-1.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:08.935Z"
+    },
+    "weapons:undefined-2": {
+      "id": "undefined-2",
+      "name": "并发校验",
+      "url": "https://example.com/2.png",
+      "file": "assets/weapons/undefined-2.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:08.973Z"
+    },
+    "weapons:undefined-3": {
+      "id": "undefined-3",
+      "name": "并发校验",
+      "url": "https://example.com/3.png",
+      "file": "assets/weapons/undefined-3.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.012Z"
+    },
+    "weapons:undefined-4": {
+      "id": "undefined-4",
+      "name": "并发校验",
+      "url": "https://example.com/4.png",
+      "file": "assets/weapons/undefined-4.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.049Z"
+    },
+    "weapons:undefined-5": {
+      "id": "undefined-5",
+      "name": "并发校验",
+      "url": "https://example.com/5.png",
+      "file": "assets/weapons/undefined-5.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.084Z"
+    },
+    "weapons:undefined-6": {
+      "id": "undefined-6",
+      "name": "并发校验",
+      "url": "https://example.com/6.png",
+      "file": "assets/weapons/undefined-6.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.124Z"
+    },
+    "weapons:undefined-7": {
+      "id": "undefined-7",
+      "name": "并发校验",
+      "url": "https://example.com/7.png",
+      "file": "assets/weapons/undefined-7.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.153Z"
+    },
+    "weapons:undefined-8": {
+      "id": "undefined-8",
+      "name": "并发校验",
+      "url": "https://example.com/8.png",
+      "file": "assets/weapons/undefined-8.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.184Z"
+    },
+    "weapons:undefined-9": {
+      "id": "undefined-9",
+      "name": "并发校验",
+      "url": "https://example.com/9.png",
+      "file": "assets/weapons/undefined-9.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.214Z"
+    },
+    "weapons:undefined-10": {
+      "id": "undefined-10",
+      "name": "并发校验",
+      "url": "https://example.com/10.png",
+      "file": "assets/weapons/undefined-10.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.244Z"
+    },
+    "weapons:undefined-11": {
+      "id": "undefined-11",
+      "name": "并发校验",
+      "url": "https://example.com/11.png",
+      "file": "assets/weapons/undefined-11.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.275Z"
+    },
+    "weapons:undefined-12": {
+      "id": "undefined-12",
+      "name": "并发校验",
+      "url": "https://example.com/12.png",
+      "file": "assets/weapons/undefined-12.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.309Z"
+    },
+    "weapons:undefined-13": {
+      "id": "undefined-13",
+      "name": "并发校验",
+      "url": "https://example.com/13.png",
+      "file": "assets/weapons/undefined-13.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.338Z"
+    },
+    "weapons:undefined-14": {
+      "id": "undefined-14",
+      "name": "并发校验",
+      "url": "https://example.com/14.png",
+      "file": "assets/weapons/undefined-14.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.368Z"
+    },
+    "weapons:undefined-15": {
+      "id": "undefined-15",
+      "name": "并发校验",
+      "url": "https://example.com/15.png",
+      "file": "assets/weapons/undefined-15.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.397Z"
+    },
+    "weapons:undefined-16": {
+      "id": "undefined-16",
+      "name": "并发校验",
+      "url": "https://example.com/16.png",
+      "file": "assets/weapons/undefined-16.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.426Z"
+    },
+    "weapons:undefined-17": {
+      "id": "undefined-17",
+      "name": "并发校验",
+      "url": "https://example.com/17.png",
+      "file": "assets/weapons/undefined-17.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.461Z"
+    },
+    "weapons:undefined-18": {
+      "id": "undefined-18",
+      "name": "并发校验",
+      "url": "https://example.com/18.png",
+      "file": "assets/weapons/undefined-18.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.492Z"
+    },
+    "weapons:undefined-19": {
+      "id": "undefined-19",
+      "name": "并发校验",
+      "url": "https://example.com/19.png",
+      "file": "assets/weapons/undefined-19.png",
+      "sha256": "b17268f6b9745059d340a9f57a06526e57fb9552c49a3ec9e184600012c2cacf",
+      "bytes": 127,
+      "updatedAt": "2026-10-24T08:39:09.521Z"
+    }
+  }
+}
