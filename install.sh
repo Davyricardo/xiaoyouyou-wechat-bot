@@ -16,7 +16,6 @@ WEBUI_HOST="0.0.0.0"
 WEBUI_PORT="8088"
 DRY=0
 SKIP_DEPS=0
-ASSUME_YES=0
 CONF_ONLY=0
 
 while [ $# -gt 0 ]; do
@@ -28,8 +27,7 @@ while [ $# -gt 0 ]; do
     --dry-run) DRY=1; shift ;;
     --no-deps) SKIP_DEPS=1; shift ;;
     --configure-only) CONF_ONLY=1; shift ;;
-    -y|--yes) ASSUME_YES=1; shift ;;
-    -h|--help) sed -n '2,12p' "$0"; exit 0 ;;
+    -h|--help) sed -n '2,11p' "$0"; exit 0 ;;
     *) printf '未知参数：%s\n' "$1" >&2; exit 2 ;;
   esac
 done
@@ -291,11 +289,19 @@ for u in xiaoyouyou-aliyun.service xiaoyouyou-webui.service \
 done
 run systemctl daemon-reload
 
-say "启用面板与看门狗（桥接与自动登录等你绑定群后再启用）"
+say "启用面板与看门狗"
 run systemctl enable --now xiaoyouyou-webui.service
 run systemctl enable --now xiaoyouyou-watchdog.timer
-run systemctl disable xiaoyouyou-aliyun.service >/dev/null 2>&1 || true
-run systemctl disable xiaoyouyou-auto-relogin.timer >/dev/null 2>&1 || true
+# 已绑定真实群（重跑安装）就顺手把桥接和自动登录拉起来；
+# 还是占位群就保持未启用，等面板里选群后再 enable —— 避免重启机器后桥接悄悄不自启。
+if [ -f "$CFG" ] && ! grep -q '123456789@chatroom' "$CFG"; then
+  ok "检测到已绑定授权群，启用桥接与自动登录"
+  run systemctl enable --now xiaoyouyou-aliyun.service
+  run systemctl enable --now xiaoyouyou-auto-relogin.timer
+else
+  run systemctl disable xiaoyouyou-aliyun.service 2>/dev/null || true
+  run systemctl disable xiaoyouyou-auto-relogin.timer 2>/dev/null || true
+fi
 fi
 
 # ---------------------------------------------------------------- 6. 输出
