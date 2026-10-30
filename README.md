@@ -95,6 +95,28 @@ sudo bash install.sh
 
 **重跑是安全的**：`private/*.env`、`bot-config.json` 已存在就保留，容器 token 与面板令牌都不会轮换。
 
+### 国内网络 / 阿里云镜像
+
+项目依赖的微信容器镜像只在 Docker Hub（`dandan310/agent-wechat:0.12.0-mentions.6`），**没有官方阿里云镜像**。国内 ECS 拉取慢时，用阿里云 ACR 个人版（免费）同步一次，之后走内网：
+
+```bash
+# 1. 在一台能拉 Docker Hub 的机器上（或 ECS 上重试）
+docker pull dandan310/agent-wechat:0.12.0-mentions.6
+docker tag  dandan310/agent-wechat:0.12.0-mentions.6 \
+            registry.cn-hangzhou.aliyuncs.com/<命名空间>/agent-wechat:0.12.0-mentions.6
+
+# 2. 登录并推送（命名空间先在 ACR 控制台「个人版」里创建）
+docker login registry.cn-hangzhou.aliyuncs.com
+docker push registry.cn-hangzhou.aliyuncs.com/<命名空间>/agent-wechat:0.12.0-mentions.6
+
+# 3. 部署时指定镜像
+sudo bash install.sh --image registry.cn-hangzhou.aliyuncs.com/<命名空间>/agent-wechat:0.12.0-mentions.6
+```
+
+已经装过的机器：改 `private/wechat.env` 里的 `XYY_IMAGE=`，再 `cd /opt/xiaoyouyou && docker compose up -d`。
+
+> ⚠️ 这个镜像带群 @ mention 补丁（`capabilities: group-mentions-v1`）。**不要**换成官方 `thisnick/agent-wechat` 或别的 tag —— 会丢 `isMentioned` 字段，机器人完全不响应。
+
 ### 手动步骤
 
 ```bash

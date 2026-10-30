@@ -1,7 +1,7 @@
 services:
   wechat:
     # 带群 @ mention 字段的镜像分支
-    image: dandan310/agent-wechat:0.12.0-mentions.6
+    image: ${XYY_IMAGE:-dandan310/agent-wechat:0.12.0-mentions.6}
     container_name: splatoon-wechat-test
     restart: unless-stopped
     shm_size: 1gb

@@ -6,6 +6,7 @@
 #   sudo bash install.sh --dry-run      # 只打印将要执行的动作，不改系统
 #   sudo bash install.sh --no-deps      # 跳过依赖安装（docker/node 已就绪时）
 #   sudo bash install.sh --base /srv/xyy --port 9000
+#   sudo bash install.sh --image registry.cn-hangzhou.aliyuncs.com/<ns>/agent-wechat:0.12.0-mentions.6
 #
 # 装完只差两步：打开面板 → 微信扫码 → 选群设为授权群（会自动启用桥接）。
 set -euo pipefail
@@ -17,6 +18,7 @@ WEBUI_PORT="8088"
 DRY=0
 SKIP_DEPS=0
 CONF_ONLY=0
+IMAGE=""
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -27,6 +29,7 @@ while [ $# -gt 0 ]; do
     --dry-run) DRY=1; shift ;;
     --no-deps) SKIP_DEPS=1; shift ;;
     --configure-only) CONF_ONLY=1; shift ;;
+    --image) IMAGE="$2"; shift 2 ;;
     -h|--help) sed -n '2,11p' "$0"; exit 0 ;;
     *) printf '未知参数：%s\n' "$1" >&2; exit 2 ;;
   esac
@@ -163,6 +166,18 @@ if [ ! -f "$ENV_FILE" ]; then
   fi
 else
   ok "private/wechat.env 已存在，保留（token 不轮换）"
+fi
+
+# 3.1b 自定义镜像仓库（阿里云 ACR 等），写进 wechat.env 供 compose 插值
+if [ -n "$IMAGE" ]; then
+  say "使用自定义镜像：$IMAGE"
+  if [ "$DRY" != 1 ]; then
+    if grep -q '^XYY_IMAGE=' "$ENV_FILE"; then
+      sed -i "s|^XYY_IMAGE=.*|XYY_IMAGE=$IMAGE|" "$ENV_FILE"
+    else
+      printf 'XYY_IMAGE=%s\n' "$IMAGE" >> "$ENV_FILE"
+    fi
+  fi
 fi
 
 # 3.2 LLM 配置单独一个文件（env-config 会合并 private/*.env）
