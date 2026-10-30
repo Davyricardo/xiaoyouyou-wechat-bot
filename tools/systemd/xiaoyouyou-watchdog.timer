@@ -1,0 +1,11 @@
+[Unit]
+Description=每 2 分钟检查小鱿鱿微信容器是否被停
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=10s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

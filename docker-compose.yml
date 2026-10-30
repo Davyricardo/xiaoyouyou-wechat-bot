@@ -16,7 +16,7 @@ services:
       - wechat-home:/home/wechat
       - wechat-data:/data
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf -H 'Authorization: Bearer $AGENT_WECHAT_TOKEN' http://127.0.0.1:6174/api/status >/dev/null || exit 1"]
+      test: ["CMD-SHELL", "curl -sf -H 'Authorization: Bearer $$AGENT_WECHAT_TOKEN' http://127.0.0.1:6174/api/status >/dev/null || exit 1"]
       interval: 60s
       timeout: 10s
       retries: 3

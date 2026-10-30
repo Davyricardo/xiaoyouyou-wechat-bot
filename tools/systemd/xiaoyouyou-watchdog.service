@@ -1,0 +1,11 @@
+[Unit]
+Description=小鱿鱿微信容器看门狗（只拉起容器，绝不登录）
+Documentation=https://github.com/Davyricardo/xiaoyouyou-wechat-bot
+After=docker.service
+
+[Service]
+Type=oneshot
+Environment=HOME=__DEST__/private
+Environment=XYY_HOME=__DEST__
+ExecStart=__NODE__ __DEST__/health-watchdog.js
+# 人工长时间停机：创建 __DEST__/private/.local/state/splatoon-bridge/watchdog-disabled

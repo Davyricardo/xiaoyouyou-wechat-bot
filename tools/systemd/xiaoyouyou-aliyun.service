@@ -1,0 +1,25 @@
+[Unit]
+Description=小鱿鱿微信群桥接
+Documentation=https://github.com/Davyricardo/xiaoyouyou-wechat-bot
+After=network-online.target docker.service
+Wants=network-online.target
+# 常驻进程：任何退出都要被拉起，不进入 failed 永久停摆
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+# HOME 决定状态目录（$HOME/.local/state/splatoon-bridge），必须指到 private
+Environment=HOME=__DEST__/private
+Environment=XYY_HOME=__DEST__
+Environment=WX_API_BASE=http://127.0.0.1:6174
+EnvironmentFile=-__DEST__/private/wechat.env
+EnvironmentFile=-__DEST__/private/llm.env
+WorkingDirectory=__DEST__
+ExecStart=__NODE__ __DEST__/bridge-v3.3.js
+Restart=always
+RestartSec=10
+# 桥接收到 SIGTERM 后 3 秒内退出；20 秒兜底，避免 stop 空转 60 秒
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

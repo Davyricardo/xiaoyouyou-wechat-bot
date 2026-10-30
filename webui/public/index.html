@@ -98,6 +98,7 @@ code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px soli
   <div class="brand"><span class="dot"></span>小鱿鱿</div>
   <nav id="nav">
     <button data-tab="overview" class="active"><span class="ico">◉</span>概览</button>
+    <button data-tab="login"><span class="ico">⤷</span>登录</button>
     <button data-tab="chats"><span class="ico">☰</span>群聊</button>
     <button data-tab="persona"><span class="ico">✎</span>人设</button>
     <button data-tab="chat"><span class="ico">◍</span>聊天</button>
@@ -118,6 +119,25 @@ code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px soli
     <div class="card" style="margin-top:16px">
       <h2>最近事件 <span class="tag">recovery-events</span></h2>
       <div id="events" class="empty">加载中…</div>
+    </div>
+  </section>
+
+  <!-- 登录 -->
+  <section id="tab-login" hidden>
+    <h1>微信登录</h1>
+    <p class="sub">用要当机器人的微信小号扫码；登录成功后会自动记住这个账号</p>
+    <div class="card">
+      <h2>当前状态 <span class="tag" id="loginStateTag">—</span></h2>
+      <div id="loginBox"><div class="empty">点下面的按钮生成登录二维码</div></div>
+      <div class="row">
+        <div><button class="primary" id="loginStart">生成登录二维码</button></div>
+        <div><button id="loginCancel">取消</button></div>
+        <div><button id="loginRefresh">刷新状态</button></div>
+      </div>
+      <p class="hint">
+        二维码约 3 分钟有效；手机扫完还要在手机上点「确认登录」，只扫码不确认会一直停在二维码页。<br>
+        容器没起来时这里会报连接失败——先看 <code>docker compose ps</code>。
+      </p>
     </div>
   </section>
 
@@ -164,9 +184,14 @@ code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px soli
   <!-- 聊天 -->
   <section id="tab-chat" hidden>
     <h1>聊天</h1>
-    <p class="sub">自动回复与聊天风格；写入 private/wechat.env，重启桥接生效</p>
+    <p class="sub">自动回复与聊天风格；写入 private/llm.env，保存后自动重启桥接</p>
     <div class="card">
       <h2>开关与模式</h2>
+      <div class="field">
+        <label>模型厂商（选完自动填地址和模型，仍可手改）</label>
+        <select id="llmPreset"><option value="">— 选择厂商 —</option></select>
+        <p class="hint" id="llmPresetNote" style="margin:6px 0 0">国内厂商都走 OpenAI 兼容接口，密钥填自己的。</p>
+      </div>
       <div class="row">
         <div class="field">
           <label>自动聊天模式</label>
@@ -221,8 +246,8 @@ code{font-family:var(--mono);font-size:12px;background:var(--bg);border:1px soli
           <input id="llmChimeDaily" type="number" placeholder="12">
         </div>
       </div>
-      <button class="primary" id="saveLlm">保存设置</button>
-      <p class="hint">模型名要和你网关里配置的一致。国内模型（DeepSeek / 通义 / Kimi / GLM）通过 magpie 之类的聚合网关接入最省事。</p>
+      <button class="primary" id="saveLlm">保存并重启桥接</button>
+      <p class="hint">选厂商会自动填地址和模型；模型名要和服务商控制台里的一致。密钥只写进服务器 <code>private/llm.env</code>，面板不回显。</p>
     </div>
   </section>
 
@@ -294,6 +319,7 @@ document.querySelectorAll('#nav button').forEach((b) => {
     document.querySelectorAll('main section').forEach((s) => { s.hidden = true; });
     $('#tab-' + b.dataset.tab).hidden = false;
     if (b.dataset.tab === 'chats') loadChats();
+    if (b.dataset.tab === 'login') loadLogin();
     if (b.dataset.tab === 'memory') loadMemory();
     if (b.dataset.tab === 'overview') loadStatus();
   };
@@ -318,6 +344,13 @@ async function loadStatus() {
         : (lastMin < 60 ? `运行中 · ${lastMin} 分钟前有消息`
           : `运行中 · 最近活动 ${Math.round(lastMin / 60)} 小时前`));
     add('微信容器', liveTxt, !c.ok ? 'bad' : (lastMin != null && lastMin > 120 ? 'warn' : 'ok'));
+    const svc = d.service || {};
+    const svcTxt = svc.active === 'active' ? '运行中'
+      : (svc.active === 'failed' ? '启动失败'
+        : (svc.enabled === 'disabled' ? '未启用（先绑群）' : (svc.active || '未知')));
+    add('桥接服务', svcTxt, svc.active === 'active' ? 'ok' : 'warn');
+    const lg = d.login || {};
+    if (lg.user) add('微信账号', lg.user, 'ok');
     add('授权群', b.chatName || '未设置', b.chatName ? '' : 'warn');
     add('机器人昵称', b.botNick || '—');
     add('自动聊天', l.mode === 'off' ? '关闭' : (l.mode === 'all' ? '全群' : '仅管理员'), l.mode === 'off' ? '' : 'ok');
@@ -342,6 +375,86 @@ async function loadEvents() {
     });
   } catch (e) { }
 }
+
+// ---------- 登录 ----------
+let loginTimer = null;
+
+function loginStateText(s) {
+  return {
+    idle: '未开始', connecting: '连接容器…', waiting_scan: '等待扫码',
+    phone_confirm: '已扫码，等手机确认', success: '登录成功', failed: '失败',
+  }[s] || s || '—';
+}
+
+function renderLogin(l) {
+  $('#loginStateTag').textContent = loginStateText(l.state);
+  const box = $('#loginBox');
+  if ((l.state === 'waiting_scan' || l.state === 'phone_confirm') && l.qr) {
+    box.className = '';
+    box.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = l.qr;
+    img.alt = '微信登录二维码';
+    img.style.cssText = 'width:240px;height:240px;image-rendering:pixelated;background:#fff;border-radius:8px;padding:8px';
+    box.appendChild(img);
+    box.appendChild(el('p', 'hint', l.state === 'phone_confirm'
+      ? '已扫码，请在手机上点「确认登录」'
+      : '用微信扫码，扫完在手机上点「确认登录」'));
+  } else if (l.state === 'success') {
+    box.className = '';
+    box.innerHTML = '<div class="msg"><span class="who">已登录</span><span class="txt">' +
+      (l.user || '') + '（账号已记住）</span></div>';
+  } else if (l.state === 'failed') {
+    box.className = 'empty';
+    box.textContent = '登录失败：' + (l.error || '未知原因');
+  } else if (l.state === 'connecting') {
+    box.className = 'empty';
+    box.textContent = '正在连接微信容器…';
+  } else {
+    box.className = 'empty';
+    box.textContent = '点下面的按钮生成登录二维码';
+  }
+}
+
+function stopPolling() { if (loginTimer) { clearInterval(loginTimer); loginTimer = null; } }
+
+function startPolling() {
+  if (loginTimer) return;
+  loginTimer = setInterval(async () => {
+    try {
+      const d = await api('/api/login/status');
+      const l = d.login || {};
+      renderLogin(l);
+      if (!['connecting', 'waiting_scan', 'phone_confirm'].includes(l.state)) {
+        stopPolling();
+        if (l.state === 'success') { toast('登录成功'); loadStatus(); }
+      }
+    } catch (e) { stopPolling(); }
+  }, 2000);
+}
+
+async function loadLogin() {
+  try {
+    const d = await api('/api/login/status');
+    const l = d.login || {};
+    renderLogin(l);
+    if (['connecting', 'waiting_scan', 'phone_confirm'].includes(l.state)) startPolling();
+  } catch (e) { toast(e.message, true); }
+}
+
+$('#loginStart').onclick = async () => {
+  const d = await api('/api/login/start', { method: 'POST' });
+  const l = d.login || {};
+  renderLogin(l);
+  startPolling();
+  if (l.state === 'failed') toast(l.error || '登录失败', true);
+};
+$('#loginCancel').onclick = async () => {
+  const d = await api('/api/login/cancel', { method: 'POST' });
+  stopPolling();
+  renderLogin(d.login || {});
+};
+$('#loginRefresh').onclick = loadLogin;
 
 // ---------- 群聊 ----------
 async function loadChats() {
@@ -395,10 +508,18 @@ async function selectChat(c) {
 
 async function setAuthorized(c) {
   if (!c.isGroup) { toast('只能选群聊，不能选私聊', true); return; }
-  if (!confirm(`把「${c.name}」设为授权群？\n机器人之后只在这个群工作。`)) return;
-  const d = await api('/api/config', { method: 'PUT', body: JSON.stringify({ chatId: c.id, chatName: c.name }) });
-  if (d.ok) { toast('已设为授权群，重启桥接后生效'); loadChats(); }
-  else toast(d.error, true);
+  if (!confirm(`把「${c.name}」设为授权群并启用桥接？\n机器人之后只在这个群工作。`)) return;
+  toast('正在保存并启用桥接…');
+  const d = await api('/api/config', {
+    method: 'PUT',
+    body: JSON.stringify({ chatId: c.id, chatName: c.name, apply: true }),
+  });
+  if (d.ok) {
+    if (d.applied) toast('已设为授权群，桥接已启用');
+    else toast(d.note || '配置已保存，但桥接没起来', true);
+    loadChats();
+    loadStatus();
+  } else toast(d.error, true);
 }
 
 // ---------- 人设 ----------
@@ -413,6 +534,31 @@ $('#savePersona').onclick = async () => {
 };
 
 // ---------- 聊天设置 ----------
+let PRESETS = [];
+
+async function loadPresets() {
+  if (PRESETS.length) return;
+  try {
+    const d = await api('/api/presets');
+    PRESETS = d.presets || [];
+    const sel = $('#llmPreset');
+    PRESETS.forEach((p) => {
+      const o = document.createElement('option');
+      o.value = p.id;
+      o.textContent = p.name;
+      sel.appendChild(o);
+    });
+  } catch (e) { /* 预设加载失败不影响手填 */ }
+}
+
+$('#llmPreset').onchange = () => {
+  const p = PRESETS.find((x) => x.id === $('#llmPreset').value);
+  if (!p) return;
+  if (p.url) $('#llmUrl').value = p.url;
+  if (p.model) $('#llmModel').value = p.model;
+  $('#llmPresetNote').textContent = p.note || '';
+};
+
 async function loadLlm() {
   const d = await api('/api/llm');
   if (!d.ok) return toast(d.error, true);
@@ -439,9 +585,14 @@ $('#saveLlm').onclick = async () => {
     maxChars: $('#llmMaxChars').value.trim(),
     chimeDaily: $('#llmChimeDaily').value.trim(),
     key: $('#llmKey').value.trim(),
+    apply: true,
   };
   const d = await api('/api/llm', { method: 'PUT', body: JSON.stringify(payload) });
-  if (d.ok) toast('已保存，重启桥接后生效'); else toast(d.error, true);
+  if (d.ok) {
+    if (d.applied) toast('已保存并重启桥接');
+    else toast(d.note || '已保存，桥接未重启', d.skipped ? false : true);
+    loadStatus();
+  } else toast(d.error, true);
 };
 
 // ---------- 记忆 ----------
@@ -499,6 +650,7 @@ const COMMANDS = [
 
 // ---------- 启动 ----------
 loadStatus();
+loadPresets();
 loadPersona();
 loadLlm();
 </script>

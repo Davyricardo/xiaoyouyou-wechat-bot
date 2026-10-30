@@ -32,8 +32,8 @@
 | **对话记忆** | `llm-memory.js` 按群保存最近对话与用户画像，重启不丢 |
 | **卡片渲染** | 赛程表、打工排班、随机武器、配装卡，用 `sharp` 在进程内合成 PNG 直接发图 |
 | **保活** | 容器健康监控、掉线自动重登、内存水位回收、事件日志（`recovery-events.jsonl`）单一状态机 |
-| **WebUI 管理面板** | 本地面板：读群/选群、改人设、调聊天参数、看记忆（`webui/`，零依赖） |
-| **systemd 单元** | 桥接、自动登录、通知投递、看门狗，开箱可用 |
+| **WebUI 管理面板** | 扫码登录、选群即启用桥接、改人设、切国内模型厂商、看记忆与事件（`webui/`，零依赖） |
+| **systemd 单元** | 桥接、面板、自动登录、看门狗，`install.sh` 一键装好 |
 
 ## 架构
 
@@ -67,49 +67,77 @@
 - Node.js **22+**
 - 一个**小号**微信账号（不要用主号，自动化有封号风险）
 
-### 一键部署
+### 一键部署（推荐）
 
 ```bash
-git clone https://github.com/<your-name>/xiaoyouyou-wechat-bot.git
+git clone https://github.com/Davyricardo/xiaoyouyou-wechat-bot.git
 cd xiaoyouyou-wechat-bot
 sudo bash install.sh
 ```
 
-`install.sh` 会：检查依赖 → 把代码装到 `/opt/xiaoyouyou` → 生成 `.env` → 拉起微信容器 → 提示扫码登录。
+脚本依次完成：装 Docker 与 Node 22（缺什么装什么）→ 代码装到 `/opt/xiaoyouyou` → 生成 `private/wechat.env`（随机容器 token）、`private/llm.env`、`private/webui.env`、默认人设 → 拉起微信容器 → 安装并启用 systemd（面板 + 看门狗；桥接与自动登录等绑定群后再启用）→ 打印带访问令牌的面板地址。
+
+装完只剩两步：
+
+1. 打开面板 → **登录** → 用要当机器人的微信小号扫码，手机上点「确认登录」；
+2. 面板 → **群聊** → 选群 → **设为授权群并启用**（自动 `systemctl enable --now` 桥接）。
+
+想开 LLM 闲聊：面板 → **聊天** → 选厂商（DeepSeek / 通义千问 / Kimi / GLM / 混元 / 火山方舟 / 硅基流动 / OpenRouter / 自建 magpie）→ 填密钥 → **保存并重启桥接**。
+
+| 参数 | 作用 |
+|---|---|
+| `--local` | 面板只监听 `127.0.0.1`（配 `ssh -L 8088:127.0.0.1:8088` 访问） |
+| `--base /srv/xyy` | 换部署目录 |
+| `--port 9000` | 换面板端口 |
+| `--no-deps` | 跳过依赖安装（Docker / Node 已就绪） |
+| `--configure-only` | 只复制代码 + 生成配置，不动容器与 systemd |
+| `--dry-run` | 只打印将要执行的动作 |
+
+**重跑是安全的**：`private/*.env`、`bot-config.json` 已存在就保留，容器 token 与面板令牌都不会轮换。
 
 ### 手动步骤
 
 ```bash
 # 1. 部署目录
 sudo mkdir -p /opt/xiaoyouyou/private && sudo chown -R $USER /opt/xiaoyouyou
-sudo cp -r src tools /opt/xiaoyouyou/
+sudo cp -r src tools webui /opt/xiaoyouyou/
 
-# 2. 配置（见下方环境变量）
+# 2. 配置（至少填 AGENT_WECHAT_TOKEN：openssl rand -hex 32）
 cp .env.example /opt/xiaoyouyou/private/wechat.env
 vim /opt/xiaoyouyou/private/wechat.env
+vim /opt/xiaoyouyou/private/llm.env        # 可选：LLM 闲聊
 
-# 3. 群配置
-vim /opt/xiaoyouyou/bot-config.json    # chatId / chatName / botNick
+# 3. 群配置（也可以之后在面板里选）
+vim /opt/xiaoyouyou/bot-config.json        # chatId / chatName / botNick
 
 # 4. 起微信容器
 docker compose up -d
 
-# 5. 登录（首次必须扫码）
-#    容器起来后访问 http://127.0.0.1:6174 的登录接口，或用项目里的 tools/push-login-qr.py
+# 5. 登录：面板「登录」页扫码，或直接访问 http://127.0.0.1:6174
 
 # 6. 起桥接
 cd /opt/xiaoyouyou && node bridge-v3.3.js
 ```
 
-### 启动 WebUI（可选）
+### WebUI 管理面板
+
+`install.sh` 已把它装成 `xiaoyouyou-webui.service`；监听地址、端口、访问令牌都在 `private/webui.env`。
+
+```bash
+systemctl status xiaoyouyou-webui
+systemctl restart xiaoyouyou-webui     # 改了 server.js 之后
+```
+
+手动跑（调试用）：
 
 ```bash
 cd webui
-WEBUI_PORT=8088 XYY_BASE=/opt/xiaoyouyou node server.js
-# 远程机器建议用隧道：ssh -L 8088:127.0.0.1:8088 user@server
+WEBUI_HOST=127.0.0.1 WEBUI_PORT=8088 XYY_BASE=/opt/xiaoyouyou node server.js
 ```
 
-打开 `http://127.0.0.1:8088` 就能读群列表、选授权群、改人设和聊天参数。详见 [`webui/README.md`](webui/README.md)。
+面板可以：扫码登录、选群并自动启用桥接、改人设、切换国内模型厂商、清记忆、看保活事件。详见 [`webui/README.md`](webui/README.md)。
+
+> ⚠️ 面板以 root 运行（要 `systemctl restart` 桥接），等于半个管理员权限：公网暴露时务必保留 `WEBUI_TOKEN`，或者用 `--local` 只走 SSH 隧道。
 
 ### 验证
 
@@ -134,11 +162,12 @@ curl -s http://127.0.0.1:6174/api/status   # 容器状态
 | `XYY_STARTUP_GRACE_MS` | `30000` | 启动宽限：重启前后这段时间内的指令照常处理 |
 | `XYY_BACKLOG_MS` | `1800000` | 重启后最多补处理多久的积压 |
 | `XYY_POLL_STUCK_LIMIT` | `10` | 连续拉消息失败多少次写一条卡死事件 |
-| `XYY_LLM` | `off` | 自动聊天开关：`off` / `all` / `admin` |
-| `XYY_LLM_MODEL` | `workbuddy/deepseek-v4.1-flash` | 聊天模型 |
-| `XYY_LLM_URL` | `http://127.0.0.1:3430/v1/chat/completions` | OpenAI 兼容网关地址 |
-| `XYY_LLM_KEY` | — | 网关密钥（本地网关可留空） |
+| `XYY_LLM` | `off` | 自动聊天开关：`off` / `all` / `admin`（写 `private/llm.env`） |
+| `XYY_LLM_MODEL` | — | 聊天模型（面板选厂商会自动填） |
+| `XYY_LLM_URL` | — | OpenAI 兼容接口地址 |
+| `XYY_LLM_KEY` | — | 厂商密钥（只存服务器，面板不回显） |
 | `XYY_LLM_USERS` | 空=所有人 | 允许闲聊的用户白名单 |
+| `XYY_EXPECTED_USER` | 首次登录自动写入 | 机器人账号 wxid；换号会被恢复流程判为异常 |
 | `XYY_MEM_LIMIT_MB` | `600` | 容器内存水位，超过就回收 |
 | `XYY_RECYCLE_GAP_MS` | `2700000` | 两次回收最小间隔（45 分钟） |
 | `XYY_DRY` | — | `1` = 只判定不执行（演练用） |
@@ -188,7 +217,7 @@ refs/                     参考图（视觉规格）
 微信客户端会泄漏，到 600MB 左右就卡死。保活器会在水位线主动重启容器再自动登录，`XYY_MEM_LIMIT_MB` 可调。
 
 **Q：能换模型吗？**
-可以。任何 OpenAI 兼容网关都行，改 `XYY_LLM_BASE_URL` / `XYY_LLM_MODEL` / `XYY_LLM_API_KEY`。国内模型（DeepSeek、通义、Kimi、GLM 等）通过 magpie 之类的聚合网关接入最省事。
+可以，任何 OpenAI 兼容接口都行。面板「聊天」页选厂商会自动填地址和模型（DeepSeek、通义千问、Kimi、智谱 GLM、腾讯混元、火山方舟、硅基流动、OpenRouter、自建 magpie），密钥填自己的，保存会自动重启桥接。也可以手填任意 URL。
 
 ## 版权与免责
 
