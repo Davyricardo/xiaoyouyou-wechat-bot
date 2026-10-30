@@ -1,0 +1,20 @@
+[Unit]
+Description=小鱿鱿 WebUI 管理面板
+Documentation=https://github.com/Davyricardo/xiaoyouyou-wechat-bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 面板要能重启桥接、写 private/ 配置，因此以 root 运行；
+# 暴露面由 private/webui.env 的 WEBUI_HOST/WEBUI_TOKEN 控制。
+EnvironmentFile=__DEST__/private/webui.env
+WorkingDirectory=__DEST__
+ExecStart=__NODE__ __DEST__/webui/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

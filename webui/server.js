@@ -11,6 +11,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const { execFile } = require('node:child_process');
 
 const PORT = Number(process.env.WEBUI_PORT) || 8088;
 const HOST = process.env.WEBUI_HOST || '127.0.0.1';
@@ -149,6 +150,8 @@ async function getStatus() {
   return {
     container,
     lastActivity,
+    service: await serviceState(),
+    login: { state: LOGIN.state, user: LOGIN.user },
     bridge: {
       authorizedChat: cfg.chatId || '',
       chatName: cfg.chatName || '',
@@ -219,6 +222,199 @@ function getMemory() {
   return { dir, group, users };
 }
 
+// ---------- 服务控制（桥接 / 自动登录）----------
+// 面板以 root 运行，固定参数调 systemctl；不接受任何用户拼接的命令。
+const SERVICE = 'xiaoyouyou-aliyun.service';
+const RELOGIN_TIMER = 'xiaoyouyou-auto-relogin.timer';
+
+function execFileAsync(cmd, args, timeout = 20000) {
+  return new Promise((resolve) => {
+    execFile(cmd, args, { timeout }, (err, stdout, stderr) => {
+      resolve({
+        code: err ? (typeof err.code === 'number' ? err.code : 1) : 0,
+        out: String(stdout || ''),
+        err: String(stderr || (err && err.message) || ''),
+      });
+    });
+  });
+}
+
+async function serviceState() {
+  const r = await execFileAsync('systemctl', ['show', SERVICE, '-p', 'ActiveState', '-p', 'SubState', '-p', 'UnitFileState']);
+  const kv = {};
+  for (const line of r.out.split('\n')) {
+    const i = line.indexOf('=');
+    if (i > 0) kv[line.slice(0, i)] = line.slice(i + 1).trim();
+  }
+  return { active: kv.ActiveState || 'unknown', sub: kv.SubState || '', enabled: kv.UnitFileState || 'unknown' };
+}
+
+async function enableBridge() {
+  const a = await execFileAsync('systemctl', ['enable', '--now', SERVICE], 60000);
+  const b = await execFileAsync('systemctl', ['enable', '--now', RELOGIN_TIMER], 30000);
+  return { ok: a.code === 0, error: a.code === 0 ? '' : (a.err || '').trim().slice(0, 300), timer: b.code === 0 };
+}
+
+async function restartBridge() {
+  const st = await serviceState();
+  if (st.enabled === 'disabled' && st.active !== 'active') {
+    return { ok: false, skipped: true, error: '桥接还没启用（先在「群聊」里绑定授权群）' };
+  }
+  const r = await execFileAsync('systemctl', ['restart', SERVICE], 90000);
+  return { ok: r.code === 0, error: r.code === 0 ? '' : (r.err || '').trim().slice(0, 300) };
+}
+
+// 恢复流程可能留下 blocked 的登录网关：登录成功后放行（写 resume，不删文件）
+const GATE = path.join(PRIVATE, '.local/state/splatoon-bridge/login-gate.json');
+function clearGate() {
+  const g = readJson(GATE, null);
+  if (!g || g.phase !== 'blocked') return false;
+  atomicWrite(GATE, JSON.stringify({ ...g, phase: 'resume' }) + '\n', 0o600);
+  return true;
+}
+
+// ---------- 扫码登录 ----------
+// 走容器 WebSocket（与恢复流程同一入口），把二维码转成 PNG data URL 直接显示在面板里，
+// 不需要 SSH 隧道到 6174，也不需要容器内的截图工具。
+const LOGIN = { state: 'idle', startedAt: 0, qrAt: 0, qr: '', user: '', error: '', socket: null, timer: null };
+
+function loginSnapshot() {
+  return {
+    state: LOGIN.state,
+    startedAt: LOGIN.startedAt,
+    qrAt: LOGIN.qrAt,
+    qrAgeMs: LOGIN.qrAt ? Date.now() - LOGIN.qrAt : 0,
+    qr: LOGIN.qr,
+    user: LOGIN.user,
+    error: LOGIN.error,
+  };
+}
+
+async function qrDataUrl(text) {
+  const QR = require('qrcode-terminal/vendor/QRCode');
+  const level = require('qrcode-terminal/vendor/QRCode/QRErrorCorrectLevel');
+  const qr = new QR(-1, level.M);
+  qr.addData(text);
+  qr.make();
+  const count = qr.getModuleCount();
+  const size = (count + 8) * 8;
+  let pixels = '';
+  for (let y = 0; y < count; y++) {
+    for (let x = 0; x < count; x++) if (qr.isDark(y, x)) pixels += `M${x + 4} ${y + 4}h1v1h-1z`;
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${count + 8} ${count + 8}"><rect width="100%" height="100%" fill="white"/><path d="${pixels}" fill="black" shape-rendering="crispEdges"/></svg>`;
+  const png = await require('sharp')(Buffer.from(svg)).png().toBuffer();
+  return 'data:image/png;base64,' + png.toString('base64');
+}
+
+function loginFail(msg) {
+  if (LOGIN.timer) clearTimeout(LOGIN.timer);
+  LOGIN.timer = null;
+  try { if (LOGIN.socket) LOGIN.socket.close(); } catch { }
+  LOGIN.socket = null;
+  LOGIN.state = 'failed';
+  LOGIN.error = String(msg || '登录失败');
+  LOGIN.qr = '';
+}
+
+// 首次部署没有锁定账号：登录成功后把真实 wxid 写下来，之后换号会被识别为异常。
+function lockAccount(userId) {
+  const id = String(userId || '');
+  if (!/^wxid_[A-Za-z0-9]+(?:_[A-Za-z0-9]+)?$/.test(id)) return false;
+  const file = path.join(PRIVATE, 'expected-user.txt');
+  try { if (fs.readFileSync(file, 'utf8').trim()) return false; } catch { }
+  atomicWrite(file, id + '\n', 0o600);
+  return true;
+}
+
+function loginOk(userId) {
+  if (LOGIN.timer) clearTimeout(LOGIN.timer);
+  LOGIN.timer = null;
+  try { if (LOGIN.socket) LOGIN.socket.close(); } catch { }
+  LOGIN.socket = null;
+  LOGIN.state = 'success';
+  LOGIN.user = String(userId || '');
+  LOGIN.qr = '';
+  LOGIN.error = '';
+  lockAccount(LOGIN.user);
+  clearGate();
+}
+
+function startLogin() {
+  if (LOGIN.state === 'connecting' || LOGIN.state === 'waiting_scan' || LOGIN.state === 'phone_confirm') {
+    return loginSnapshot();
+  }
+  if (typeof WebSocket !== 'function') {
+    LOGIN.state = 'failed'; LOGIN.error = '需要 Node.js 22+（内置 WebSocket）';
+    return loginSnapshot();
+  }
+  const token = wxToken();
+  if (!token) {
+    LOGIN.state = 'failed'; LOGIN.error = '读不到 AGENT_WECHAT_TOKEN（private/wechat.env）';
+    return loginSnapshot();
+  }
+  Object.assign(LOGIN, { state: 'connecting', startedAt: Date.now(), qrAt: 0, qr: '', user: '', error: '' });
+  const wsBase = WX_API.replace(/^http/, 'ws').replace(/\/+$/, '');
+  const url = wsBase + '/api/ws/login?' + new URLSearchParams({ timeoutMs: '180000', newAccount: 'false', token });
+  let ws;
+  try { ws = new WebSocket(url); } catch (e) {
+    LOGIN.state = 'failed'; LOGIN.error = e.message;
+    return loginSnapshot();
+  }
+  LOGIN.socket = ws;
+  LOGIN.timer = setTimeout(() => loginFail('扫码超时（3 分钟），请重新生成'), 185000);
+  ws.addEventListener('message', async (ev) => {
+    let v;
+    try { v = JSON.parse(typeof ev.data === 'string' ? ev.data : String(ev.data)); } catch { return; }
+    if (v.type === 'qr') {
+      const text = v.qrBinaryData ? Buffer.from(v.qrBinaryData).toString('utf8') : v.qrData;
+      try {
+        LOGIN.qr = await qrDataUrl(text);
+        LOGIN.qrAt = Date.now();
+        LOGIN.state = 'waiting_scan';
+      } catch (e) { loginFail('二维码生成失败：' + e.message); }
+    } else if (v.type === 'phone_confirm') {
+      LOGIN.state = 'phone_confirm';
+    } else if (v.type === 'login_success') {
+      loginOk(v.userId);
+    } else if (v.type === 'login_timeout') {
+      loginFail('扫码超时，请重新生成');
+    } else if (v.type === 'error') {
+      loginFail('微信登录接口返回错误');
+    }
+  });
+  ws.addEventListener('error', (ev) => {
+    const m = (ev && ev.error && ev.error.message) || (ev && ev.message) || '';
+    loginFail('登录连接失败' + (m ? '：' + m : '（容器没就绪？）'));
+  });
+  ws.addEventListener('close', () => {
+    if (LOGIN.state !== 'success' && LOGIN.state !== 'failed') loginFail('登录连接结束，未确认成功');
+  });
+  return loginSnapshot();
+}
+
+function cancelLogin() {
+  loginFail('已取消');
+  LOGIN.state = 'idle';
+  LOGIN.error = '';
+  return loginSnapshot();
+}
+
+// ---------- 国内厂商预设 ----------
+// 端点以厂商文档为准；面板里都可以手改，所以这里只负责「少填几个字段」。
+const PRESETS = [
+  { id: 'deepseek', name: 'DeepSeek', url: 'https://api.deepseek.com/v1/chat/completions', model: 'deepseek-chat', note: '官方 API，性价比高' },
+  { id: 'qwen', name: '通义千问（阿里百炼）', url: 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions', model: 'qwen-plus', note: '百炼 OpenAI 兼容模式' },
+  { id: 'kimi', name: 'Kimi（月之暗面）', url: 'https://api.moonshot.cn/v1/chat/completions', model: 'moonshot-v1-8k', note: '长上下文' },
+  { id: 'glm', name: '智谱 GLM', url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions', model: 'glm-4-flash', note: 'glm-4-flash 免费额度多' },
+  { id: 'hunyuan', name: '腾讯混元', url: 'https://api.hunyuan.cloud.tencent.com/v1/chat/completions', model: 'hunyuan-lite', note: 'OpenAI 兼容接口' },
+  { id: 'doubao', name: '火山方舟（豆包）', url: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions', model: 'ep-xxxxxxxx', note: '模型填方舟「推理接入点 ID」（ep- 开头）' },
+  { id: 'siliconflow', name: '硅基流动', url: 'https://api.siliconflow.cn/v1/chat/completions', model: 'Qwen/Qwen2.5-7B-Instruct', note: '聚合多家开源模型' },
+  { id: 'openrouter', name: 'OpenRouter', url: 'https://openrouter.ai/api/v1/chat/completions', model: 'deepseek/deepseek-chat', note: '需要外网' },
+  { id: 'magpie', name: '自建 magpie / 本地网关', url: 'http://127.0.0.1:3430/v1/chat/completions', model: '', note: '本机或内网聚合网关' },
+  { id: 'custom', name: '自定义（任意 OpenAI 兼容）', url: '', model: '', note: '自己填完整 URL' },
+];
+
 // ---------- 路由 ----------
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
@@ -228,6 +424,11 @@ const server = http.createServer(async (req, res) => {
       if (unauthorized(req, res)) return;
 
       if (p === '/api/status' && req.method === 'GET') return json(res, 200, await getStatus());
+      if (p === '/api/login/status' && req.method === 'GET') return json(res, 200, { ok: true, login: loginSnapshot() });
+      if (p === '/api/login/start' && req.method === 'POST') return json(res, 200, { ok: true, login: startLogin() });
+      if (p === '/api/login/cancel' && req.method === 'POST') return json(res, 200, { ok: true, login: cancelLogin() });
+      if (p === '/api/presets' && req.method === 'GET') return json(res, 200, { ok: true, presets: PRESETS });
+      if (p === '/api/service' && req.method === 'GET') return json(res, 200, { ok: true, service: await serviceState() });
       if (p === '/api/chats' && req.method === 'GET') {
         try { return json(res, 200, { ok: true, chats: await getChats() }); }
         catch (e) { return json(res, 200, { ok: false, error: e.message, chats: [] }); }
@@ -250,6 +451,17 @@ const server = http.createServer(async (req, res) => {
         if (!/^\d+@chatroom$/.test(next.chatId)) return json(res, 400, { ok: false, error: '群 ID 必须是 xxx@chatroom' });
         if (!next.chatName.trim()) return json(res, 400, { ok: false, error: '群名不能为空' });
         atomicWrite(P.botConfig, JSON.stringify(next, null, 2) + '\n', 0o644);
+        if (b.apply) {
+          const r = await enableBridge();
+          const service = await serviceState();
+          return json(res, 200, {
+            ok: true,
+            config: next,
+            service,
+            applied: r.ok,
+            note: r.ok ? '已启用桥接，几秒后开始工作' : ('配置已保存，但桥接启动失败：' + (r.error || '未知原因')),
+          });
+        }
         return json(res, 200, { ok: true, config: next, note: '需要重启桥接生效' });
       }
       if (p === '/api/persona' && req.method === 'GET') {
@@ -298,6 +510,18 @@ const server = http.createServer(async (req, res) => {
           atomicWrite(P.llmEnv, '# 小鱿鱿 LLM 闲聊配置\n');
         }
         writeEnvKeys(P.llmEnv, patch);
+        if (b.apply) {
+          const r = await restartBridge();
+          return json(res, 200, {
+            ok: true,
+            file: 'llm.env',
+            updated: Object.keys(patch),
+            applied: r.ok,
+            skipped: Boolean(r.skipped),
+            service: await serviceState(),
+            note: r.ok ? '已保存并重启桥接' : (r.skipped ? r.error : ('已保存，重启桥接失败：' + (r.error || '未知原因'))),
+          });
+        }
         return json(res, 200, { ok: true, file: 'llm.env', updated: Object.keys(patch), note: '需要重启桥接生效' });
       }
       if (p === '/api/memory' && req.method === 'GET') return json(res, 200, { ok: true, ...getMemory() });

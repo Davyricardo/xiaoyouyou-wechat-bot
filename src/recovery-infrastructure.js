@@ -1,12 +1,30 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path');
 const {execFile}=require('node:child_process'),{promisify}=require('node:util');const exec=promisify(execFile);
-const c=require('./wx-client'),{CHAT,CHAT_NAME}=require('./bot-config');
+const c=require('./wx-client'),{CHAT,CHAT_NAME}=require('./bot-config'),{privateDirs}=require('./env-config');
 const ROOT=process.env.SPLATOON_MONITOR_DIR||path.join(process.env.HOME||require('node:os').homedir(),'.local/state/splatoon-bridge');
-const EXPECTED='wxid_bot_account';
+// 期望账号：XYY_EXPECTED_USER → private/expected-user.txt（WebUI 首次登录成功后自动写入）。
+// 全新部署没有这个文件时不校验账号（否则永远过不了 preflight），但第一次登录就会锁定，
+// 之后换号会被 isExpectedUser 判成异常——安全性只在「首次」让步。
+function expectedFile(){
+ const dirs=privateDirs();
+ for(const dir of dirs){const f=path.join(dir,'expected-user.txt');if(fs.existsSync(f))return f;}
+ return path.join(dirs[0]||path.join(__dirname,'private'),'expected-user.txt');
+}
+function expectedUser(){
+ const fromEnv=String(process.env.XYY_EXPECTED_USER||'').trim();if(fromEnv)return fromEnv;
+ try{return fs.readFileSync(expectedFile(),'utf8').trim();}catch{return '';}
+}
 function isExpectedUser(value){
  if(typeof value!=='string'||!/^wxid_[a-zA-Z0-9]+(?:_[a-zA-Z0-9]+)?$/.test(value))return false;
- return value.split('_').slice(0,2).join('_')===EXPECTED.split('_').slice(0,2).join('_');
+ const expected=expectedUser();
+ if(!expected)return true;
+ return value.split('_').slice(0,2).join('_')===expected.split('_').slice(0,2).join('_');
+}
+function lockExpectedUser(value){
+ if(!isExpectedUser(value))throw Error('账号格式非法');
+ const file=expectedFile();fs.mkdirSync(path.dirname(file),{recursive:true,mode:0o700});
+ fs.writeFileSync(file,String(value).trim()+'\n',{mode:0o600});
 }
 function read(name){try{return JSON.parse(fs.readFileSync(path.join(ROOT,name),'utf8'));}catch(e){if(e.code==='ENOENT')return null;throw e;}}
 function write(name,value){fs.mkdirSync(ROOT,{recursive:true,mode:0o700});const f=path.join(ROOT,name),t=f+'.tmp';fs.writeFileSync(t,JSON.stringify(value,null,2)+'\n',{mode:0o600});fs.renameSync(t,f);}
@@ -32,6 +50,6 @@ async function ensureReady(){
  await c.wx(['chats','open',CHAT]);
  const e=require('./wx-fast').ready(await c.a11yTree(),c.editor);if(String(e.input.text||'').trim())throw Error('正式群输入框有草稿，未确认可回复');
  const rows=await c.rows(50);if(!Array.isArray(rows))throw Error('消息读取异常');
- return {chatId:CHAT,draftEmpty:true,userId:EXPECTED,at:Date.now()};
+ return {chatId:CHAT,draftEmpty:true,userId:expectedUser()||null,at:Date.now()};
 }
-module.exports={ROOT,EXPECTED,isExpectedUser,read,write,diagnose,ensureReady};
+module.exports={ROOT,expectedUser,lockExpectedUser,isExpectedUser,read,write,diagnose,ensureReady};
