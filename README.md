@@ -143,6 +143,7 @@ WEBUI_HOST=127.0.0.1 WEBUI_PORT=8088 XYY_BASE=/opt/xiaoyouyou node server.js
 
 ```bash
 npm test                         # 单元测试（不需要微信容器）
+npm run test:webui               # WebUI 端到端（假容器 API + 假 systemctl，不碰真实微信）
 npm run test:integration         # 集成测试（需要容器在跑）
 curl -s http://127.0.0.1:6174/api/status   # 容器状态
 ```
