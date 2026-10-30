@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node bridge-v3.3.js",
     "test": "node --test test-recovery-core.js test-bot-config.js test-bridge-cursor.js test-data-cache.js test-v3.3.js test-transport.js test-festival-cache.js test-net-readonly.js test-health-monitor.js test-assets.js",
-    "test:integration": "node --test --test-concurrency=1 test-send.js test-notification-media.js test-recovery-bridge.js test-wx-fast.js test-recovery-worker.js test-recovery-flow.js"
+    "test:integration": "node --test --test-concurrency=1 test-send.js test-notification-media.js test-recovery-bridge.js test-wx-fast.js test-recovery-worker.js test-recovery-flow.js",
+    "test:webui": "node ../webui/test-e2e.js"
   },
   "dependencies": {
     "@yuanchuan40/wechat": "0.12.0-mentions.6",
