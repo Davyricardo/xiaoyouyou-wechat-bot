@@ -596,6 +596,12 @@ $('#saveLlm').onclick = async () => {
 };
 
 // ---------- 记忆 ----------
+const fmtAt = (v) => {
+  if (!v) return '—';
+  const d = new Date(Number(v));
+  return isNaN(d.getTime()) ? String(v) : d.toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+};
+
 async function loadMemory() {
   const d = await api('/api/memory');
   if (!d.ok) return toast(d.error, true);
@@ -615,7 +621,15 @@ async function loadMemory() {
     const row = el('div', 'chat');
     const g2 = el('div', 'grow');
     g2.appendChild(el('div', 'name', u.name));
-    g2.appendChild(el('div', 'meta', `${u.messages} 条 · ${u.updatedAt || '—'}`));
+    g2.appendChild(el('div', 'meta', `${u.facts} 条记忆 · 说过 ${u.count || 0} 次 · ${fmtAt(u.updatedAt)}`));
+    if (u.items && u.items.length) {
+      const detail = el('div', 'meta');
+      detail.style.cssText = 'margin-top:6px;color:var(--muted);font-size:12px;white-space:pre-wrap;display:none';
+      detail.textContent = u.items.map((x) => '· ' + x.text).join('\n');
+      g2.appendChild(detail);
+      row.style.cursor = 'pointer';
+      row.onclick = () => { detail.style.display = detail.style.display === 'none' ? 'block' : 'none'; };
+    }
     row.appendChild(g2);
     const del = el('button', 'danger', '清除');
     del.onclick = async (e) => {

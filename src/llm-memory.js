@@ -10,7 +10,9 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto');
 
 const DAY=24*3600*1000;
 const LIMITS={shortTurns:3,shortTtlMs:10*60*1000,perCat:3,factChars:30,pending:10,summarizeEvery:5,
-  expireMs:60*DAY,milestones:3,milestoneTtlMs:30*DAY,group:6,groupTtlMs:14*DAY};
+  expireMs:60*DAY,milestones:3,milestoneTtlMs:30*DAY,group:6,groupTtlMs:14*DAY,
+  // 群聊被动记忆：任何群友发言都进档案；太短/纯表情不入，同一人 30 分钟内最多总结一次。
+  ingestMinChars:4,ingestGapMs:30*60*1000};
 const CATS=['splat','nintendo','music','gear','movie','social'];
 const LABEL={splat:'喷喷',nintendo:'任天堂',music:'音乐',gear:'数码',movie:'电影',social:'互动'};
 const CAT_OF={'喷喷':'splat','斯普拉遁':'splat','打工':'splat','任天堂':'nintendo','游戏':'nintendo','音乐':'music','歌':'music',
@@ -113,6 +115,28 @@ function createMemory(opts={}){
     return {ok:true,cat,label:LABEL[cat],text:f};
   }
 
+  // 群聊被动记忆：没 @ 机器人也算「聊过」，发言攒够 5 条就总结一次。
+  // 与 record 的分工：record 只处理「@ 机器人并得到回复」的一轮；ingest 处理普通群聊。
+  // 返回 true 表示「该给这个人做一次总结」；调用方负责异步 consolidate，失败必须静默。
+  function ingest(user,nick,text){
+    if(!user)return false;
+    const raw=String(text||'').replace(/[\u2005\u00a0\s]+/g,' ').trim();
+    if([...raw].length<LIMITS.ingestMinChars)return false;
+    if(!/[\p{L}\p{N}]/u.test(raw))return false;
+    const f=cleanFact(raw.slice(0,100));
+    if(!f||blocked.test(f))return false;
+    const t=now();
+    const p=load(user)||emptyProfile(t);
+    p.nick=nick||p.nick||'';p.last=t;p.count=(p.count||0)+1;
+    p.pending=p.pending||[];
+    if(!p.pending.includes(f))p.pending.push(f);
+    p.pending=p.pending.slice(-LIMITS.pending);
+    try{save(user,p);}catch{return false;}
+    if(p.pending.length<LIMITS.summarizeEvery)return false;
+    if(t-(p.summarizedAt||0)<LIMITS.ingestGapMs)return false;
+    return true;
+  }
+
   // 总结：summarize(旧档案, 新发言[]) => {splat:[],nintendo:[],music:[],gear:[],social:[],milestones:[],group:[]}
   // 条目以「+」开头表示这批话里新提到或再次确认（刷新 60 天计时）。失败就留着 pending 下次再试。
   const inflight=new Set();
@@ -169,7 +193,7 @@ function createMemory(opts={}){
   function groupFacts(){return loadGroup().map(x=>x.t);}
   function forgetGroup(){try{fsMod.unlinkSync(groupFile());return true;}catch{return false;}}
 
-  return {recent,facts,slot,profile,pendingMilestones,markTold,record,remember,consolidate,forget,forgetCategory,
+  return {recent,facts,slot,profile,pendingMilestones,markTold,record,ingest,remember,consolidate,forget,forgetCategory,
     groupFacts,addGroup,forgetGroup,load,_short:short};
 }
 
