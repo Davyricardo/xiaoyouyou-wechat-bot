@@ -211,14 +211,25 @@ function getMemory() {
     const j = readJson(path.join(dir, f), null);
     if (!j) continue;
     if (f === '_group.json') { group = j; continue; }
+    const slots = j.slots || {};
+    const items = [];
+    for (const [cat, arr] of Object.entries(slots)) {
+      if (!Array.isArray(arr)) continue;
+      for (const x of arr) if (x && x.t) items.push({ cat, text: x.t, at: x.at || null });
+    }
+    items.sort((a, b) => (b.at || 0) - (a.at || 0));
     users.push({
       file: f,
-      name: j.name || j.nickname || j.user || f.slice(0, 8),
-      messages: Array.isArray(j.history) ? j.history.length : (Array.isArray(j.messages) ? j.messages.length : 0),
-      updatedAt: j.updatedAt || j.at || null,
-      summary: j.summary || j.profile || '',
+      name: j.nick || f.slice(0, 8),
+      count: j.count || 0,
+      facts: items.length,
+      items: items.slice(0, 12),
+      updatedAt: j.last || j.summarizedAt || null,
+      pending: Array.isArray(j.pending) ? j.pending.length : 0,
+      milestones: Array.isArray(j.milestones) ? j.milestones.filter((x) => x && x.t).map((x) => x.t) : [],
     });
   }
+  users.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
   return { dir, group, users };
 }
 

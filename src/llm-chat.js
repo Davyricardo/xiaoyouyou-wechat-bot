@@ -199,7 +199,7 @@ function config(env=process.env){
     maxChars:num(secret('XYY_LLM_MAX_CHARS',env),DEFAULTS.maxChars),
     offFiles:env.XYY_LLM_OFF_FILE?[env.XYY_LLM_OFF_FILE]:privateDirs(env).map(d=>path.join(d,'llm-off')),
     memory:(()=>{const v=String(secret('XYY_LLM_MEMORY',env)||'0').trim().toLowerCase();return v==='1'||v==='on';})(),
-    memoryDir:env.XYY_LLM_MEMORY_DIR||path.join(privateDirs(env)[0]||'.','memory'),
+    memoryDir:env.XYY_LLM_MEMORY_DIR||path.join(privateDirs(env)[0]||'.','llm-memory'),
     search:(()=>{const v=String(secret('XYY_LLM_SEARCH',env)||'0').trim().toLowerCase();return v==='1'||v==='on';})(),
     searchTimeoutMs:num(secret('XYY_LLM_SEARCH_TIMEOUT_MS',env),DEFAULTS.searchTimeoutMs),
     searchDaily:num(secret('XYY_LLM_SEARCH_DAILY',env),DEFAULTS.searchDaily),
@@ -255,6 +255,15 @@ function createChat(opts={}){
   // 群聊上下文：只在内存里，不落盘、重启即清空；只存昵称和文字，不存 wxid。
   let lines=[],newSince=0,lastSpoke=0,lastEval=0,chimeDay='',chimeCount=0;
   function groupLines(){const t=now();lines=lines.filter(x=>t-x.at<=(cfg.groupTtlMs||DEFAULTS.groupTtlMs));return lines;}
+  // 被动记忆的总结串行执行：群里刷屏时不能并发打 LLM，也不能拖住 250ms 轮询。
+  let ingestChain=Promise.resolve();
+  function queueIngest(user,nick,text){
+    try{
+      if(!memory.ingest(user,nick,text))return;
+      ingestChain=ingestChain.then(()=>memory.consolidate(user,summarize))
+        .then(ok=>log('memory ingest',ok?'ok':'skip')).catch(()=>{});
+    }catch{}
+  }
   function observe(m,selfNick='小鱿鱿'){
     try{
       if(!m||m.type!==1)return;
@@ -265,6 +274,8 @@ function createChat(opts={}){
       else{
         if(m.isMentioned===true||text.startsWith('@'+selfNick))lastSpoke=Math.max(lastSpoke,t-((cfg.chimeGapMs||DEFAULTS.chimeGapMs)-5*60*1000));  // 刚被 @ 过：5 分钟内不插话
         lines.push({who:nickOf(m)||'群友',text:[...text].slice(0,80).join(''),at:t});newSince++;
+        // 群聊被动记忆：没 @ 机器人也算「聊过」，进个人档案；@ 的消息走 reply 里的 record，避免重复。
+        if(m.sender&&m.isMentioned!==true)queueIngest(m.sender,nickOf(m),text);
       }
       const max=cfg.groupLines||DEFAULTS.groupLines;if(lines.length>max)lines=lines.slice(-max);
     }catch{}
