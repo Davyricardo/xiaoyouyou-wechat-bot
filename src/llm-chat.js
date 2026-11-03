@@ -197,6 +197,9 @@ function config(env=process.env){
     failLimit:num(secret('XYY_LLM_FAIL_LIMIT',env),DEFAULTS.failLimit),
     pauseMs:num(secret('XYY_LLM_PAUSE_MS',env),DEFAULTS.pauseMs),
     maxChars:num(secret('XYY_LLM_MAX_CHARS',env),DEFAULTS.maxChars),
+    // 部分模型（Ling-3.1-flash 等）默认带思考，思考会吃掉响应正文；
+    // 填 "none" 时给每个请求带 reasoning_effort=none。不配置就不传，对其它网关无影响。
+    reasoningEffort:String(env.XYY_LLM_REASONING_EFFORT||'').trim(),
     offFiles:env.XYY_LLM_OFF_FILE?[env.XYY_LLM_OFF_FILE]:privateDirs(env).map(d=>path.join(d,'llm-off')),
     memory:(()=>{const v=String(secret('XYY_LLM_MEMORY',env)||'0').trim().toLowerCase();return v==='1'||v==='on';})(),
     memoryDir:env.XYY_LLM_MEMORY_DIR||path.join(privateDirs(env)[0]||'.','llm-memory'),
@@ -407,7 +410,8 @@ function createChat(opts={}){
     const r=await doFetch(cfg.url,{method:'POST',
       headers:{'Content-Type':'application/json',Authorization:'Bearer '+cfg.key},
       body:JSON.stringify({model:cfg.model,max_tokens:o.max_tokens||300,temperature:o.temperature??0.8,stream:false,
-        messages,...(o.tools?{tools:o.tools}:{}),...(o.tool_choice?{tool_choice:o.tool_choice}:{})}),
+        messages,...(cfg.reasoningEffort?{reasoning_effort:cfg.reasoningEffort}:{}),
+        ...(o.tools?{tools:o.tools}:{}),...(o.tool_choice?{tool_choice:o.tool_choice}:{})}),
       signal:AbortSignal.timeout(o.timeoutMs||cfg.timeoutMs)});
     if(!r.ok)throw Error('HTTP '+r.status);
     const j=await r.json();const c=j&&j.choices&&j.choices[0];
