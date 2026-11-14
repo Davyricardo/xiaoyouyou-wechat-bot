@@ -24,6 +24,6 @@ test('二维码发送失败不能报告登录成功',async()=>{
 test('同一微信账号允许不同本地目录后缀，错误扫码账号不能成功',async()=>{
  const {isExpectedUser}=require('./recovery-infrastructure');
  assert.equal(isExpectedUser('wxid_bot_account'),true);assert.equal(isExpectedUser('wxid_bot_account'),true);assert.equal(isExpectedUser('wxid_bot_account'),true);
- for(const id of ['wxid_other_e382','wxid_bot_account',null])assert.equal(isExpectedUser(id),false);
+ for(const id of ['wxid_other_9999','wxid_bot_account',null])assert.equal(isExpectedUser(id),false);
  await assert.rejects(()=>loginSocket({timeoutMs:1000,current:()=>true,connect:()=>new Socket([{type:'login_success',userId:'wxid_other'}]),success:async id=>{if(!isExpectedUser(id))throw Error('wrong account');},qr:async()=>{},phone:async()=>{}}),/wrong account/);
 });

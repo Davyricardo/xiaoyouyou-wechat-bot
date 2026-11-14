@@ -1,0 +1,18 @@
+[Unit]
+Description=小鱿鱿消息落库守护（消息卡在微信里时自动打开会话）
+After=docker.service network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+Environment=PYTHONUNBUFFERED=1
+Environment=XYY_OPEN_POLL_S=3
+Environment=XYY_OPEN_CHECKS=2
+Environment=XYY_OPEN_COOLDOWN_S=15
+ExecStart=/usr/bin/python3 /opt/xyyops/open_guard.py
+Restart=always
+RestartSec=10
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

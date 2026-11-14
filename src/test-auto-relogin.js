@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
-const {decide,shouldRecycle,recycleReason,lastRecycleAttemptAt,settleAuth,skipLoginAfterRestart}=require('../tools/auto-relogin');
+const {decide,parseAuthStatusView,shouldRecycle,recycleReason,lastRecycleAttemptAt,settleAuth,skipLoginAfterRestart,wxLogin}=require('../tools/auto-relogin');
 const GRACE=2*60*1000;
 const blocked=ageMs=>({code:'XYY-1-01234567',phase:'blocked',ageMs});
 
@@ -78,11 +78,11 @@ test('logged_in / logged_out 的 streak 不参与判定',()=>{
 });
 
 test('已登录 + 内存达阈值 → 主动回收',()=>{
- assert.equal(shouldRecycle({auth:'logged_in',containerMB:700,gate:null,events:[],now:10*60*60*1000}),true);
+ assert.equal(shouldRecycle({auth:'logged_in',containerMB:900,gate:null,events:[],now:10*60*60*1000}),true);
 });
 
 test('内存差 1MB 未达阈值 → 不回收',()=>{
- assert.equal(shouldRecycle({auth:'logged_in',containerMB:699,gate:null,events:[],now:10*60*60*1000}),false);
+ assert.equal(shouldRecycle({auth:'logged_in',containerMB:899,gate:null,events:[],now:10*60*60*1000}),false);
 });
 
 // 判据从 memory.current（含 page cache）改成 anon 之后，这条回归最重要：
@@ -98,7 +98,7 @@ test('cgroup 真发生 oom_kill → 立刻回收，不用等 anon 到线',()=>{
 });
 
 test('已掉线时不做回收（登录流程会处理）',()=>{
- assert.equal(shouldRecycle({auth:'logged_out',containerMB:900,gate:null,events:[],now:10*60*60*1000}),false);
+ assert.equal(shouldRecycle({auth:'logged_out',containerMB:1100,gate:null,events:[],now:10*60*60*1000}),false);
 });
 
 test('距上次回收不足 45 分钟 → 不回收（防抖，依据事件日志里的 recycled）',()=>{
@@ -276,4 +276,52 @@ test('skipLoginAfterRestart 的边界输入',()=>{
   assert.equal(skipLoginAfterRestart(v),false,String(JSON.stringify(v)));
  }
  assert.equal(skipLoginAfterRestart({auth:'logged_in',stable:true}),true);
+});
+
+test('parseAuthStatusView：取日志里最后一个 [auth_status] view',()=>{
+ assert.equal(parseAuthStatusView(''),null);
+ assert.equal(parseAuthStatusView('INFO agent_server::router::status: [auth_status] view=LoginQr, status=logged_out\nINFO agent_server::router::status: [auth_status] view=ChatOpen, status=logged_in\n'),'ChatOpen');
+ assert.equal(parseAuthStatusView('INFO [auth_status] view=LoginPhoneConfirm, status=logged_out'),'LoginPhoneConfirm');
+});
+
+test('decide：logged_out 根据界面视图区分 wait_qr / wait_phone / noop / login',()=>{
+ assert.equal(decide({auth:'logged_out',view:'LoginQr',gate:null,bridgeActive:true}),'wait_qr');
+ assert.equal(decide({auth:'logged_out',view:'LoginPhoneConfirm',gate:null,bridgeActive:true}),'wait_phone');
+ assert.equal(decide({auth:'logged_out',view:'LoginLoading',gate:null,bridgeActive:true}),'noop');
+ assert.equal(decide({auth:'logged_out',view:'LoginAccount',gate:null,bridgeActive:true}),'login');
+ assert.equal(decide({auth:'logged_in',view:'LoginQr',gate:null,bridgeActive:true}),'noop');
+});
+
+test('wxLogin：首次触发 phone_confirm 或 qr_required 时立即停手，不再重试第 2 次',async()=>{
+ let runs=0,waits=0;
+ const rPhone=await wxLogin(
+  async()=>{runs++;return {ok:false,outcome:'phone_confirm',code:0,stderr:'wx stdout: phone_confirm'};},
+  async()=>{waits++;},
+  async()=>({auth:'logged_out',view:'LoginPhoneConfirm'}),
+ );
+ assert.equal(runs,1);
+ assert.equal(waits,0);
+ assert.equal(rPhone.ok,false);
+ assert.equal(rPhone.reason,'phone_confirm');
+
+ runs=0;waits=0;
+ const rQr=await wxLogin(
+  async()=>{runs++;return {ok:false,outcome:'qr_required',code:0,stderr:'wx stdout: qr_required'};},
+  async()=>{waits++;},
+  async()=>({auth:'logged_out',view:'LoginQr'}),
+ );
+ assert.equal(runs,1);
+ assert.equal(waits,0);
+ assert.equal(rQr.ok,false);
+ assert.equal(rQr.reason,'qr_required');
+
+ // 第 1 次触发后复检已经变成 logged_in → 直接判成功
+ runs=0;
+ const rRecovered=await wxLogin(
+  async()=>{runs++;return {ok:false,outcome:'phone_confirm',code:0};},
+  async()=>{waits++;},
+  async()=>({auth:'logged_in',view:'ChatOpen'}),
+ );
+ assert.equal(runs,1);
+ assert.equal(rRecovered.ok,true);
 });

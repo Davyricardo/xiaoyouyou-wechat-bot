@@ -179,3 +179,52 @@ test('JSONL：并发追加不互相覆盖（整文件重写的竞态回归）',(
  assert.equal(list.length,50);
  assert.equal(new Set(list.map(e=>e.id)).size,50);
 });
+
+// ---- 登录失败退避 & phone_confirm/qr_required 通知去重 ----
+test('loginFailureStreak 与 loginDue：前两次 5m 间隔，后续 15m/30m/60m 退避并在恢复后清零',()=>{
+ const m=60*1000;
+ assert.equal(core.loginFailureStreak([]),0);
+ assert.equal(core.loginDue({events:[],now:1000}),true);
+
+ const f1=[{type:'result',result:'needs_scan',reason:'login_failed',ok:false,at:0}];
+ assert.equal(core.loginFailureStreak(f1),1);
+ assert.equal(core.loginDue({events:f1,now:5*m-1}),false);
+ assert.equal(core.loginDue({events:f1,now:5*m}),true);
+
+ const f2=[...f1,{type:'result',result:'needs_scan',reason:'login_failed',ok:false,at:5*m}];
+ assert.equal(core.loginFailureStreak(f2),2);
+ assert.equal(core.loginDue({events:f2,now:5*m+15*m-1}),false);
+ assert.equal(core.loginDue({events:f2,now:5*m+15*m}),true);
+
+ const f3=[...f2,{type:'result',result:'login_failed',ok:false,at:20*m}];
+ assert.equal(core.loginFailureStreak(f3),3);
+ assert.equal(core.loginDue({events:f3,now:20*m+30*m-1}),false);
+ assert.equal(core.loginDue({events:f3,now:20*m+30*m}),true);
+
+ const f4=[...f3,{type:'result',result:'login_failed',ok:false,at:50*m}];
+ assert.equal(core.loginFailureStreak(f4),4);
+ assert.equal(core.loginDue({events:f4,now:50*m+60*m-1}),false);
+ assert.equal(core.loginDue({events:f4,now:50*m+60*m}),true);
+
+ // ok=true 或 qr_required/phone_confirm/noop 影响
+ const withNoop=[...f2,{type:'result',result:'noop',ok:false,at:10*m}];
+ assert.equal(core.loginFailureStreak(withNoop),2,'noop 不打断 streak');
+ assert.equal(core.loginFailureStreak([...f3,{type:'result',result:'recovered',ok:true,at:30*m}]),0);
+ assert.equal(core.loginFailureStreak([...f3,{type:'result',result:'needs_scan',reason:'phone_confirm',ok:false,at:30*m}]),0);
+});
+
+test('notifyDecision：phone_confirm 独立 5 分钟冷却，不被先前 needs_scan 冷却压住',()=>{
+ const m=60*1000,t0=1000000;
+ const prior=[
+  {type:'result',result:'needs_scan',reason:'login_failed',notify:true,at:t0},
+  {type:'result',result:'needs_scan',reason:'qr_required',notify:true,at:t0+m},
+ ];
+ // 刚发过 needs_scan(login_failed/qr_required) 2 分钟，此时 phone_confirm 仍应立刻通知
+ assert.equal(core.notifyDecision({result:'needs_scan',reason:'phone_confirm',events:prior,now:t0+2*m}),true);
+ const withPhone=[...prior,{type:'result',result:'needs_scan',reason:'phone_confirm',notify:true,at:t0+2*m}];
+ assert.equal(core.notifyDecision({result:'needs_scan',reason:'phone_confirm',events:withPhone,now:t0+2*m+5*m-1}),false);
+ assert.equal(core.notifyDecision({result:'needs_scan',reason:'phone_confirm',events:withPhone,now:t0+2*m+5*m}),true);
+ // qr_required 按 2 小时去重
+ assert.equal(core.notifyDecision({result:'needs_scan',reason:'qr_required',events:prior,now:t0+m+60*m}),false);
+ assert.equal(core.notifyDecision({result:'needs_scan',reason:'qr_required',events:prior,now:t0+m+120*m}),true);
+});

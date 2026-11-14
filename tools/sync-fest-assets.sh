@@ -1,5 +1,5 @@
 #!/bin/sh
-# 在香橙派上跑：抓祭典海报 -> 打包【增量】-> 推到阿里云 -> 安装
+# 在预取节点上跑：抓祭典海报 -> 打包【增量】-> 推到部署主机 -> 安装
 #
 # 2026-10-23 改：祭典改成全量预取（27 张 / ~25MB）。不能每 30 分钟把 25MB 整个传一遍，
 # 也不能每 30 分钟为「什么都没变」去问一次远端。三层收敛：
@@ -14,11 +14,11 @@
 set -eu
 # cron 的默认 PATH 只有 /usr/bin:/bin，node 装在 /usr/local/bin，不补会报 node: not found。
 export PATH="/usr/local/bin:/usr/bin:/bin${PATH:+:$PATH}"
-TOOLS=/home/user/projects/xyy-review/tools
-cd /home/user/projects/xyy-review/src || exit 1
+TOOLS="$(cd "$(dirname "$0")" && pwd)"
+cd "$TOOLS/../src" || exit 1
 node festival-assets.js
 
-D=/home/user/splatoon-data/fest-assets
+D="${XYY_DATA_DIR:-$HOME/splatoon-data}/fest-assets"
 test -f "$D/entries.json" || { echo "没有 entries.json，跳过推送"; exit 0; }
 
 # 注意：续行的 | 和 && 必须留在上一行末尾，dash 不接受行首的管道符/连接符
@@ -40,8 +40,10 @@ if [ "${FORCE:-0}" != "1" ] && [ "$H" = "$LAST_H" ] && [ -n "$LAST_AT" ] && \
 fi
 
 # 远端现有文件的指纹（目录还不存在时给空）
-REMOTE=$(ssh -o BatchMode=yes aliyun-jump \
-  'cd /opt/xiaoyouyou/assets/festivals 2>/dev/null && sha256sum *.png teams/*.png 2>/dev/null' || true)
+REMOTE_HOST="${XYY_REMOTE_SSH:-bot-host}"
+REMOTE_BASE="${XYY_REMOTE_BASE:-/opt/xiaoyouyou}"
+REMOTE=$(ssh -o BatchMode=yes "$REMOTE_HOST" \
+  "cd '$REMOTE_BASE/assets/festivals' 2>/dev/null && sha256sum *.png teams/*.png 2>/dev/null" || true)
 
 # 只传「缺的或内容不同的」。海报在根目录、阵营立绘在 teams/ 子目录，两份循环分开写
 # （函数里带 $1/$2 的 awk 一行在 dash 下会报 "word unexpected"，不折腾）
@@ -71,14 +73,14 @@ fi
 tar -czf /tmp/xyy-fest.tgz -C "$D" entries.json rotation.json $NEED \
   -C "$TOOLS" festival-assets-install.js
 
-scp -q -o BatchMode=yes /tmp/xyy-fest.tgz aliyun-jump:/tmp/xyy-fest.tgz
-ssh -o BatchMode=yes aliyun-jump '
+scp -q -o BatchMode=yes /tmp/xyy-fest.tgz "$REMOTE_HOST:/tmp/xyy-fest.tgz"
+ssh -o BatchMode=yes "$REMOTE_HOST" "
   set -e
   rm -rf /tmp/xyy-fest && mkdir -p /tmp/xyy-fest && tar -xzf /tmp/xyy-fest.tgz -C /tmp/xyy-fest
-  sudo install -m 644 /tmp/xyy-fest/festival-assets-install.js /opt/xiaoyouyou/festival-assets-install.js
-  sudo /usr/bin/node /opt/xiaoyouyou/festival-assets-install.js /tmp/xyy-fest
-  sudo install -m 644 /tmp/xyy-fest/rotation.json /opt/xiaoyouyou/cache/festival-rotation.json
+  sudo install -m 644 /tmp/xyy-fest/festival-assets-install.js '$REMOTE_BASE/festival-assets-install.js'
+  sudo /usr/bin/node '$REMOTE_BASE/festival-assets-install.js' /tmp/xyy-fest
+  sudo install -m 644 /tmp/xyy-fest/rotation.json '$REMOTE_BASE/cache/festival-rotation.json'
   rm -rf /tmp/xyy-fest /tmp/xyy-fest.tgz
-'
+"
 printf '%s %s\n' "$NOW" "$H" > "$STAMP"
 echo "祭典海报已推送"

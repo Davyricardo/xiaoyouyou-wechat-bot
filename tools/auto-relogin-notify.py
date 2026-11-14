@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""香橙派侧：读取阿里云的事件日志，只投递判定端标记了 notify=true 的 result 事件。
+"""远端通知节点：读取部署主机的事件日志，只投递判定端标记了 notify=true 的 result 事件。
 
 由 xiaoyouyou-relogin-notify.timer 每 5 分钟拉起。责任边界（ARCHITECTURE.md）：
 这里不做任何「是不是掉线 / 要不要提醒」的判断，只按事件 id 去重后投递。
-通知频率由阿里云侧的 recovery-core.notifyDecision() 在写事件时决定，
+通知频率由部署主机侧的 recovery-core.notifyDecision() 在写事件时决定，
 所以持续失败时不会每轮刷一条（旧实现连发 30 条 needs_scan 就是这个原因）。
 """
 import json
@@ -13,17 +13,18 @@ import sys
 import time
 from pathlib import Path
 
-ROOT = Path('/home/user/.local/state/xiaoyouyou-aliyun')
+ROOT = Path(os.environ.get('XYY_NOTIFY_STATE_DIR') or (Path.home() / '.local/state/xiaoyouyou-notify'))
 MARK = ROOT / 'relogin-notify.json'
-# 唯一仲裁者：pi-aliyun-monitor.py 的状态。它正在处理事故时由它负责通知，
+# 唯一仲裁者：外部监控脚本的状态。它正在处理事故时由它负责通知，
 # 这里只推进水位线不说话——这是「两条通知链合并成一条」的开关。
 MONITOR = ROOT / 'monitor.json'
 MONITOR_STALE_MS = 10 * 60 * 1000
-# 远端事件日志（阿里云）。ssh 命令保持短：别名承担地址/密钥，参数用列表拼，不嵌套引号。
-REMOTE_LOG = '/opt/xiaoyouyou/private/.local/state/splatoon-bridge/recovery-events.jsonl'
-SSH = ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', 'aliyun-jump', 'tail', '-n', '200', REMOTE_LOG]
-HERMES = os.environ.get('XYY_HERMES_BIN') or '/home/user/.hermes/hermes-agent/.hermes/bin/hermes'
-HERMES_HOME = os.environ.get('XYY_HERMES_HOME') or '/home/user/.hermes'
+# 远端事件日志。ssh 命令保持短：别名承担地址/密钥，参数用列表拼，不嵌套引号。
+REMOTE_LOG = os.environ.get('XYY_REMOTE_EVENTS') or '/opt/xiaoyouyou/private/.local/state/splatoon-bridge/recovery-events.jsonl'
+REMOTE_SSH = os.environ.get('XYY_REMOTE_SSH') or 'bot-host'
+SSH = ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', REMOTE_SSH, 'tail', '-n', '200', REMOTE_LOG]
+HERMES = os.environ.get('XYY_HERMES_BIN') or 'hermes'
+HERMES_HOME = os.environ.get('XYY_HERMES_HOME') or str(Path.home() / '.hermes')
 # 通知目标（管理员 IM ID / Telegram chat id）不再写死在代码里。
 # 读取顺序：进程环境变量（systemd EnvironmentFile）→ private 目录下的 *.env。
 # 环境变量名与 Node 侧 env-config.js 保持一致：
@@ -114,6 +115,8 @@ REASON_TEXTS = {
     'bridge_not_active': '小鱿鱿已登录，但桥接没能启动，正在自动重试',
     'bridge_restart_failed': '小鱿鱿桥接反复重启失败，已暂停重试等下一轮',
     'version_changed': '小鱿鱿的微信客户端指纹变了（可能被更新或被替换），请检查是否需要重新登录',
+    'phone_confirm': '小鱿鱿已触发手机端确认登录（免扫码），请在 3 分钟内打开手机微信点击确认',
+    'qr_required': '小鱿鱿需要扫码登录，请通过 WebUI 登录页扫码',
 }
 TEXTS = {
     'recovered': '小鱿鱿掉线后已自动登录并恢复',
@@ -184,7 +187,7 @@ def pick_pending(events, last_id=None, last_at=None, now=None, max_age_ms=30*60*
 
 
 def send(message):
-    # 通道顺序照 pi-aliyun-monitor.py：微信优先 → Telegram(chat_id)，每通道重试一次。
+    # 通道顺序与外部监控脚本保持一致：微信优先 → Telegram(chat_id)，每通道重试一次。
     # 单次超时必须 ≥30s：实测 hermes send 冷启动约 18s（CLI 启动 + 网关往返），
     # 12s 会让每次投递都超时失败。预算 2 通道 x 2 次 x 30s = 120s，落在 TimeoutStartSec=180 内。
     targets, missing = notify_targets()
@@ -234,9 +237,9 @@ def load_mark():
 
 
 def incident_active(now=None, path=None, max_age_ms=MONITOR_STALE_MS):
-    """pi-aliyun-monitor 是否正在处理一次事故（status != online 且心跳新鲜）。纯函数式，便于测试。
+    """外部监控脚本是否正在处理一次事故（status != online 且心跳新鲜）。纯函数式，便于测试。
 
-    合并通知链的判据：一次事故里，掉线/恢复/二维码/升级提醒全部由 pi-aliyun-monitor 发；
+    合并通知链的判据：一次事故里，掉线/恢复/二维码/升级提醒全部由外部监控脚本发；
     事件通知器只在「监控没有事故在途」时才说话——它补的是监控看不见的短故障
     （重启 9 秒就自愈，30 秒采样根本抓不到，但事件日志里有 recovered）。
     监控超过 max_age_ms 没心跳视作它自己挂了，这时不压制，宁可多发也不要全静默。

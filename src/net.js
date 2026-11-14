@@ -23,10 +23,10 @@ function fetchBuffer(url, limit=12e6, redirects=3) {
   });
 }
 const getJson=async url=>JSON.parse((await fetchBuffer(url)).toString('utf8'));
-// schedules 的 TTL 必须 ≥ 同步间隔：数据由香橙派每 30 分钟推到阿里云，
+// schedules 的 TTL 必须 ≥ 同步间隔：数据由预取节点每 30 分钟推到部署主机，
 // 阿里云自己连不上官方源。TTL 设 2 分钟时，缓存只有 2/30 的时间算「新鲜」，
 // 其余时间每次查询都会去连不通的网络并失败——这正是「未使用过期日程」的来源。
-// ⚠ 35 分钟只剩 5 分钟余量：香橙派只要漏掉一轮（或 cron 挤过一次），缓存就会在
+// ⚠ 35 分钟只剩 5 分钟余量：预取节点只要漏掉一轮（或 cron 挤过一次），缓存就会在
 // 「过期」状态下待上 30 分钟，期间每 20 秒打一次 25 秒超时的请求（线上 23:00–23:45
 // 就是这么刷的）。改成 60 分钟 = 容忍漏掉一整轮；数据本身 2 小时才换班，
 // 兜底校验仍在——真过期（>60 分钟）时会报错而不是张冠李戴。
@@ -39,14 +39,14 @@ function valid(name,d){
 function createDataCache({base=BASE,loadJson=getJson,now=Date.now}={}){
   const memory=new Map(),pending=new Map();let timer;
   let festivalFailures=0,festivalRetryAt=0;
-  // 阿里云直连 splatoon3.ink 永远超时（实测每次 25 秒），线上数据其实由香橙派每 30 分钟推送。
+  // 某些受限主机直连 splatoon3.ink 永远超时（实测每次 25 秒），线上数据可由预取节点每 30 分钟推送。
   // XYY_REMOTE_REFRESH=0 时彻底关掉远程拉取和后台预热：不再有必然失败的请求、不再挂
   // 一个永不完成的 https socket、journal 也不会被同一行超时日志刷满。
   // 过期缓存的策略不变——宁可报「暂不可用」，也不给用户看错的班次。
   const remoteEnabled=process.env.XYY_REMOTE_REFRESH!=='0';
   function file(name){if(!Object.hasOwn(TTLS,name))throw Error('未知数据类型');return path.join(base,'cache','schedules',name+'.json');}
   // ⚠ 缓存必须跟着文件走。旧实现第一次读盘后就把内容记进 memory 永不失效，
-  // 香橙派每 30 分钟推一次新文件，桥接却一直用「进程启动时那份」：
+  // 预取节点每 30 分钟推一次新文件，桥接却一直用「进程启动时那份」：
   // 过了 TTL 之后，每个查询都会去连阿里云根本连不上的 splatoon3.ink，然后回
   // 「地图查询暂不可用」。2026-10-24 00:21 启动的进程、00:30 换了班次，
   // 到 00:32 仍然读着 23:30 的旧缓存 —— 这就是那条报错的来源。
@@ -58,7 +58,7 @@ function createDataCache({base=BASE,loadJson=getJson,now=Date.now}={}){
     if(hit&&hit.mtimeMs===st.mtimeMs)return hit.value;
     try{
       let v=JSON.parse(fs.readFileSync(filename));
-      // 兼容没有 {at,data} 包装的裸 payload：香橙派的 sync.sh 曾经只给 schedules 加包装，
+      // 兼容没有 {at,data} 包装的裸 payload：预取节点的 sync.sh 曾经只给 schedules 加包装，
       // festivals.json / locale.json 是原样落地。这时 v.at 是 undefined，
       // 判过期得到 NaN（永远「不过期」），但 valid(name, v.data) 拿到 undefined 一定失败，
       // 于是每一轮都认为「没缓存」→ 去连阿里云连不上的 splatoon3.ink → 每 20 秒一次 25 秒超时。
@@ -91,7 +91,7 @@ function createDataCache({base=BASE,loadJson=getJson,now=Date.now}={}){
   }
   // 过期就是过期：宁可报「暂不可用」也不给用户看错的班次（这条策略有测试守着）。
   // 但把「拒绝时缓存已经多老」写进日志 —— 今天排查就卡在这里：分不清是
-  // 「香橙派没推」还是「阿里云连不上」。TTL 60 分钟 > 同步间隔 30 分钟，
+  // 「预取节点没推」还是「本机连不上」。TTL 60 分钟 > 同步间隔 30 分钟，
   // 只有漏掉一整轮推送才会走到这里。
   async function data(name){
     const v=cached(name);
@@ -111,7 +111,7 @@ function createDataCache({base=BASE,loadJson=getJson,now=Date.now}={}){
   function start(){
     if(timer)return;
     if(!remoteEnabled){
-      console.error('Data refresh: 远程拉取已关闭（XYY_REMOTE_REFRESH=0），只读香橙派推送的缓存');
+      console.error('Data refresh: 远程拉取已关闭（XYY_REMOTE_REFRESH=0），只读预取节点推送的缓存');
       return;
     }
     const warm=()=>{

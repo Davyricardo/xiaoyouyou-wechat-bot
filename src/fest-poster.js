@@ -6,7 +6,7 @@
 // + 底部时间。素材来自 SplatNet 的 fest.teams[].image（每个阵营一张带 logo 的立绘，256² 透明底）
 // 与 fest.teams[].color（官方阵营色）。
 //
-// 立绘由香橙派预取（assets/festivals/teams/<主题>-<hash8>.png）。任何一张缺了就 ready() 返回 false，
+// 立绘由预取节点抓取（assets/festivals/teams/<主题>-<hash8>.png）。任何一张缺了就 ready() 返回 false，
 // 调用方退回「贴整张海报」的老版式 —— 宁可版式旧一点，也不要出现「立绘缺失」的破图。
 //
 // CLI：node fest-poster.js [输出路径]
@@ -59,7 +59,7 @@ function bj(iso) {
 }
 
 // ---------- 立绘定位 ----------
-// 与香橙派 festival-assets.js 的 teamKey() 必须一致：<主题代号>-<url 文件名 hash 前 8 位>
+// 与预取节点 festival-assets.js 的 teamKey() 必须一致：<主题代号>-<url 文件名 hash 前 8 位>
 function teamFile(url) {
   if (!url) return null;
   const parts = String(url).split('/');

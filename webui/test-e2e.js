@@ -152,7 +152,7 @@ async function main() {
     const pre = await get('/api/presets');
     const ids = (pre.presets || []).map((p) => p.id);
     check('厂商预设 >= 8 家', ids.length >= 8, ids.join(','));
-    for (const want of ['deepseek', 'qwen', 'kimi', 'glm', 'doubao', 'siliconflow', 'magpie']) {
+    for (const want of ['deepseek', 'qwen', 'kimi', 'glm', 'doubao', 'siliconflow', 'local']) {
       check('预设包含 ' + want, ids.includes(want));
     }
 

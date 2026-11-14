@@ -1,5 +1,5 @@
 'use strict';
-// 只读模式（XYY_REMOTE_REFRESH=0）：阿里云直连 splatoon3.ink 必然超时，数据靠香橙派推送。
+// 只读模式（XYY_REMOTE_REFRESH=0）：部分部署主机直连 splatoon3.ink 超时，数据靠预取节点推送。
 // 这里锁住三条：① 不发任何远程请求 ② 后台预热不启动 ③ 新鲜缓存照常可用、过期仍拒绝。
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os');
@@ -35,7 +35,7 @@ test('只读模式：start 不启动后台预热',withReadOnly(async()=>{
 test('只读模式：新鲜缓存可用，过期缓存拒绝而不联网',withReadOnly(async()=>{
   const base=fs.mkdtempSync(path.join(os.tmpdir(),'xyy-ro-'));
   let calls=0,time=1000;
-  // 先用「可联网」的实例写一份缓存，模拟香橙派推来的文件
+  // 先用「可联网」的实例写一份缓存，模拟预取节点推来的文件
   process.env.XYY_REMOTE_REFRESH='1';
   const writer=createDataCache({base,now:()=>time,loadJson:async()=>{calls++;return schedule('pushed');}});
   await writer.data('schedules');

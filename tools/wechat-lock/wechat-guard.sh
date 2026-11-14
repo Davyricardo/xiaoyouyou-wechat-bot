@@ -5,7 +5,7 @@
 #   1. 确保容器内 /etc/hosts 屏蔽了更新下载域名（entrypoint 里已经有一份，
 #      这里兜底：万一下次重建镜像丢了 entrypoint 补丁，最迟 10 分钟内补回来）。
 #   2. 记录 /opt/wechat/wechat 的 sha256 指纹；一旦变化就往事件日志写一条
-#      needs_scan（reason=version_changed），由香橙派的通知器推给本人。
+#      needs_scan（reason=version_changed），由远端通知器推给本人。
 #      客户端装在 root 所有的目录里、wechat 用户不可写，所以「正常情况永远不会变」——
 #      变了就说明镜像被换过或被 docker cp 覆盖过，必须人看一眼。
 set -uo pipefail

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// 香橙派侧：预取【全部】祭典海报。
+// 预取节点：预取【全部】祭典海报。
 //
 // 背景（2026-10-23 调研确认）：
 //   斯普拉遁 3 自 2024 年 Grand Festival 之后停止新内容更新，祭典改为复刻轮换，
@@ -19,12 +19,13 @@
 // 尺寸与阿里云 sync-assets.ensure() 对非武器素材的处理保持一致（width 1080），
 // 否则两边算出的 sha256 不同，会反复重下。
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
 const https = require('node:https');
 const crypto = require('node:crypto');
 const sharp = require('sharp');
 
-const DATA = process.env.XYY_PI_DATA || '/home/user/splatoon-data';
+const DATA = process.env.XYY_DATA_DIR || process.env.XYY_PI_DATA || path.join(os.homedir(), 'splatoon-data');
 const OUT = path.join(DATA, 'fest-assets');
 const WIDTH = 1080;
 const REGIONS = ['JP', 'AP', 'EU', 'US'];

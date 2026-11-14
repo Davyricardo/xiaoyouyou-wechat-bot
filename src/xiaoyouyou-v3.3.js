@@ -241,7 +241,7 @@ async function render(model){
       for(let j=0;j<4;j++){const x=52+j*249,w=model.teams[team][j];await cv.image('weapons',w,x+18,y+64,210,156);chunks(w.name,10).forEach((s,n)=>cv.text(x+115,y+253+n*27,s,25,'#edf4ff','middle'));}}
   }else if(model.kind==='festival'){
     // 三列阵营版式（对齐官方海报）：阵营色块 + 立绘 + 队名 + 时间。
-    // 立绘来自香橙派预取的 assets/festivals/teams/，三张都在才用；缺任何一张就退回下面
+    // 立绘来自预取节点的 assets/festivals/teams/，三张都在才用；缺任何一张就退回下面
     // 「贴整张海报」的老版式 —— 宁可版式旧一点，也不要发出写着「立绘缺失」的破图。
     {
       const poster=require('./fest-poster');

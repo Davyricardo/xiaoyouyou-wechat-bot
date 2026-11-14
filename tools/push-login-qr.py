@@ -1,11 +1,12 @@
 """手动推一张新的登录二维码到本人微信（应急用，平时由 monitor 自己做）。"""
 import base64
 import importlib.util
+import os
 import secrets
 import time
 from pathlib import Path
 
-MON = '/home/user/xiaoyouyou-aliyun-monitor/pi-aliyun-monitor.py'
+MON = os.environ.get('XYY_MONITOR_SCRIPT', str(Path.home() / 'xiaoyouyou-monitor/monitor.py'))
 spec = importlib.util.spec_from_file_location('mon', MON)
 m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
@@ -33,7 +34,7 @@ else:
 
 value = m.rpc('qr', code=code)
 png = base64.b64decode(value['png'], validate=True)
-out = Path('/home/user/.local/state/xiaoyouyou-aliyun/qr') / (code + '.png')
+out = Path(os.environ.get('XYY_NOTIFY_STATE_DIR') or (Path.home() / '.local/state/xiaoyouyou-notify')) / 'qr' / (code + '.png')
 out.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
 out.write_bytes(png)
 out.chmod(0o600)

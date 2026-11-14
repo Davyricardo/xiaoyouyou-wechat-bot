@@ -5,7 +5,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 // 免得脏真实的 recovery-events.jsonl（那条流是 auto-relogin 的唯一判据来源）。
 const TMP=fs.mkdtempSync(path.join(os.tmpdir(),'xyy-bridge-test-'));
 process.env.SPLATOON_EVENTS_FILE=path.join(TMP,'recovery-events.jsonl');
-const {resumeCursor,command,CHAT,GRACE_MS,processBatch,backlogFloor}=require('./bridge-v3.3');
+const {resumeCursor,recoveryCursor,command,CHAT,GRACE_MS,processBatch,backlogFloor}=require('./bridge-v3.3');
 const {NICK}=require('./bot-config');
 test.after(()=>fs.rmSync(TMP,{recursive:true,force:true}));
 
@@ -116,4 +116,14 @@ test('恢复游标后 command() 接受停机期间发的指令',()=>{
   const since=backlogFloor(now,GRACE_MS,now-5*60*1000);
   assert.ok(command(msg(70,180,now),since),'停机第 3 分钟发的指令应被处理');
   assert.equal(command(msg(71,20*60,now),since),null,'停机 20 分钟前（超 BACKLOG_MS）的旧指令不重放');
+});
+
+test('recoveryCursor：游标只进不退，防止重放已回复消息',()=>{
+  const now=Date.now();
+  const msgs=[msg(100,120,now),msg(105,60,now),msg(110,5,now)];
+  // since 早于 id=105..110 → resumeCursor 给出 100；当前状态已到 108 时不能退回 100
+  assert.equal(recoveryCursor({chatId:CHAT,lastId:108},msgs,now-90*1000),108);
+  // 若 state 为空或落后于 resumeCursor，则前进到 resumeCursor
+  assert.equal(recoveryCursor(null,msgs,now-90*1000),100);
+  assert.equal(recoveryCursor({chatId:CHAT,lastId:50},msgs,now-90*1000),100);
 });

@@ -4,7 +4,14 @@ services:
     image: ${XYY_IMAGE:-dandan310/agent-wechat:0.12.0-mentions.6}
     container_name: splatoon-wechat-test
     restart: unless-stopped
-    shm_size: 1gb
+    shm_size: 256m
+    mem_limit: 1280m
+    memswap_limit: 2048m
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "3"
     ports:
       # 只绑回环，不对外暴露
       - "127.0.0.1:6174:6174"

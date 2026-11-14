@@ -14,7 +14,7 @@ const {createMemory}=require('./llm-memory');
 
 const DEFAULTS={
   url:'http://127.0.0.1:3430/v1/chat/completions',
-  model:'workbuddy/deepseek-v4.1-flash',
+  model:'deepseek-chat',
   timeoutMs:5000,
   userGapMs:30000,     // 同一个人 30 秒内只回一次
   chatGapMs:10000,     // 同一个群 10 秒内只回一次
@@ -190,7 +190,7 @@ function config(env=process.env){
     users:new Set(secretList('XYY_LLM_USERS',env)),
     url:secret('XYY_LLM_URL',env)||DEFAULTS.url,
     model:secret('XYY_LLM_MODEL',env)||DEFAULTS.model,
-    key:secret(['XYY_LLM_KEY','MAGPIE_GATEWAY_KEY'],env),
+    key:secret(['XYY_LLM_KEY','OPENAI_API_KEY'],env),
     timeoutMs:num(secret('XYY_LLM_TIMEOUT_MS',env),DEFAULTS.timeoutMs),
     userGapMs:num(secret('XYY_LLM_USER_GAP_MS',env),DEFAULTS.userGapMs),
     chatGapMs:num(secret('XYY_LLM_CHAT_GAP_MS',env),DEFAULTS.chatGapMs),

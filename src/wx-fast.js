@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFile}=require('node:child_process');
 const {CHAT,CHAT_NAME,groupHeader}=require('./bot-config');
+const {withUiLock}=require('./ui-lock');
 function nodes(tree){const out=[];function walk(n){if(!n)return;out.push(n);for(const c of n.children||[])walk(c);}walk(tree);return out;}
 function ready(tree,editor){
   const all=nodes(tree),e=editor(tree);
@@ -91,5 +92,15 @@ function image(file){
   return tool('image',['-c',script,'xyy-image',temp],b);
 }
 let sender;
-function current(){if(!sender){const c=require('./wx-client');sender=createSender({editor:c.editor,pendingImageButton:c.pendingImageButton,tree:c.a11yTree,rows:c.rows,find:()=>c.apiGet('/api/chats/find?name='+encodeURIComponent(CHAT_NAME)),open:()=>c.wx(['chats','open',CHAT]),tool,image});}return sender;}
+function current(){
+  if(!sender){
+    const c=require('./wx-client');
+    const raw=createSender({editor:c.editor,pendingImageButton:c.pendingImageButton,tree:c.a11yTree,rows:c.rows,find:()=>c.apiGet('/api/chats/find?name='+encodeURIComponent(CHAT_NAME)),open:()=>c.wx(['chats','open',CHAT]),tool,image});
+    sender={
+      sendImage:(...args)=>withUiLock('wx-fast',()=>raw.sendImage(...args),{waitMs:15000,ttlMs:45000,proceedOnTimeout:true}),
+      sendText:(...args)=>withUiLock('wx-fast',()=>raw.sendText(...args),{waitMs:15000,ttlMs:45000,proceedOnTimeout:true}),
+    };
+  }
+  return sender;
+}
 module.exports={createSender,ready,point,sendImage:(...args)=>current().sendImage(...args),sendText:(...args)=>current().sendText(...args)};

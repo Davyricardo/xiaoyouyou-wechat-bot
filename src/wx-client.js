@@ -1,9 +1,10 @@
 'use strict';
-const path=require('node:path'),fs=require('node:fs');const {execFile,execFileSync}=require('node:child_process');
+const os=require('node:os'),path=require('node:path'),fs=require('node:fs');const {execFile,execFileSync}=require('node:child_process');
 const {CHAT,CHAT_NAME,groupHeader}=require('./bot-config');
 // Legacy container API or the wx-compat facade in front of the native daemon.
 const BASE=process.env.WX_API_BASE||'http://127.0.0.1:6174';
 const SENDER=()=>require('./wx-fast');  // native sender retired with the rolled-back migration
+const BAD_CACHE_EVENTS=new Set(['send_timeout','poll_stuck','login_failed','needs_scan','recycle_failed','recycle_login_failed','send_uncertain']);
 let env;
 // 令牌本来就在 private/wechat.env 里（start-aliyun-wechat.sh 首次启动时生成），
 // 但 v3.4 只读 process.env，拿不到就每次去 `docker inspect`。宿主机内存紧张时
@@ -20,6 +21,51 @@ function tokenFromFile(){
   }
   return null;
 }
+function stateDir(){
+  return process.env.SPLATOON_MONITOR_DIR||path.join(process.env.HOME||os.homedir(),'.local/state/splatoon-bridge');
+}
+function authCachePath(){
+  return process.env.XYY_AUTH_CACHE_FILE||path.join(stateDir(),'auth-cache.json');
+}
+function eventsPath(){
+  return process.env.SPLATOON_EVENTS_FILE||process.env.XYY_EVENTS_FILE||path.join(stateDir(),'recovery-events.jsonl');
+}
+function readAuthCache(){
+  try{
+    const data=JSON.parse(fs.readFileSync(authCachePath(),'utf8'));
+    return data&&typeof data==='object'?data:null;
+  }catch{return null;}
+}
+function writeAuthCache(res,now=Date.now){
+  if(!res||typeof res!=='object'||typeof res.status!=='string')return;
+  try{
+    const file=authCachePath();
+    fs.mkdirSync(path.dirname(file),{recursive:true,mode:0o700});
+    const tmp=file+'.tmp.'+process.pid;
+    fs.writeFileSync(tmp,JSON.stringify({...res,at:now()}),{mode:0o600});
+    fs.renameSync(tmp,file);
+  }catch{}
+}
+function hasRecentBadEvent(sinceMs){
+  try{
+    const file=eventsPath();
+    const st=fs.statSync(file);
+    if(st.size<=0)return false;
+    const readBytes=Math.min(st.size,4096);
+    const buf=Buffer.allocUnsafe(readBytes);
+    const fd=fs.openSync(file,'r');
+    try{fs.readSync(fd,buf,0,readBytes,st.size-readBytes);}finally{fs.closeSync(fd);}
+    for(const line of buf.toString('utf8').split('\n')){
+      if(!line.trim())continue;
+      let ev;try{ev=JSON.parse(line);}catch{continue;}
+      if(!ev||typeof ev!=='object')continue;
+      const evAt=Number.isFinite(ev.at)?ev.at:Date.parse(ev.ts);
+      if(!Number.isFinite(evAt)||evAt<=sinceMs)continue;
+      if(BAD_CACHE_EVENTS.has(ev.type)||BAD_CACHE_EVENTS.has(ev.result)||BAD_CACHE_EVENTS.has(ev.reason))return true;
+    }
+  }catch{}
+  return false;
+}
 function environment(){
   if(env)return env;
   let token=process.env.AGENT_WECHAT_TOKEN||tokenFromFile();
@@ -31,7 +77,17 @@ function environment(){
   env={...process.env,AGENT_WECHAT_TOKEN:token,AGENT_WECHAT_URL:BASE};return env;
 }
 function wx(args,timeout=25000){return new Promise((resolve,reject)=>execFile(process.env.WX_BIN||path.join(__dirname,'node_modules/.bin/wx'),args,{env:environment(),timeout,maxBuffer:2*1024*1024},(e,out,err)=>{if(e){const error=Error((err||e.message).slice(0,200));error.uncertain=e.killed||e.code==='ETIMEDOUT';reject(error);}else resolve(out);}));}
-async function status(){const r=await fetch(BASE+'/api/status/auth',{headers:{Authorization:'Bearer '+environment().AGENT_WECHAT_TOKEN},signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error('微信状态 HTTP '+r.status);return r.json();}
+async function status(){const r=await fetch(BASE+'/api/status/auth',{headers:{Authorization:'Bearer '+environment().AGENT_WECHAT_TOKEN},signal:AbortSignal.timeout(10000)});if(!r.ok)throw Error('微信状态 HTTP '+r.status);const data=await r.json();writeAuthCache(data);return data;}
+async function statusCached({maxAgeMs=240000,force=false,now=Date.now}={}){
+  if(!force){
+    const cache=readAuthCache();
+    const age=cache&&Number.isFinite(cache.at)?now()-cache.at:Infinity;
+    if(cache&&cache.status==='logged_in'&&age>=0&&age<=maxAgeMs&&!hasRecentBadEvent(cache.at)){
+      return {...cache,cached:true};
+    }
+  }
+  return status();
+}
 function editor(tree){
   for(const parent of [tree,...(tree?.children||[])]){
     const children=parent?.children||[],button=children.find(n=>n.role==='push-button'&&n.name==='Send(S)'),input=children.find(n=>n.role==='text'&&n.states?.includes('EDITABLE'));
@@ -79,5 +135,5 @@ async function sendImageLegacy(chat,file){
   }
   const sent=await confirmImage(lastId);if(!sent){const error=Error('CLI 未回读确认图片，停止自动重发');error.uncertain=true;throw error;}return sent;
 }
-module.exports={wx,status,editor,pendingImageButton,apiGet,rows,a11yTree,sendImageLegacy,completePendingImage,
+module.exports={wx,status,statusCached,authCachePath,eventsPath,readAuthCache,writeAuthCache,tokenFromFile,editor,pendingImageButton,apiGet,rows,a11yTree,sendImageLegacy,completePendingImage,
   sendImage:(...args)=>SENDER().sendImage(...args),sendText:(...args)=>SENDER().sendText(...args)};

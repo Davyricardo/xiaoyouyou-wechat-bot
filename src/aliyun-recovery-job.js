@@ -17,8 +17,11 @@ const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
     if(auth.status==='logged_in'&&infra.isExpectedUser(auth.loggedInUser))mark('awaiting_confirmation');
     else{
       if(auth.status!=='logged_out'||auth.loggedInUser&&!infra.isExpectedUser(auth.loggedInUser))throw Error('登录状态或账号不符合恢复条件');
-      const d=JSON.parse(execFileSync('docker',['inspect','splatoon-wechat-test'],{encoding:'utf8',timeout:8000}))[0];
-      const token=d.Config.Env.find(x=>x.startsWith('AGENT_WECHAT_TOKEN='))?.slice('AGENT_WECHAT_TOKEN='.length);
+      let token=c.tokenFromFile&&c.tokenFromFile();
+      if(!token){
+        const d=JSON.parse(execFileSync('docker',['inspect','splatoon-wechat-test'],{encoding:'utf8',timeout:8000}))[0];
+        token=d.Config.Env.find(x=>x.startsWith('AGENT_WECHAT_TOKEN='))?.slice('AGENT_WECHAT_TOKEN='.length);
+      }
       if(!token)throw Error('缺少微信接口认证');
       await loginSocket({timeoutMs:180000,
         connect:()=>new WebSocket('ws://127.0.0.1:6174/api/ws/login?'+new URLSearchParams({timeoutMs:'180000',newAccount:'false',token})),
@@ -28,9 +31,19 @@ const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
         success:async id=>{if(id&&!infra.isExpectedUser(id))throw Error('扫码账号不是原机器人账号');mark('awaiting_confirmation');}
       });
     }
-    const until=Date.now()+600000;
-    while(!fs.existsSync(confirmation)&&Date.now()<until)await delay(1000);
-    if(!fs.existsSync(confirmation))throw Error('等待已登录回复超时');
+    const until=Date.now()+600000;let confirmed=fs.existsSync(confirmation);
+    while(!confirmed&&Date.now()<until){
+      await delay(2000);
+      if(fs.existsSync(confirmation)){confirmed=true;break;}
+      const gate=infra.read('login-gate.json');
+      if(gate&&(gate.phase==='resume'||gate.phase==='finished')){
+        try{
+          const st=await c.status();
+          if(st.status==='logged_in'&&infra.isExpectedUser(st.loggedInUser)){confirmed=true;break;}
+        }catch{}
+      }
+    }
+    if(!confirmed)throw Error('等待已登录回复超时');
   }
   mark('verifying');await infra.ensureReady();
   infra.write('login-gate.json',{code,phase:'resume'});
@@ -39,4 +52,4 @@ const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
   if(ack?.code!==code)throw Error('恢复后游标重置未确认');
   await infra.ensureReady();infra.write('login-gate.json',{code,phase:'finished'});
   mark('verified',{cursor:ack.lastId,verifiedAt:Date.now()});
-})().catch(error=>{mark('failed',{reason:error.message});infra.write('login-gate.json',{code,phase:'blocked'});process.exitCode=1;});
+})().catch(async error=>{mark('failed',{reason:error.message});let wrongAccount=false;try{const st=await c.status();wrongAccount=st.status==='logged_in'&&!infra.isExpectedUser(st.loggedInUser);}catch{}infra.write('login-gate.json',{code,phase:wrongAccount?'blocked':'resume'});process.exitCode=1;});

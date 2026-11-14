@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 'use strict';
-const fs=require('node:fs'),path=require('node:path');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {execFile}=require('node:child_process'),{promisify}=require('node:util');
 const exec=promisify(execFile);
-const ROOT=process.env.SPLATOON_MONITOR_DIR||path.join(process.env.HOME||__dirname,'.local/state/splatoon-bridge');
+const ROOT=process.env.SPLATOON_MONITOR_DIR||path.join(process.env.HOME||os.homedir(),'.local/state/splatoon-bridge');
 const STATE=path.join(ROOT,'health-monitor.json');
-const HERMES='/home/user/.hermes/hermes-agent/.hermes/bin/hermes';
+const HERMES=process.env.XYY_HERMES_BIN||'hermes';
+const HERMES_HOME=process.env.XYY_HERMES_HOME||path.join(os.homedir(),'.hermes');
 const TARGET='weixin:user@im.wechat';
 const REASONS={online:'正常',logged_out:'桌面微信未登录，需要在手机确认登录',api_error:'微信认证接口不可用',bridge_down:'小鱿鱿桥接服务未运行'};
 function classify(probe){
@@ -71,7 +72,7 @@ async function probe(){
 }
 async function sendViaHermes(message){
  try{
-  const {stdout}=await exec(HERMES,['send','--to',TARGET,'--json',message],{cwd:'/home/user/.hermes',env:{...process.env,HERMES_HOME:'/home/user/.hermes'},timeout:60000,maxBuffer:1024*1024});
+  const {stdout}=await exec(HERMES,['send','--to',TARGET,'--json',message],{cwd:HERMES_HOME,env:{...process.env,HERMES_HOME},timeout:60000,maxBuffer:1024*1024});
   let result;try{result=JSON.parse(stdout.trim());}catch{
    const lines=stdout.trim().split('\n');for(let i=lines.length-1;i>=0;i--){try{result=JSON.parse(lines[i]);break;}catch{}}
   }

@@ -9,7 +9,7 @@
 | 检测 | `src/bridge-v3.3.js`、`tools/auto-relogin.js` | bridge 产出「发送超时」事实；auto-relogin 采集 auth、内存、服务状态 | 都不下结论 |
 | 判定 | `tools/auto-relogin.js`（`decide`/`recycleReason`）；纯函数在 `src/recovery-core.js` | 观测 → 一个动作 | 不执行、不发送 |
 | 执行 | `tools/auto-relogin.js` | 登录、重启容器、重启桥接 | 不决定要不要做 |
-| 通知 | 香橙派**一个**进程读事件日志 | 投递 `notify:true` 的事件 | 不判定掉线、不读原始状态 |
+| 通知 | 远端通知节点**一个**进程读事件日志 | 投递 `notify:true` 的事件 | 不判定掉线、不读原始状态 |
 
 ## 2. 唯一状态：事件日志
 
@@ -17,7 +17,7 @@
 
 - bridge 写：`send_timeout`（每次发送超时一条）
 - auto-relogin 写：`result`（字段 `result`/`ok`/`notify`/`detail`）
-- 香橙派只读：`tail` 后按事件 `id` 去重
+- 远端通知节点只读：`tail` 后按事件 `id` 去重
 
 `notify` 由 `recovery-core.notifyDecision()` 在**写入时**决定：同一种结果 30 分钟内只通知一次，`recovered` 永远通知。通知端没有判断，只有投递。
 
@@ -28,9 +28,9 @@
 | 同一「gate 过期 + 已登录 → 放行」判定写了两份，阈值还不同（10 分钟 / 2 分钟） | `bridge-v3.3.js` `healStaleGate` ↔ `auto-relogin.js` `decide` | 两处抢着改 gate 文件 | 删 `healStaleGate`，只留 `decide` |
 | 回收请求两套文件：`recycle-request.json`（bridge 写）+ `send-timeouts.json`（只读、**无写入方**） | bridge ↔ auto-relogin | 一边写一个、另一边根本没写 | 统一成一条 `send_timeout` 事件，两个窗口（30 分钟有效 / 15 分钟 2 次）都从它算 |
 | 重启结果只看 `is-active` 30 秒，不知道 systemd 正在每 30 秒硬重启 | `auto-relogin.js` `restartAndWait` | 撞上空档就假失败，还继续催 | 改 `systemctl show -p ActiveState,SubState,NRestarts`，flapping 立即停手 |
-| 同一次掉线有两条通知链：pi 监控自判 offline 发 1/2、2/2；relogin-notify 又读日志发一条 | `pi-aliyun-monitor.py` ↔ `auto-relogin-notify.py` | 一次故障多条提醒 | 仓库内只留事件日志投递器 `auto-relogin-notify.py` |
+| 同一次掉线有两条通知链：外部监控自判 offline 发 1/2、2/2；relogin-notify 又读日志发一条 | `外部旧监控脚本` ↔ `auto-relogin-notify.py` | 一次故障多条提醒 | 仓库内只留事件日志投递器 `auto-relogin-notify.py` |
 
-仓库外遗留：`pi-aliyun-monitor.py` 的掉线提醒分支仍在自判 offline。它不在本仓库（改动受「只改仓库」约束），切换步骤写在 `AUTO-RELIGIN.md`；保活判定不再依赖它。
+仓库外遗留：`外部旧监控脚本` 的掉线提醒分支仍在自判 offline。它不在本仓库（改动受「只改仓库」约束），切换步骤写在 `AUTO-RELIGIN.md`；保活判定不再依赖它。
 
 ## 4. 为什么不会变成屎山
 

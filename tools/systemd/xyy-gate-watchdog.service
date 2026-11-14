@@ -1,0 +1,7 @@
+[Unit]
+Description=小鱿鱿登录闸门自愈（恢复流程失败后自动清闸）
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/xyyops/gate_watchdog.py
+TimeoutStartSec=40

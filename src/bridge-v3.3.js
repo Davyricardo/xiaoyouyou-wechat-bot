@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
-const fs=require('node:fs'),path=require('node:path');const {rows,sendImage,sendText}=require('./wx-client');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path');const {rows,sendImage,sendText}=require('./wx-client');
 const {respond,ALLOWED}=require('./xiaoyouyou-v3.3');
 const {chatText,createChat}=require('./llm-chat');
 const {CHAT,NICK}=require('./bot-config');
-const STATE=process.env.SPLATOON_STATE_FILE||path.join(process.env.HOME,'.local/state/splatoon-bridge/state.json');
+const STATE=process.env.SPLATOON_STATE_FILE||path.join(process.env.HOME||os.homedir(),'.local/state/splatoon-bridge/state.json');
 const LOCK=path.join(path.dirname(STATE),'bridge-v3.3.lock');
 const GATE=path.join(path.dirname(STATE),'login-gate.json'),ACK=path.join(path.dirname(STATE),'bridge-recovery-ack.json');
 // 事件日志目录默认跟着 STATE，测试可以用 SPLATOON_EVENTS_FILE 指到临时目录，避免污染真实事件流。
@@ -38,6 +38,13 @@ function resumeCursor(msgs,since){
     if(Number.isFinite(ts)&&ts<since&&Number.isSafeInteger(m.localId))last=Math.max(last,m.localId);
   }
   return last;
+}
+// 登录恢复时的游标：只能前进不能后退。旧写法直接用 resumeCursor(msgs,since)，
+// since 是桥接启动时刻，桥接跑了一小时后再恢复，游标会退回启动前，
+// 这一小时里已经回过的消息全部再回一遍。
+function recoveryCursor(state,msgs,since){
+  const cur=state&&Number.isSafeInteger(state.lastId)?state.lastId:-1;
+  return Math.max(cur,resumeCursor(msgs,since));
 }
 // 本轮要处理的消息时间下限：默认「启动时刻 - GRACE」。游标是从 state.json 恢复时，
 // 下限再往下拉到 savedAt（停机那一刻）——否则停机期间发来的指令会因为早于
@@ -73,17 +80,24 @@ function save(s){const tmp=STATE+'.tmp';s.savedAt=Date.now();fs.writeFileSync(tm
 function writeRecoveryEvent(event){
   try{
     const {appendEvent}=require('./recovery-core');
-    return appendEvent(EVENTS,{host:'aliyun',...event});
+    return appendEvent(EVENTS,{host:'bot',...event});
   }catch(e){console.error('recovery event write failed',e.message);return null;}
 }
 function requestRecycle(reason){return writeRecoveryEvent({type:'send_timeout',reason:String(reason||'').slice(0,80)});}
 const replyFailures=new Map();   // localId -> 连续失败次数
 // 图片回复成功后追发的卖萌语；判定抽成纯函数便于测试。
 const CUTE='小鱿鱿要亲亲～';
+const CUTE_COOLDOWN_MS=(()=>{const raw=process.env.XYY_CUTE_COOLDOWN_MS;if(raw===undefined||raw==='')return 10*60*1000;const n=Number(raw);return Number.isFinite(n)&&n>=0?n:10*60*1000;})();
 function cuteLine(cmd,result){
   const head=/^(\S+)/.exec(String(cmd||'').trim());
   if(!head||head[1]==='帮助')return null;   // 帮助是纯文字，显式排除
   return result&&result.image?CUTE:null;
+}
+function shouldSendCuteLine(cmd,result,lastCuteAt=0,now=Date.now(),cooldownMs=CUTE_COOLDOWN_MS){
+  const line=cuteLine(cmd,result);
+  if(!line)return null;
+  if(cooldownMs>0&&Number.isFinite(lastCuteAt)&&lastCuteAt>0&&now-lastCuteAt<cooldownMs)return null;
+  return line;
 }
 async function processBatch(msgs,state,since,handlers){
   let dirty=false;
@@ -140,7 +154,7 @@ function pollConfig(env=process.env){
 }
 async function main(){
   acquire();let running=true;const startedAt=Date.now(),cfg=pollConfig(),interval=cfg.interval;
-  let failures=0;
+  let failures=0,lastCuteAt=0;
   require('./net').startDataRefresh();
   let state=loadState();
   // 闲聊模块：XYY_LLM=0（默认）时整个支路不挂，行为与旧版完全一致。
@@ -169,7 +183,7 @@ async function main(){
     const list=await rows(50).catch(e=>{pollFailed=true;throw e;});if(!Array.isArray(list))throw Error('消息列表格式变化');
     const msgs=list.filter(m=>m.chatId===CHAT&&Number.isSafeInteger(m.localId)).sort((a,b)=>a.localId-b.localId);
     if(gateAction==='reset'){
-      state={chatId:CHAT,lastId:resumeCursor(msgs,since),startedAt};save(state);
+      state={chatId:CHAT,lastId:recoveryCursor(state,msgs,since),startedAt};save(state);
       const tmp=ACK+'.tmp';fs.writeFileSync(tmp,JSON.stringify({code:gate.code,chatId:CHAT,lastId:state.lastId,at:Date.now()}),{mode:0o600});fs.renameSync(tmp,ACK);
       console.log('Login recovery cursor initialized; history ignored',gate.code,state.lastId);
     }
@@ -195,8 +209,9 @@ async function main(){
       }}else if(result.text)delivery=await sendText(CHAT,result.text);
       console.log(new Date().toISOString(),'Replied',m.localId,cmd,JSON.stringify({ageMs,renderMs,totalMs:Math.round(performance.now()-began),...delivery}));
       // 放在 Replied 之后：主回复耗时口径不变；await 避免同批下一条消息在 a11y 层并发。
-      const cute=(llm&&llm.commandHint&&llm.commandHint(m,cmd,result))||cuteLine(cmd,result);
-      if(cute){try{await sendText(CHAT,cute);}catch(e){console.error('Cute line failed',e.message);}}
+      const hint=llm&&llm.commandHint&&llm.commandHint(m,cmd,result);
+      const cute=hint||shouldSendCuteLine(cmd,result,lastCuteAt,Date.now(),CUTE_COOLDOWN_MS);
+      if(cute){try{await sendText(CHAT,cute);if(!hint)lastCuteAt=Date.now();}catch(e){console.error('Cute line failed',e.message);}}
     }});
   }catch(e){
     failures++;const wait=require('./recovery-core').pollBackoff({failures,intervalMs:interval,minMs:cfg.backoffMin,maxMs:cfg.backoffMax});
@@ -222,4 +237,4 @@ async function main(){
 process.on('unhandledRejection',e=>console.error(new Date().toISOString(),'unhandledRejection',e&&e.message||e));
 process.on('uncaughtException',e=>console.error(new Date().toISOString(),'uncaughtException',e&&e.stack||e));
 if(require.main===module)main().catch(e=>{console.error(e.message);process.exitCode=1;});
-module.exports={command,CHAT,cuteLine,resumeCursor,loadState,acquire,main,processBatch,pollConfig,GRACE_MS,BACKLOG_MS,EVENTS,backlogFloor,POLL_STUCK_LIMIT};
+module.exports={command,CHAT,cuteLine,shouldSendCuteLine,CUTE_COOLDOWN_MS,resumeCursor,recoveryCursor,loadState,acquire,main,processBatch,pollConfig,GRACE_MS,BACKLOG_MS,EVENTS,backlogFloor,POLL_STUCK_LIMIT};

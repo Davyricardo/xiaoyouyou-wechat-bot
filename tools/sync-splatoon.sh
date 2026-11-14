@@ -1,20 +1,23 @@
 #!/bin/sh
-# 在香橙派上抓数据并推送到阿里云（阿里云直连 splatoon3.ink 会超时）。
+# 在预取节点上抓数据并推送到部署主机（部分部署机直连 splatoon3.ink 会超时）。
 #
 # ⚠ 契约：缓存文件必须是 {"at": <毫秒>, "data": <原始 payload>}。
-# 阿里云侧 net.js 的 cached() 只认这个形状：
+# 部署机侧 net.js 的 cached() 只认这个形状：
 #   at     —— 新鲜度判定用（TTL：schedules 35min / festivals 6h / locale 6h）
 #   data   —— 原始 payload，valid() 校验的是它
 # 旧版只给 schedules 加了包装，festivals.json 原样落地 → at 缺失、valid(data=undefined) 必失败
-# → 阿里云侧判定「没有缓存」→ 每 20 秒去连一次 splatoon3.ink（必超时 25 秒）→
+# → 部署机侧判定「没有缓存」→ 每 20 秒去连一次 splatoon3.ink（必超时 25 秒）→
 #   祭典功能永久不可用，同时一直挂着一个 socket（这是「进程收到 SIGTERM 后不退」的直接推手之一）。
 # locale.json 之前根本没有任何脚本在推，6 小时后会静默失效。
 #
 # 本版：三类数据统一包装、统一校验、统一推送；抓取/校验失败绝不覆盖已有的好文件。
 set -eu
-cd /home/user/splatoon-data
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+DATA_DIR="${XYY_DATA_DIR:-$HOME/splatoon-data}"
+mkdir -p "$DATA_DIR"
+cd "$DATA_DIR"
 
-TMPD=/home/user/splatoon-data/.tmp
+TMPD="$DATA_DIR/.tmp"
 mkdir -p "$TMPD"
 WRAP="$TMPD/wrap.py"
 cat > "$WRAP" <<'PY'
@@ -56,26 +59,28 @@ FETCH festivals https://splatoon3.ink/data/festivals.json 21600 \
 FETCH locale https://splatoon3.ink/data/locale/zh-CN.json 21600 \
   "isinstance(d.get('stages'),dict) and isinstance(d.get('weapons'),dict)"
 
+REMOTE_HOST="${XYY_REMOTE_SSH:-bot-host}"
+REMOTE_BASE="${XYY_REMOTE_BASE:-/opt/xiaoyouyou}"
 for f in schedules festivals locale; do
   test -s "$f.json" || { echo "  $f.json 为空，中止推送" >&2; exit 1; }
-  scp -q -o BatchMode=yes "$f.json" "aliyun-jump:/tmp/xyy-$f.json"
+  scp -q -o BatchMode=yes "$f.json" "$REMOTE_HOST:/tmp/xyy-$f.json"
 done
 
-ssh -o BatchMode=yes aliyun-jump '
+ssh -o BatchMode=yes "$REMOTE_HOST" "
   set -e
   for f in schedules festivals locale; do
-    test -s /tmp/xyy-$f.json
-    sudo install -o root -g root -m 600 /tmp/xyy-$f.json /opt/xiaoyouyou/cache/schedules/$f.json
-    rm -f /tmp/xyy-$f.json
+    test -s /tmp/xyy-\$f.json
+    sudo install -o root -g root -m 600 /tmp/xyy-\$f.json '$REMOTE_BASE/cache/schedules/'\$f.json
+    rm -f /tmp/xyy-\$f.json
   done
-'
+"
 
 echo "$(date '+%F %T') synced schedules=$(wc -c < schedules.json) festivals=$(wc -c < festivals.json) locale=$(wc -c < locale.json)"
 
-# 祭典海报：在 assets.splatoon3.ink（另一个域名），阿里云同样连不上，
+# 祭典海报：在 assets.splatoon3.ink（另一个域名），部署主机同样连不上，
 # 卡片顶部会画成空占位块。所以海报也在这里抓、一起推过去。
 # 失败不影响日程推送，只记一行。
-if ! sh /home/user/projects/xyy-review/tools/sync-fest-assets.sh 2>&1 | sed 's/^/  /'; then
+if ! sh "$SCRIPT_DIR/sync-fest-assets.sh" 2>&1 | sed 's/^/  /'; then
   echo "  (祭典海报同步失败，日程不受影响)" >&2
 fi
 

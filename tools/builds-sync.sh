@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# 配装数据同步：香橙派预取 → rsync 到阿里云 VPS。
+# 配装数据同步：预取节点抓取 → rsync 到部署主机。
 #
-#   prefetch-builds.js 全量跑一遍（sendou.ink、raw.githubusercontent 在香橙派可达）
-#   rsync -a --delete cache/builds/ → aliyun-jump:/opt/xiaoyouyou/cache/builds/
+#   prefetch-builds.js 全量跑一遍（在能访问 sendou.ink、raw.githubusercontent 的节点上）
+#   rsync -a --delete cache/builds/ → ${XYY_REMOTE_SSH:-bot-host}:${XYY_REMOTE_BASE:-/opt/xiaoyouyou}/cache/builds/
 #   日志追加到 ~/builds-sync.log，只保留最近 200 行
 #
 # 用法：tools/builds-sync.sh
@@ -14,7 +14,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin${PATH:+:$PATH}"
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SRC="$REPO/cache/builds"
-DEST="aliyun-jump:/opt/xiaoyouyou/cache/builds/"
+DEST="${XYY_REMOTE_SSH:-bot-host}:${XYY_REMOTE_BASE:-/opt/xiaoyouyou}/cache/builds/"
 LOG="$HOME/builds-sync.log"
 KEEP=200
 

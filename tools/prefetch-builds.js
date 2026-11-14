@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 'use strict';
-// 配装数据预取（在能访问 sendou.ink 的机器上跑，即香橙派）。
+// 配装数据预取（在能访问 sendou.ink 的预取节点上跑）。
 //
-// 阿里云 VPS 访问 sendou.ink 被 Cloudflare 403，所以数据在香橙派取好，
+// 部分部署主机访问 sendou.ink 被 Cloudflare 403，所以数据在预取节点取好，
 // 再由 tools/builds-sync.sh 把 cache/builds/*.json rsync 到 VPS。
 //
 // 用法：
@@ -24,7 +24,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const REPO = path.resolve(__dirname, '..');
-// fetchBuilds 的默认 BASE 是 /opt/xiaoyouyou（部署机路径），香橙派上没有这个目录
+// fetchBuilds 的默认 BASE 是 /opt/xiaoyouyou（部署机路径），预取节点上通常没有这个目录
 if (!process.env.XYY_BASE) process.env.XYY_BASE = REPO;
 const BASE = process.env.XYY_BASE;
 const CACHE_DIR = path.join(BASE, 'cache', 'builds');

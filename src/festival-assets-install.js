@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-// 阿里云侧：把香橙派推过来的祭典海报装进 assets/，并合并 manifest。
+// 部署主机侧：把预取节点推过来的祭典海报装进 assets/，并合并 manifest。
 //
 // 用法：node festival-assets-install.js /tmp/xyy-fest      （目录里要有 entries.json 和要装的 *.png）
 //
@@ -11,7 +11,7 @@
 // （30 场 × 4 区 = 120 条 key，只有 27 个文件）。所以这里要：
 //   1. 同一张图只落盘一次（否则每轮白写 120 次 ~1MB）；
 //   2. 包里没带这张图、但云端已经有一模一样的（sha256 相同）时，只登记不重传 ——
-//      这样香橙派可以增量推送，稳态下每次只传几十 KB 的 entries.json。
+//      这样预取节点可以增量推送，稳态下每次只传几十 KB 的 entries.json。
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
@@ -120,7 +120,7 @@ function main() {
         catch (e) { if (e.code !== 'ENOENT') throw e; return { schema: 1, entries: {} }; }
       })();
       manifest.entries = manifest.entries || {};
-      // 全量模式：香橙派这次带的是「至今为止的全部场次」，所以先清掉旧条目再整体写入。
+      // 全量模式：预取节点这次带的是「至今为止的全部场次」，所以先清掉旧条目再整体写入。
       // 不这么做的话，改过一次文件命名规则就会留下永远没人引用的僵尸条目
       // （实测：2026-10-24 切换成按主题代号命名后，manifest 里还留着旧的 festivals:JUEA-00108）。
       //

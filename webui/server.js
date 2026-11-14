@@ -422,7 +422,7 @@ const PRESETS = [
   { id: 'doubao', name: '火山方舟（豆包）', url: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions', model: 'ep-xxxxxxxx', note: '模型填方舟「推理接入点 ID」（ep- 开头）' },
   { id: 'siliconflow', name: '硅基流动', url: 'https://api.siliconflow.cn/v1/chat/completions', model: 'Qwen/Qwen2.5-7B-Instruct', note: '聚合多家开源模型' },
   { id: 'openrouter', name: 'OpenRouter', url: 'https://openrouter.ai/api/v1/chat/completions', model: 'deepseek/deepseek-chat', note: '需要外网' },
-  { id: 'magpie', name: '自建 magpie / 本地网关', url: 'http://127.0.0.1:3430/v1/chat/completions', model: '', note: '本机或内网聚合网关' },
+  { id: 'local', name: '本地 / 自建网关', url: 'http://127.0.0.1:3430/v1/chat/completions', model: '', note: '本机或内网 OpenAI 兼容网关' },
   { id: 'custom', name: '自定义（任意 OpenAI 兼容）', url: '', model: '', note: '自己填完整 URL' },
 ];
 

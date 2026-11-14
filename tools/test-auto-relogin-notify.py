@@ -87,7 +87,7 @@ class TextFor(unittest.TestCase):
 
     def test_all_reasons_have_distinct_text(self):
         reasons = ['login_failed', 'login_unconfirmed', 'recycle_login_failed',
-                   'bridge_not_active', 'bridge_restart_failed']
+                   'bridge_not_active', 'bridge_restart_failed', 'phone_confirm', 'qr_required']
         texts = {text_for({'result': 'needs_scan', 'reason': r}) for r in reasons}
         self.assertEqual(len(texts), len(reasons))
         self.assertTrue(all(texts))

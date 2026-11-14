@@ -3,7 +3,7 @@
 //   1) 纯函数判定（不碰 I/O，node --test 直接覆盖）；
 //   2) 一个 append-only JSONL 的薄封装（appendEvent / readEvents）。
 // 责任边界见 ARCHITECTURE.md：bridge 只检测（追加事件），auto-relogin 判定+执行，
-// 香橙派通知器只投递 notify=true 的事件。判定逻辑只允许出现在这里或 auto-relogin.js。
+// 远端通知器只投递 notify=true 的事件。判定逻辑只允许出现在这里或 auto-relogin.js。
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 
 // ---- 事件日志：唯一状态，两个主机都读 ----
@@ -95,14 +95,57 @@ function restartDue({events=[],now=Date.now(),type='restart',base,cap}={}){
   return now-last.at>=backoffMs(failureStreak(events,type),{base,cap});
 }
 
+// ---- 连续自动登录失败退避 ----
+// 仅统计最近的 login_failed 终态失败；一旦恢复成功，或进入 qr_required/phone_confirm
+// （等待人工确认/扫码）就重置计数，不影响下一轮正常掉线响应。
+function isLoginFailEvent(e){
+  return Boolean(e&&e.type==='result'&&(e.result==='login_failed'||(e.result==='needs_scan'&&e.reason==='login_failed')));
+}
+function isLoginResetEvent(e){
+  return Boolean(e&&e.type==='result'&&(e.ok===true||e.result==='logged_in'||e.result==='recovered'||e.result==='recycled'||e.reason==='qr_required'||e.reason==='phone_confirm'));
+}
+function loginFailureStreak(events){
+  let n=0;
+  const list=Array.isArray(events)?events:[];
+  for(let i=list.length-1;i>=0;i--){
+    const e=list[i];if(!e||e.type!=='result')continue;
+    if(isLoginResetEvent(e))break;
+    if(isLoginFailEvent(e))n++;
+  }
+  return n;
+}
+function loginDue({events=[],now=Date.now(),baseMs=5*60*1000,capMs=60*60*1000}={}){
+  const list=Array.isArray(events)?events:[];
+  let streak=0,lastFail=null;
+  for(let i=list.length-1;i>=0;i--){
+    const e=list[i];if(!e||e.type!=='result')continue;
+    if(isLoginResetEvent(e))break;
+    if(isLoginFailEvent(e)){streak++;if(!lastFail)lastFail=e;}
+  }
+  if(streak===0||!lastFail||!Number.isFinite(lastFail.at))return true;
+  // streak=1 等 5m（让第 2 次尝试与第 1 次保持 5m 间隔），之后 15m → 30m → 60m 退避。
+  const waitMs=streak<=1?baseMs:Math.min(capMs,3*baseMs*Math.pow(2,streak-2));
+  return now-lastFail.at>=waitMs;
+}
+
 // ---- 通知判定 ----
 // 判定端把结论写进事件（notify 布尔），通知端不再看原始观测。
 // 同一种结果 30 分钟内只通知一次：持续失败时每轮都写一条 needs_scan，旧实现每次都推送
 // （30 条连续提醒就是这个来源），cooldown 把它压成每半小时一条；恢复永远通知。
+// phone_confirm（免扫码手机确认，约 3 分钟窗口）独立按 5 分钟去重，避免被先前的 needs_scan 冷却压掉；
+// qr_required（等待扫码）独立按 2 小时去重，减少长期未扫码时的重复打扰。
 const NOTIFY_RESULTS=new Set(['recovered','needs_scan','restarted','gate_cleared','recycled']);
-function notifyDecision({result,events=[],now=Date.now(),cooldownMs=30*60*1000}={}){
+function notifyDecision({result,reason,events=[],now=Date.now(),cooldownMs=30*60*1000,phoneConfirmCooldownMs=5*60*1000,qrCooldownMs=2*60*60*1000}={}){
   if(!NOTIFY_RESULTS.has(result))return false;
   if(result==='recovered')return true;
+  if(reason==='phone_confirm'){
+    const last=lastEvent(events,'result',e=>e.result===result&&e.reason==='phone_confirm'&&e.notify===true);
+    return !last||now-last.at>=phoneConfirmCooldownMs;
+  }
+  if(reason==='qr_required'){
+    const last=lastEvent(events,'result',e=>e.result===result&&e.reason==='qr_required'&&e.notify===true);
+    return !last||now-last.at>=qrCooldownMs;
+  }
   const last=lastEvent(events,'result',e=>e.result===result&&e.notify===true);
   return !last||now-last.at>=cooldownMs;
 }
@@ -126,4 +169,5 @@ function pollBackoff({failures=0,intervalMs=250,minMs=2000,maxMs=10000}={}){
 
 module.exports={eventId,appendEvent,parseEvents,readEvents,lastEvent,latestAt,
   loginSucceeded,unitProps,restartVerdict,backoffMs,failureStreak,restartDue,
+  loginFailureStreak,loginDue,
   notifyDecision,countRecent,pollBackoff,NOTIFY_RESULTS};

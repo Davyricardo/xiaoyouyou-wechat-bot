@@ -1,0 +1,10 @@
+[Unit]
+Description=每 60 秒检查一次登录闸门是否被卡住
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=60
+AccuracySec=5
+
+[Install]
+WantedBy=timers.target
